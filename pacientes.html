@@ -35,11 +35,27 @@
   <main>
     <section id="paciente">
       <h2>Paciente</h2>
-      <ul>
-        <li>Ver expediente del paciente</li>
-        <li>Horarios de disponibilidad</li>
-        <li>Control de pagos por sesión</li>
-      </ul>
+
+      <!-- Listado de pacientes activos y en espera -->
+      <h3>Listado de Pacientes</h3>
+      <div id="pacientes-activos">
+        <h4>Pacientes Activos</h4>
+        <ul>
+          <!-- Los pacientes activos se deben cargar dinámicamente -->
+          <li><a href="#expediente-paciente-1" class="paciente-link">Juan Pérez</a></li>
+          <li><a href="#expediente-paciente-2" class="paciente-link">Ana Gómez</a></li>
+          <!-- Ejemplo más de pacientes -->
+        </ul>
+      </div>
+      <div id="pacientes-en-espera">
+        <h4>Pacientes en Espera</h4>
+        <ul>
+          <!-- Los pacientes en espera se deben cargar dinámicamente -->
+          <li><a href="#expediente-paciente-3" class="paciente-link">Carlos Ramírez</a></li>
+          <li><a href="#expediente-paciente-4" class="paciente-link">Marta Sánchez</a></li>
+          <!-- Ejemplo más de pacientes -->
+        </ul>
+      </div>
     </section>
   </main>
 
