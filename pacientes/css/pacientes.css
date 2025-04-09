@@ -1,0 +1,38 @@
+  
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .panel {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .patient-item {
+    cursor: pointer;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .patient-item:hover {
+    background-color: #e0f7fa;
+  }
+  
+  .filters label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+  }
+  
+  .filters input,
+  .filters select {
+    width: 100%;
+    padding: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+  }
+  

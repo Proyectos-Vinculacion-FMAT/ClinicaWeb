@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paciente</title>
+  <link rel="stylesheet" href="../CSS_Index/styles.css">
+  <link rel="stylesheet" href="css/pacientes.css">
+</head>
+<body>
+
+  <!-- Copiamos el header completo -->
+  <header>
+    <h1>Clínica de Atención Psicológica</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Agenda</a>
+          <ul>
+            <li><a href="index.html#agenda">Ver Citas por Día</a></li>
+            <li><a href="index.html#agenda">Ver Citas por Fecha</a></li>
+            <li><a href="index.html#agenda">Notificaciones Individuales</a></li>
+            <li><a href="index.html#agenda">Notificaciones Grupales</a></li>
+            <li><a href="index.html#agenda">Solicitudes de Servicio</a></li>
+          </ul>
+        </li>
+        <li><a href="paciente.html">Paciente</a></li>
+        <li><a href="terapeuta.html">Terapeuta</a></li>
+        <li><a href="salas.html">Salas</a></li>
+        <li><a href="coordinacion.html">Coordinación</a></li>
+        <li><a href="reportes.html">Reportes</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenido de esta sección -->
+  <main>
+    <section class="layout">
+      <!-- Panel izquierdo: categorías -->
+      <div class="panel">
+        <h3>Estados</h3>
+        <ul>
+          <li><input type="radio" name="estado" id="activo" checked> <label for="activo">Activos</label></li>
+          <li><input type="radio" name="estado" id="espera"> <label for="espera">En espera</label></li>
+          <li><input type="radio" name="estado" id="archivados"> <label for="archivados">Archivados</label></li>
+        </ul>
+      </div>
+
+      <!-- Panel central: lista de pacientes -->
+      <div class="panel">
+        <h3>Pacientes</h3>
+        <div class="patient-list">
+          <div class="patient-item" data-nombre="María López" data-tipo="tipo1">María López - Tipo 1</div>
+          <div class="patient-item" data-nombre="Juan Pérez" data-tipo="tipo2">Juan Pérez - Tipo 2</div>
+          <div class="patient-item" data-nombre="Ana García" data-tipo="tipo1">Ana García - Tipo 1</div>
+        </div>
+      </div>
+
+      <!-- Panel derecho: filtros -->
+      <div class="panel filters">
+        <h3>Filtros</h3>
+        <label for="buscar-nombre">Buscar por nombre</label>
+        <input type="text" id="buscar-nombre" placeholder="Ej. Ana García">
+
+        <label for="tipo-servicio">Tipo de servicio</label>
+        <select id="tipo-servicio">
+          <option value="">-- Seleccionar --</option>
+          <option value="tipo1">Tipo 1</option>
+          <option value="tipo2">Tipo 2</option>
+        </select>
+
+        <button style="margin-top: 1rem; padding: 0.5rem 1rem;">Aplicar Filtros</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
