@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrador: Reportes y Configuración</title>
+  <link rel="stylesheet" href="css/reportes.css">
+</head>
+<body>
+  <header>
+    <h1>Administrador – Reportes y Configuración</h1>
+    <nav>
+      <ul>
+        <li><a href="../agenda/agenda.html">Agenda</a></li>
+        <li><a href="../pacientes/pacientes.html">Pacientes</a></li>
+        <li><a href="../terapeuta/terapeuta.html">Terapeutas</a></li>
+        <li><a href="../salas/salas.html">Consultorios</a></li>
+        <li><a href="../coordinacion/coordinacion.html">Coordinación</a></li>
+        <li><a href="reportes.html">Reportes</a></li>
+        <li><a href="../index.html">Salir</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Menú de pestañas -->
+    <div class="tab-menu">
+      <button id="tabReportes" class="active">Reportes</button>
+      <button id="tabConfiguracion">Configuración</button>
+    </div>
+
+    <!-- Sección: Reportes -->
+    <section id="reportesSection" class="tab-content">
+      <h2>Generar Reporte de Pacientes</h2>
+      <form id="formReporte">
+        <div class="form-group">
+          <label for="fechaInicio">Fecha de inicio:</label>
+          <input type="date" id="fechaInicio" required>
+        </div>
+        <div class="form-group">
+          <label for="fechaFin">Fecha de fin:</label>
+          <input type="date" id="fechaFin" required>
+        </div>
+        <div class="form-group">
+          <label for="filtroServicio">Tipo de servicio:</label>
+          <select id="filtroServicio">
+            <option value="">-- Todos --</option>
+            <option value="psicodiagnostico">Psicodiagnóstico</option>
+            <option value="terapia">Terapia</option>
+          </select>
+        </div>
+        <button type="submit">Generar Reporte</button>
+      </form>
+      <div id="reporteResultado">
+        <!-- Aquí se mostrarán los resultados del reporte -->
+      </div>
+    </section>
+
+    <!-- Sección: Configuración -->
+    <section id="configuracionSection" class="tab-content" style="display:none;">
+      <h2>Configuración del Sistema</h2>
+      <form id="formConfiguracion">
+        <div class="form-group">
+          <label for="notificaciones">Notificaciones automáticas:</label>
+          <select id="notificaciones">
+            <option value="habilitado">Habilitado</option>
+            <option value="deshabilitado">Deshabilitado</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tiempoEspera">Tiempo de espera (minutos) para marcar cita como no asistida:</label>
+          <input type="number" id="tiempoEspera" min="0" required>
+        </div>
+        <div class="form-group">
+          <label for="maxReprogramaciones">Máximo reprogramaciones por paciente:</label>
+          <input type="number" id="maxReprogramaciones" min="0" required>
+        </div>
+        <button type="submit">Guardar Configuración</button>
+      </form>
+      <div id="configResultado">
+        <!-- Mensaje de configuración guardada -->
+      </div>
+    </section>
+  </main>
+
+  <script src="js/reportes.js"></script>
+</body>
+</html>
