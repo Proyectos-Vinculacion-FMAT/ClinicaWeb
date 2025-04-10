@@ -1,95 +1,38 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Estilo general para el cuerpo de la página */
 body {
-  font-family: sans-serif;
-  line-height: 1.6;
-  background-color: #f9f9f9;
-  color: #333;
-  padding: 20px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
 }
 
-/* Header */
-header {
-  background-color: #004080;
-  color: white;
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 5px;
+/* Contenedor principal */
+.container {
+    text-align: center;
 }
 
-header h1 {
-  margin-bottom: 10px;
+/* Estilo para los botones */
+button {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    transition: background-color 0.3s;
 }
 
-/* Navegación */
-nav ul {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+/* Efecto hover en los botones */
+button:hover {
+    background-color: #45a049;
 }
 
-nav ul li {
-  position: relative;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  padding: 5px 10px;
-  display: block;
-  background-color: #0066cc;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
-}
-
-nav ul li a:hover {
-  background-color: #003366;
-}
-
-/* Submenús */
-nav ul li ul {
-  display: none;
-  position: absolute;
-  top: 35px;
-  left: 0;
-  background-color: #0066cc;
-  border-radius: 4px;
-  padding: 5px;
-  z-index: 1000;
-  min-width: 200px;
-}
-
-nav ul li:hover ul {
-  display: block;
-}
-
-nav ul li ul li {
-  margin-bottom: 5px;
-}
-
-/* Main content */
-main {
-  background: white;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-main section h2 {
-  color: #004080;
-  margin-bottom: 15px;
-}
-
-article {
-  margin-bottom: 20px;
-}
-
-article h3 {
-  color: #0066cc;
-  margin-bottom: 8px;
+/* Estilo para el título */
+h1 {
+    margin-bottom: 40px;
 }
