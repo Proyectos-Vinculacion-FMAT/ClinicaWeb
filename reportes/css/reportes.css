@@ -28,13 +28,17 @@ header nav ul {
 }
 
 header nav ul li a {
+  display: inline-block;
+  background-color: #0066cc;
   color: white;
   text-decoration: none;
-  transition: color 0.3s ease;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
 header nav ul li a:hover {
-  color: #cce6ff;
+  background-color: #003d99;
 }
 
 /* Main contenido */
@@ -137,5 +141,3 @@ form button[type="submit"]:hover {
   border: 1px solid #d6e9c6;
   border-radius: 5px;
 }
-
-
