@@ -42,9 +42,15 @@
       <div class="panel">
         <h3>Pacientes</h3>
         <div class="patient-list">
-          <div class="patient-item" data-nombre="María López" data-tipo="tipo1">María López - Tipo 1</div>
-          <div class="patient-item" data-nombre="Juan Pérez" data-tipo="tipo2">Juan Pérez - Tipo 2</div>
-          <div class="patient-item" data-nombre="Ana García" data-tipo="tipo1">Ana García - Tipo 1</div>
+          <!-- Los que tienen tipo son activos -->
+          <div class="patient-item" data-nombre="María López" data-tipo="tipo1" data-estado="activo"><a href="detalle_paciente.html">María López - Tipo 1</a></div>
+          <div class="patient-item" data-nombre="Juan Pérez" data-tipo="tipo2" data-estado="activo">Juan Pérez - Tipo 2</div>
+          
+          <!-- Los sin tipo están en espera -->
+          <div class="patient-item" data-nombre="Carlos Ruiz" data-tipo="" data-estado="espera">Carlos Ruiz - Sin tipo</div>
+          
+          <!-- Archivados manualmente -->
+          <div class="patient-item" data-nombre="Ana García" data-tipo="tipo1" data-estado="archivado">Ana García - Tipo 1 (Archivado)</div>
         </div>
       </div>
 
@@ -60,10 +66,15 @@
           <option value="tipo1">Tipo 1</option>
           <option value="tipo2">Tipo 2</option>
         </select>
-
-        <button style="margin-top: 1rem; padding: 0.5rem 1rem;">Aplicar Filtros</button>
+        
+        <div class="filter-buttons">
+          <button id="aplicar-filtros" style="padding: 0.5rem 1rem;">Aplicar Filtros</button>
+          <button id="eliminar-filtros" style="padding: 0.5rem 1rem; margin-left: 0.5rem;">Eliminar Filtros</button>
+        </div>
       </div>
     </section>
   </main>
+  <script src="js/pacientes.js"></script>
+</body>
 </body>
 </html>

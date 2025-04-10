@@ -1,0 +1,291 @@
+/* Estructura principal */
+.detalle-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    min-height: calc(100vh - 150px);
+  }
+  
+  .panel {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Panel de información del paciente */
+  .paciente-info h2 {
+    color: #004080;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #004080;
+    padding-bottom: 0.5rem;
+  }
+  
+  .info-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-section h3 {
+    color: #0066cc;
+    margin-bottom: 0.5rem;
+  }
+  
+  .sesiones-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .sesiones-table td {
+    padding: 0.3rem 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .sesiones-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  /* Panel de documentación */
+  .documentacion-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .checklist, .documento-view {
+    transition: all 0.3s ease;
+  }
+  
+  .checklist {
+    width: 100%;
+  }
+  
+  .documentos-list {
+    list-style: none;
+  }
+  
+  .documentos-list li {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+  }
+  
+  .documento-titulo {
+    flex-grow: 1;
+    margin-left: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .documento-status {
+    font-size: 0.8rem;
+    color: #4CAF50;
+    margin-left: 1rem;
+  }
+  
+  .documento-view {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background: white;
+    padding: 1rem;
+  }
+  
+  .documento-view.active {
+    left: 0;
+  }
+  
+  .documento-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .documento-content {
+    height: calc(100% - 60px);
+    overflow-y: auto;
+    padding: 0.5rem;
+  }
+  
+  /* Estilos específicos para la hoja de control */
+  .encabezado {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #004080;
+    padding-bottom: 1rem;
+  }
+  
+  .datos-paciente {
+    margin-bottom: 1.5rem;
+  }
+  
+  .sesion {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    background-color: #f5f9ff;
+  }
+  
+  .asistencia label {
+    display: inline-block;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .motivo-cancelacion {
+    margin: 1rem 0;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.3rem;
+    resize: vertical;
+    font-family: inherit;
+  }
+  
+  input[type="text"],
+  input[type="date"] {
+    padding: 0.3rem;
+    border: 1px solid #ddd;
+    border-radius: 0.3rem;
+  }
+  
+  .botones-formulario {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  /* Panel de acciones */
+  .btn-action {
+    display: block;
+    width: 100%;
+    padding: 0.7rem;
+    margin-bottom: 0.5rem;
+    background-color: #004080;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s;
+  }
+  
+  .btn-action:hover {
+    background-color: #0066cc;
+  }
+  
+  .btn-minimize {
+    padding: 0.3rem 0.7rem;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 0.3rem;
+    cursor: pointer;
+  }
+  
+  .document-actions {
+    border-top: 1px solid #ddd;
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+  
+  /* Vista previa de impresión */
+  .modal-print-preview {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 1000;
+    overflow: auto;
+  }
+  
+  .print-preview-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  
+  .btn-close-preview {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background: #004080;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .print-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .btn-actual-print,
+  .btn-print-settings {
+    padding: 0.5rem 1rem;
+    background: #004080;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+  }
+  
+  .btn-actual-print:hover,
+  .btn-print-settings:hover {
+    background: #0066cc;
+  }
+  
+  /* Estilos para impresión */
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+    
+    .documento-print, 
+    .documento-print * {
+      visibility: visible;
+    }
+    
+    .documento-print {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      padding: 20px;
+      background: white;
+      font-family: Arial, sans-serif;
+    }
+    
+    .encabezado-print {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    
+    .sesion-print {
+      page-break-inside: avoid;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .no-print {
+      display: none !important;
+    }
+  }

@@ -36,3 +36,15 @@
     border-radius: 0.3rem;
   }
   
+  .filter-buttons {
+    display: flex;
+    margin-top: 1rem;
+  }
+  
+  .filter-buttons button {
+    flex: 1;
+  }
+
+  .patient-item[data-estado="activo"] { border-left: 4px solid #4CAF50; }
+  .patient-item[data-estado="espera"] { border-left: 4px solid #FFC107; }
+  .patient-item[data-estado="archivado"] { border-left: 4px solid #9E9E9E; }
