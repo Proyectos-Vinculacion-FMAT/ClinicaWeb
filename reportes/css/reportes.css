@@ -1,4 +1,4 @@
-/* Estilos generales */
+/* Reset general */
 * {
   margin: 0;
   padding: 0;
@@ -11,26 +11,33 @@ body {
   padding: 20px;
 }
 
+/* Header uniforme */
 header {
   background-color: #004080;
   color: white;
   padding: 15px;
-  border-radius: 5px;
   margin-bottom: 20px;
+  border-radius: 5px;
 }
 
 header nav ul {
   list-style: none;
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 header nav ul li a {
   color: white;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-/* Contenido principal */
+header nav ul li a:hover {
+  color: #cce6ff;
+}
+
+/* Main contenido */
 main {
   background: white;
   padding: 20px;
@@ -54,7 +61,8 @@ main {
   transition: background-color 0.3s;
 }
 
-.tab-menu button.active, .tab-menu button:hover {
+.tab-menu button.active,
+.tab-menu button:hover {
   background-color: #004080;
   color: white;
 }
@@ -98,7 +106,7 @@ form button[type="submit"]:hover {
   background-color: #0066cc;
 }
 
-/* Tabla de resultados de reporte */
+/* Tabla de resultados */
 #reporteResultado {
   margin-top: 20px;
 }
@@ -108,7 +116,8 @@ form button[type="submit"]:hover {
   border-collapse: collapse;
 }
 
-#reporteResultado th, #reporteResultado td {
+#reporteResultado th, 
+#reporteResultado td {
   border: 1px solid #ddd;
   padding: 10px;
   text-align: left;
@@ -128,4 +137,5 @@ form button[type="submit"]:hover {
   border: 1px solid #d6e9c6;
   border-radius: 5px;
 }
+
 
