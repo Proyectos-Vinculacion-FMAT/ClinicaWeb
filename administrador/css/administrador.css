@@ -28,13 +28,17 @@ header nav ul {
 }
 
 header nav ul li a {
+  display: inline-block;
+  background-color: #0066cc;
   color: white;
   text-decoration: none;
-  transition: color 0.3s ease;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
 header nav ul li a:hover {
-  color: #cce6ff;
+  background-color: #003d99;
 }
 
 /* Main contenido */
@@ -75,7 +79,7 @@ th {
   color: white;
 }
 
-/* Responsive */
+/* Responsive para header */
 @media (max-width: 768px) {
   header nav ul {
     flex-direction: column;
