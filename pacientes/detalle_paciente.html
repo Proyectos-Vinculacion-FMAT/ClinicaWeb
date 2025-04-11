@@ -8,27 +8,77 @@
   <link rel="stylesheet" href="css/detalle_paciente.css">
 </head>
 <body>
-  <!-- Mismo header que en pacientes.html -->
   <header>
     <h1>Clínica de Atención Psicológica</h1>
-    <button class="btn-back" onclick="window.location.href='pacientes.html'">← Volver</button>
   </header>
 
   <main class="detalle-container">
-    <!-- Panel izquierdo - Información del paciente -->
-    <div class="panel paciente-info">
-      <h2>María Aguilar</h2>
+    <!-- Panel izquierdo: Documentación -->
+    <div class="panel documentacion-container">
+      <div class="header-with-back">
+        <button class="btn-back" onclick="window.location.href='pacientes.html'">← Volver</button>
+        <h2>Documentación</h2>
+      </div>
+      
+      <div class="document-actions">
+        <button class="btn-action" id="btnNuevoDocumento">📄 Nuevo Documento</button>
+        <input type="file" id="fileUpload" style="display: none;" accept=".pdf,.doc,.docx,.txt,.jpg,.png">
+      </div>
+      
+      <div class="checklist">
+        <ul class="documentos-list">
+          <li>
+            <input type="checkbox" id="doc1" data-doc="entrevista">
+            <label for="doc1" class="documento-titulo">Entrevista inicial</label>
+            <span class="documento-status">✔ Completado</span>
+          </li>
+          <li>
+            <input type="checkbox" id="doc2" data-doc="historial">
+            <label for="doc2" class="documento-titulo">Historial médico</label>
+            <span class="documento-status">Pendiente</span>
+          </li>
+          <li>
+            <input type="checkbox" id="doc3" data-doc="consentimiento">
+            <label for="doc3" class="documento-titulo">Consentimiento informado</label>
+            <span class="documento-status">✔ Completado</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="documento-view" id="documentoView">
+        <div class="documento-header">
+          <h3 id="documentoTitulo"></h3>
+          <button class="btn-minimize" id="minimizarDoc">← Volver a lista</button>
+        </div>
+        <div class="documento-content" id="documentoContenido">
+          <!-- Contenido del documento se cargará aquí -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel derecho: Información del paciente -->
+    <div class="panel paciente-info-container">
+      <div class="paciente-header">
+        <h2 id="paciente-nombre">María López</h2>
+        <div class="paciente-actions">
+          <select id="cambiarEstado" class="estado-select">
+            <option value="activo">Activo</option>
+            <option value="espera">En espera</option>
+            <option value="archivado">Archivado</option>
+          </select>
+          <button class="btn-edit" id="btnEditarPaciente">✏️ Editar</button>
+        </div>
+      </div>
       
       <div class="info-section">
         <h3>Información básica</h3>
-        <p><strong>Email:</strong> maria.aguilar@correo.com</p>
-        <p><strong>Celular:</strong> (999) 5148 568</p>
-        <p><strong>Servicio:</strong> Psicodiagnóstico</p>
-        <p><strong>Terapeuta:</strong> Victor Sánchez</p>
-        <p><strong>Estatus:</strong> En progreso</p>
-        <p><strong>Fecha de registro:</strong> 26/07/2024</p>
+        <p><strong>Email:</strong> <span id="paciente-email">maria.lopez@example.com</span></p>
+        <p><strong>Celular:</strong> <span id="paciente-telefono">555-1234-567</span></p>
+        <p><strong>Servicio:</strong> <span id="paciente-servicio">Psicodiagnóstico</span></p>
+        <p><strong>Terapeuta:</strong> <span id="paciente-terapeuta">Ana García</span></p>
+        <p><strong>Fecha de registro:</strong> <span id="paciente-fecha">15/03/2024</span></p>
       </div>
-
+      
       <div class="info-section">
         <h3>Sesiones</h3>
         <table class="sesiones-table">
@@ -54,95 +104,54 @@
           </tr>
         </table>
       </div>
-    </div>
-
-    <!-- Panel central - Documentación (checklist o visualización) -->
-    <div class="panel documentacion-container">
-        <div class="checklist" id="checklist">
-          <h3>Documentación</h3>
-          <ul class="documentos-list">
-            <li>
-              <input type="checkbox" id="doc1" data-doc="entrevista">
-              <label for="doc1" class="documento-titulo">Entrevista inicial</label>
-              <span class="documento-status">✔ Completado</span>
-            </li>
-            <li>
-              <input type="checkbox" id="doc2" data-doc="hoja-control">
-              <label for="doc2" class="documento-titulo">Hoja de control de sesión</label>
-              <span class="documento-status">✔ Completado</span>
-            </li>
-            <li>
-              <input type="checkbox" id="doc3" data-doc="datos-generales">
-              <label for="doc3" class="documento-titulo">Datos generales del paciente</label>
-            </li>
-            <li>
-              <input type="checkbox" id="doc4" data-doc="encuesta">
-              <label for="doc4" class="documento-titulo">Encuesta socioeconómica</label>
-              <span class="documento-status">✔ Completado</span>
-            </li>
-            <li>
-              <input type="checkbox" id="doc5" data-doc="areas-vida">
-              <label for="doc5" class="documento-titulo">Áreas de vida</label>
-            </li>
-          </ul>
-        </div>
-
-      <div class="documento-view" id="documentoView">
-        <div class="documento-header">
-          <h3 id="documentoTitulo"></h3>
-          <button class="btn-minimize" id="minimizarDoc">← Volver a lista</button>
-        </div>
-        
-        <div class="documento-content" id="documentoContenido">
-          <!-- Formulario de entrevista inicial -->
-          <form id="formEntrevista">
-            <h4>Prestador asignado</h4>
-            <label><input type="checkbox" name="prestador" value="maestria_adultos" checked> Maestría Adultos</label>
-            <label><input type="checkbox" name="prestador" value="maestria_infantil"> Maestría Infantil</label>
-            
-            <h4>Servicio ofrecido</h4>
-            <label><input type="checkbox" name="servicio" value="psicodiagnostico" checked> Psicodiagnóstico</label>
-            
-            <h4>Estatus del servicio</h4>
-            <label><input type="checkbox" name="estatus" value="concluida"> Concluida</label>
-            
-            <h4>Observaciones</h4>
-            <textarea name="observaciones" rows="4">Paciente muestra buena disposición al tratamiento. Se recomienda evaluación psicológica completa.</textarea>
-          </form>
+      
+      <div class="info-section">
+        <h3>Notas importantes</h3>
+        <div class="notas-container" id="notasPaciente">
+          <p>Paciente muestra buena respuesta al tratamiento inicial.</p>
+          <p>Requiere seguimiento semanal.</p>
         </div>
       </div>
     </div>
-
-    <!-- Panel derecho - Acciones -->
-    <div class="panel acciones-panel">
-        <div class="acciones-container" id="accionesContainer">
-          <h3>Acciones</h3>
-          
-          <button class="btn-action" id="btnNuevoDoc">📄 Nuevo documento</button>
-          
-          <!-- Acciones específicas para documento abierto -->
-          <div class="document-actions" id="documentActions" style="display: none;">
-            <button class="btn-action" id="btnModificar">✏️ Modificar archivo</button>
-            <button class="btn-action" id="btnGuardar">💾 Guardar cambios</button>
-            <button class="btn-action" id="btnDeshacer">↩️ Deshacer cambios</button>
-            <button class="btn-action" id="btnImprimir">🖨️ Vista previa/Imprimir</button>
-            <button class="btn-action" id="btnMinimizar">⬅️ Volver a lista</button>
-          </div>
-        </div>
-      </div>
   </main>
 
-  <!-- Modal para vista previa de impresión -->
-  <div class="modal-print-preview" id="modalPrintPreview">
-    <div class="print-preview-container">
-      <button class="btn-close-preview" id="btnClosePreview">✕ Cerrar</button>
-      <div id="printPreviewContent">
-        <!-- Contenido dinámico se insertará aquí -->
-      </div>
-      <div class="print-actions">
-        <button class="btn-actual-print" id="btnActualPrint">🖨️ Imprimir ahora</button>
-        <button class="btn-print-settings" onclick="window.printSetup()">⚙️ Configurar impresión</button>
-      </div>
+  <!-- Modal para editar paciente -->
+  <div class="modal" id="modalEditarPaciente">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Editar Paciente</h2>
+      <form id="formEditarPaciente">
+        <div class="form-group">
+          <label for="edit-nombre">Nombre completo</label>
+          <input type="text" id="edit-nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="edit-email">Email</label>
+          <input type="email" id="edit-email" required>
+        </div>
+        <div class="form-group">
+          <label for="edit-telefono">Teléfono</label>
+          <input type="tel" id="edit-telefono">
+        </div>
+        <div class="form-group">
+          <label for="edit-servicio">Tipo de servicio</label>
+          <select id="edit-servicio" required>
+            <option value="Psicodiagnóstico">Psicodiagnóstico</option>
+            <option value="Terapia Individual">Terapia Individual</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="edit-terapeuta">Terapeuta asignado</label>
+          <select id="edit-terapeuta" required>
+            <option value="Ana García">Ana García</option>
+            <option value="Carlos Méndez">Carlos Méndez</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Guardar cambios</button>
+          <button type="button" class="btn-cancel close-modal">Cancelar</button>
+        </div>
+      </form>
     </div>
   </div>
 

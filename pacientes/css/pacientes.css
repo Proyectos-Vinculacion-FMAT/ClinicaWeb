@@ -1,151 +1,233 @@
+/* Variables */
+:root {
+  --color-primario: #004080;
+  --color-secundario: #0066cc;
+  --color-exito: #4caf50;
+  --color-advertencia: #ffc107;
+  --color-inactivo: #9e9e9e;
+  --color-fondo: #f9f9f9;
+  --color-borde: #ddd;
+  --sombra-panel: 0 0 10px rgba(0, 0, 0, 0.1);
+  --radio-borde: 0.5rem;
+}
+
+/* Estructura principal */
 .layout {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  padding: 1rem;
-  width: 100%;
-  box-sizing: border-box;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
 }
 
 .panel {
-  background-color: #f9f9f9;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  overflow: hidden;
+  background-color: var(--color-fondo);
+  padding: 1.5rem;
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-panel);
+}
+
+/* Lista de pacientes */
+.patient-list {
+  margin-top: 1rem;
 }
 
 .patient-item {
-  cursor: pointer;
-  padding: 0.75rem;
-  border-bottom: 1px solid #ddd;
-  margin: 0 -1rem;
-  padding-left: 1rem;
-  transition: all 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+  margin: 0 -1.5rem;
+  padding-left: 1.5rem;
+  border-bottom: 1px solid var(--color-borde);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s;
 }
 
 .patient-item:hover {
-  background-color: #e0f7fa;
+  background-color: rgba(224, 247, 250, 0.5);
+}
+
+.patient-status {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  font-weight: 500;
+}
+
+.patient-status[data-estado="activo"] {
+  background-color: var(--color-exito);
+  color: white;
+}
+
+.patient-status[data-estado="espera"] {
+  background-color: var(--color-advertencia);
+  color: #333;
+}
+
+.patient-status[data-estado="archivado"] {
+  background-color: var(--color-inactivo);
+  color: white;
+}
+
+/* Panel de filtros */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
 .filters label {
   display: block;
-  margin: 0.75rem 0 0.3rem;
-  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
 .filters input,
 .filters select {
   width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 0.3rem;
+  padding: 0.6rem;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.estados-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.estados-container label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
   font-size: 0.9rem;
+}
+
+.btn-action {
+  background-color: var(--color-primario);
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: var(--radio-borde);
+  cursor: pointer;
+  font-weight: 500;
+  text-align: center;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+}
+
+.btn-action:hover {
+  background-color: var(--color-secundario);
 }
 
 .filter-buttons {
   display: flex;
-  margin-top: 1.25rem;
-  gap: 0.5rem;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
 }
 
 .filter-buttons button {
   flex: 1;
-  padding: 0.5rem;
-  font-size: 0.9rem;
+  padding: 0.7rem;
   border: none;
-  border-radius: 0.3rem;
-  background-color: #4CAF50;
-  color: white;
+  border-radius: var(--radio-borde);
   cursor: pointer;
-  transition: background-color 0.2s;
+  font-weight: 500;
+  transition: opacity 0.2s;
 }
 
 .filter-buttons button:hover {
-  background-color: #45a049;
+  opacity: 0.9;
 }
 
-/* Estados de los pacientes */
-.patient-item[data-estado="activo"] { 
-  border-left: 4px solid #4CAF50;
-  background-color: rgba(76, 175, 80, 0.05);
-}
-.patient-item[data-estado="espera"] { 
-  border-left: 4px solid #FFC107;
-  background-color: rgba(255, 193, 7, 0.05);
-}
-.patient-item[data-estado="archivado"] { 
-  border-left: 4px solid #9E9E9E;
-  background-color: rgba(158, 158, 158, 0.05);
+.filter-buttons button:first-child {
+  background-color: var(--color-primario);
+  color: white;
 }
 
-/* Media Queries para diseño responsive */
+.filter-buttons button:last-child {
+  background-color: #f0f0f0;
+}
 
-/* Tabletas (768px en adelante) */
-@media (min-width: 768px) {
+/* Estilos para los radio buttons y su alineación */
+.estados-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.estado-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.estado-option input[type="radio"] {
+  margin: 0;
+}
+
+.estado-option label {
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Opcional: estilo para los radio buttons */
+.estados-container input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #4a90e2;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.estados-container input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: #4a90e2;
+  border-radius: 50%;
+}
+/* Responsive */
+@media (max-width: 1024px) {
   .layout {
-      grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
   }
-  
-  .panel:last-child {
-      grid-column: span 2;
-  }
-  
-  .patient-item {
-      margin: 0;
-      padding-left: 0.75rem;
-  }
-}
 
-/* Escritorios pequeños (992px en adelante) */
-@media (min-width: 992px) {
-  .layout {
-      grid-template-columns: 1fr 2fr 1fr;
-  }
-  
-  .panel:last-child {
-      grid-column: auto;
-  }
-  
-  .filters label {
-      font-size: 1rem;
-  }
-  
-  .filters input,
-  .filters select {
-      padding: 0.6rem;
-      font-size: 1rem;
-  }
-  
-  .filter-buttons button {
-      padding: 0.6rem;
-      font-size: 1rem;
-  }
-}
-
-/* Escritorios grandes (1200px en adelante) */
-@media (min-width: 1200px) {
-  .layout {
-      max-width: 1400px;
-      margin: 0 auto;
-  }
-  
   .panel {
-      padding: 1.25rem;
+    padding: 1.2rem;
+  }
+
+  .patient-item {
+    margin: 0 -1.2rem;
+    padding-left: 1.2rem;
   }
 }
 
-/* Ajustes para móviles muy pequeños (menos de 400px) */
-@media (max-width: 400px) {
+@media (max-width: 480px) {
   .filter-buttons {
-      flex-direction: column;
+    flex-direction: column;
   }
-  
-  .filter-buttons button {
-      width: 100%;
-  }
-  
-  .patient-item {
-      padding: 0.6rem 0.5rem 0.6rem 0.5rem;
+
+  .estados-container {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
