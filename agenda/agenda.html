@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
   <header>
     <h1>Clínica de Atención Psicológica</h1>
     <nav>
@@ -16,44 +15,46 @@
         <li><a href="../pacientes/pacientes.html">Pacientes</a></li>
         <li><a href="../terapeuta/terapeuta.html">Terapeutas</a></li>
         <li><a href="../salas/salas.html">Salas</a></li>
-        <li><a href="../coordinacion/coordinacion.html">Coordinación</a></li>
+        <li><a href="../coordinacion/coordinacion.html">Citas</a></li>
         <li><a href="../reportes/reportes.html">Reportes</a></li>
-        <li><a href="../administrador/administrador.html">Administrador</a></li>
         <li><a href="../index.html">Salir</a></li>
       </ul>
     </nav>
   </header>
-
   <main>
-    <section id="agenda">
-      <h2>Agenda</h2>
-
-      <article id="citas-dia">
-        <h3>Ver Citas por Día</h3>
-        <p>Consulta rápida de todas las citas programadas para el día actual.</p>
-      </article>
-
-      <article id="citas-fecha">
-        <h3>Ver Citas por Fecha</h3>
-        <p>Permite seleccionar una fecha específica para ver citas programadas.</p>
-      </article>
-
-      <article id="notificaciones-ind">
-        <h3>Notificaciones Individuales</h3>
-        <p>Programación, reprogramación o recordatorios automáticos a pacientes o terapeutas.</p>
-      </article>
-
-      <article id="notificaciones-grup">
-        <h3>Notificaciones Grupales</h3>
-        <p>Mensajes masivos por cancelaciones de servicio o cambios generales.</p>
-      </article>
-
-      <article id="solicitudes">
-        <h3>Solicitudes de Servicio</h3>
-        <p>Formulario de solicitud para quienes aún no han sido registrados como pacientes.</p>
-      </article>
+    <section id="filters">
+      <h2>Filtros de Agenda</h2>
+      <div class="filter-group">
+        <label for="filterPeriod">Periodo:</label>
+        <select id="filterPeriod">
+          <option value="day">Día</option>
+          <option value="week" selected>Semana</option>
+          <option value="month">Mes</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filterDate">Fecha:</label>
+        <input type="date" id="filterDate">
+      </div>
+      <div class="filter-group">
+        <button id="applyFilter">Aplicar Filtro</button>
+        <button id="printView">Imprimir</button>
+      </div>
+    </section>
+    <section id="calendarContainer">
+      <!--La vista de calendario se generará dinámicamente aquí -->
     </section>
   </main>
-
+  
+  <!-- Modal para mostrar detalles de la cita -->
+  <div id="appointmentModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeModal">&times;</span>
+      <h2>Detalles de la Cita</h2>
+      <div id="modalInfo"></div>
+    </div>
+  </div>
+  <script src="js/agenda.js"></script>
 </body>
 </html>
+
