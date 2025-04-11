@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Paciente</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pacientes</title>
   <link rel="stylesheet" href="../agenda/css/styles.css">
   <link rel="stylesheet" href="css/pacientes.css">
 </head>
-<body>
 
-  <!-- Copiamos el header completo -->
+<body>
   <header>
     <h1>Clínica de Atención Psicológica</h1>
     <nav>
@@ -26,56 +26,78 @@
     </nav>
   </header>
 
-  <!-- Contenido de esta sección -->
   <main>
     <section class="layout">
-      <!-- Panel izquierdo: categorías -->
-      <div class="panel">
-        <h3>Estados</h3>
-        <ul>
-          <li><input type="radio" name="estado" id="activo" checked> <label for="activo">Activos</label></li>
-          <li><input type="radio" name="estado" id="espera"> <label for="espera">En espera</label></li>
-          <li><input type="radio" name="estado" id="archivados"> <label for="archivados">Archivados</label></li>
-        </ul>
-      </div>
-
       <!-- Panel central: lista de pacientes -->
       <div class="panel">
         <h3>Pacientes</h3>
         <div class="patient-list">
-          <!-- Los que tienen tipo son activos -->
-          <div class="patient-item" data-nombre="María López" data-tipo="tipo1" data-estado="activo"><a href="detalle_paciente.html">María López - Tipo 1</a></div>
-          <div class="patient-item" data-nombre="Juan Pérez" data-tipo="tipo2" data-estado="activo">Juan Pérez - Tipo 2</div>
-          
-          <!-- Los sin tipo están en espera -->
-          <div class="patient-item" data-nombre="Carlos Ruiz" data-tipo="" data-estado="espera">Carlos Ruiz - Sin tipo</div>
-          
-          <!-- Archivados manualmente -->
-          <div class="patient-item" data-nombre="Ana García" data-tipo="tipo1" data-estado="archivado">Ana García - Tipo 1 (Archivado)</div>
+          <a href="detalle_paciente.html?nombre=María López" class="patient-item" data-nombre="María López"
+            data-tipo="tipo1" data-estado="activo">
+            <span>María López - Tipo 1</span>
+            <span class="patient-status" data-estado="activo">Activo</span>
+          </a>
+          <a href="detalle_paciente.html?nombre=Juan Pérez" class="patient-item" data-nombre="Juan Pérez"
+            data-tipo="tipo2" data-estado="activo">
+            <span>Juan Pérez - Tipo 2</span>
+            <span class="patient-status" data-estado="activo">Activo</span>
+          </a>
+          <a href="detalle_paciente.html?nombre=Carlos Ruiz" class="patient-item" data-nombre="Carlos Ruiz" data-tipo=""
+            data-estado="espera">
+            <span>Carlos Ruiz - Sin tipo</span>
+            <span class="patient-status" data-estado="espera">En espera</span>
+          </a>
+          <a href="detalle_paciente.html?nombre=Ana García" class="patient-item" data-nombre="Ana García"
+            data-tipo="tipo1" data-estado="archivado">
+            <span>Ana García - Tipo 1</span>
+            <span class="patient-status" data-estado="archivado">Archivado</span>
+          </a>
         </div>
       </div>
 
       <!-- Panel derecho: filtros -->
       <div class="panel filters">
         <h3>Filtros</h3>
+
         <label for="buscar-nombre">Buscar por nombre</label>
         <input type="text" id="buscar-nombre" placeholder="Ej. Ana García">
 
         <label for="tipo-servicio">Tipo de servicio</label>
         <select id="tipo-servicio">
-          <option value="">-- Seleccionar --</option>
+          <option value="">Todos</option>
           <option value="tipo1">Tipo 1</option>
           <option value="tipo2">Tipo 2</option>
         </select>
-        
+
+        <label>Estado del paciente</label>
+        <div class="estados-container">
+          <div class="estado-option">
+            <input type="radio" id="estado-todos" name="estado" value="todos">
+            <label for="estado-todos">Todos</label>
+          </div>
+          <div class="estado-option">
+            <input type="radio" id="estado-activo" name="estado" value="activo" checked>
+            <label for="estado-activo">Activos</label>
+          </div>
+          <div class="estado-option">
+            <input type="radio" id="estado-espera" name="estado" value="espera">
+            <label for="estado-espera">En espera</label>
+          </div>
+          <div class="estado-option">
+            <input type="radio" id="estado-archivado" name="estado" value="archivado">
+            <label for="estado-archivado">Archivados</label>
+          </div>
+        </div>
+
         <div class="filter-buttons">
-          <button id="aplicar-filtros" style="padding: 0.5rem 1rem;">Aplicar Filtros</button>
-          <button id="eliminar-filtros" style="padding: 0.5rem 1rem; margin-left: 0.5rem;">Eliminar Filtros</button>
+          <button id="aplicar-filtros">Aplicar Filtros</button>
+          <button id="eliminar-filtros">Eliminar Filtros</button>
         </div>
       </div>
     </section>
   </main>
+
   <script src="js/pacientes.js"></script>
 </body>
-</body>
+
 </html>

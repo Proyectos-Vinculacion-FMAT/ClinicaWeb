@@ -4,27 +4,34 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    padding: 20px;
     background-color: #f4f4f4;
+    box-sizing: border-box;
 }
 
 /* Contenedor principal */
 .container {
     text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
 }
 
 /* Estilo para los botones */
 button {
-    font-size: 16px;
-    padding: 10px 20px;
-    margin: 20px;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    margin: 1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     background-color: #4CAF50;
     color: white;
     transition: background-color 0.3s;
+    width: auto;
+    min-width: 120px;
 }
 
 /* Efecto hover en los botones */
@@ -34,5 +41,109 @@ button:hover {
 
 /* Estilo para el título */
 h1 {
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1.2;
+}
+
+/* Media Queries para diferentes tamaños de dispositivos */
+
+/* Tabletas (768px - 1024px) */
+@media (max-width: 1024px) {
+    body {
+        padding: 15px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    button {
+        padding: 0.6rem 1.2rem;
+        margin: 0.8rem;
+        min-width: 110px;
+    }
+    
+    h1 {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Dispositivos móviles grandes (576px - 767px) */
+@media (max-width: 767px) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+        min-height: auto;
+        height: auto;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    button {
+        display: block;
+        width: 80%;
+        margin: 0.8rem auto;
+        padding: 0.7rem;
+    }
+    
+    h1 {
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+    }
+}
+
+/* Dispositivos móviles pequeños (hasta 575px) */
+@media (max-width: 575px) {
+    body {
+        padding: 8px;
+    }
+    
+    button {
+        width: 90%;
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+    }
+}
+
+/* Dispositivos muy pequeños (hasta 360px) */
+@media (max-width: 360px) {
+    button {
+        width: 95%;
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Orientación landscape en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding-top: 5px;
+        align-items: flex-start;
+    }
+    
+    .container {
+        padding-top: 5px;
+    }
+    
+    h1 {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+    
+    button {
+        margin: 0.5rem auto;
+        padding: 0.5rem;
+    }
 }

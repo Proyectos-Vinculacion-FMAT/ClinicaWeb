@@ -9,6 +9,8 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   padding: 20px;
+  line-height: 1.6;
+  color: #333;
 }
 
 /* Header uniforme */
@@ -23,8 +25,8 @@ header {
 header nav ul {
   list-style: none;
   display: flex;
-  gap: 15px;
   flex-wrap: wrap;
+  gap: 15px;
 }
 
 header nav ul li a {
@@ -48,30 +50,27 @@ main {
   border-radius: 5px;
 }
 
-/* Tabla de citas */
-table {
+/* Formularios */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group button {
   width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-
-table, th, td {
-  border: 1px solid #ddd;
-}
-
-th, td {
-  text-align: left;
-  padding: 10px;
-}
-
-th {
-  background-color: #004080;
-  color: white;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 /* Botones generales */
 button {
-  padding: 10px 15px;
   background-color: #004080;
   color: white;
   border: none;
@@ -86,7 +85,7 @@ button:hover {
 
 /* Modal */
 .modal {
-  display: none; /* oculto por defecto */
+  display: none;
   position: fixed;
   z-index: 1000;
   left: 0;
@@ -117,22 +116,4 @@ button:hover {
 
 .close-button:hover {
   color: black;
-}
-
-/* Formularios */
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }

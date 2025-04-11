@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Terapeuta</title>
+    <link rel="stylesheet" href="../agenda/css/styles.css">
+    <link rel="stylesheet" href="css/detalle_terapeuta.css">
+</head>
+<body>
+    <header>
+        <h1>Clínica de Atención Psicológica</h1>
+    </header>
+
+    <main class="detalle-container">
+        <!-- Panel izquierdo: Pacientes del terapeuta -->
+        <div class="panel pacientes-list">
+            <button class="btn-back" onclick="window.location.href='terapeuta.html'">← Volver</button>
+            <h2>Pacientes asignados</h2>
+            <div class="search-box">
+                <input type="text" placeholder="Buscar paciente...">
+            </div>
+            <div class="pacientes-container">
+                <div class="paciente-item">
+                    <span>María López</span>
+                    <span class="paciente-status">Activo</span>
+                </div>
+                <div class="paciente-item">
+                    <span>Juan Pérez</span>
+                    <span class="paciente-status">En espera</span>
+                </div>
+                <div class="paciente-item">
+                    <span>Ana García</span>
+                    <span class="paciente-status">Activo</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel derecho: Información del terapeuta -->
+        <div class="panel terapeuta-info">
+            <div class="terapeuta-header">
+                <h2 id="terapeuta-nombre">Ana García</h2>
+                <div class="action-buttons">
+                    <button class="btn-edit" id="btnEditar">✏️ Editar</button>
+                    <button class="btn-save" id="btnGuardar" style="display: none;">💾 Guardar</button>
+                    <button class="btn-cancel" id="btnCancelar" style="display: none;">✖ Cancelar</button>
+                </div>
+            </div>
+
+            <!-- Vista de lectura -->
+            <div id="view-mode">
+                <div class="info-section">
+                    <h3>Información general</h3>
+                    <p><strong>Email:</strong> <span id="terapeuta-email">ana@clinica.com</span></p>
+                    <p><strong>Celular:</strong> <span id="terapeuta-telefono">5551234567</span></p>
+                    <p><strong>Rol:</strong> <span class="badge" id="terapeuta-rol">Activo</span></p>
+                    <p><strong>Tipo de servicio:</strong> <span id="terapeuta-servicio">Psicodiagnóstico</span></p>
+                </div>
+
+                <div class="info-section">
+                    <h3>Horarios disponibles</h3>
+                    <div class="horarios-list" id="horarios-view">
+                        <!-- Horarios se cargan dinámicamente -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vista de edición -->
+            <form id="edit-mode" style="display: none;">
+                <div class="info-section">
+                    <h3>Información general</h3>
+                    <div class="form-group">
+                        <label for="edit-email">Email</label>
+                        <input type="email" id="edit-email" value="ana@clinica.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-telefono">Teléfono</label>
+                        <input type="tel" id="edit-telefono" value="5551234567">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-rol">Rol</label>
+                        <select id="edit-rol" required>
+                            <option value="activo">Activo</option>
+                            <option value="pasante">Pasante</option>
+                            <option value="externo">Externo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-servicio">Tipo de servicio</label>
+                        <select id="edit-servicio" required>
+                            <option value="Psicodiagnóstico">Psicodiagnóstico</option>
+                            <option value="Terapia Individual">Terapia Individual</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Horarios disponibles</h3>
+                    <div id="horarios-edit">
+                        <!-- Horarios editables se cargan dinámicamente -->
+                    </div>
+                    <button type="button" class="btn-add" id="btnAddHorario">➕ Añadir Horario</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="js/detalle_terapeuta.js"></script>
+</body>
+</html>
