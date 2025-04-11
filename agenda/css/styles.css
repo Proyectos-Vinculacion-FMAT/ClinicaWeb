@@ -6,90 +6,153 @@
 }
 
 body {
-  font-family: sans-serif;
-  line-height: 1.6;
-  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
   color: #333;
   padding: 20px;
 }
 
-/* Header */
 header {
   background-color: #004080;
   color: white;
   padding: 15px;
-  margin-bottom: 20px;
   border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 header h1 {
   margin-bottom: 10px;
 }
 
-/* Navegación */
 nav ul {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-nav ul li {
-  position: relative;
+  gap: 15px;
 }
 
 nav ul li a {
   color: white;
   text-decoration: none;
-  padding: 5px 10px;
-  display: block;
   background-color: #0066cc;
+  padding: 8px 15px;
   border-radius: 4px;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease;
 }
 
 nav ul li a:hover {
-  background-color: #003366;
+  background-color: #003d99;
 }
 
-/* Submenús */
-nav ul li ul {
-  display: none;
-  position: absolute;
-  top: 35px;
-  left: 0;
-  background-color: #0066cc;
-  border-radius: 4px;
-  padding: 5px;
-  z-index: 1000;
-  min-width: 200px;
-}
-
-nav ul li:hover ul {
-  display: block;
-}
-
-nav ul li ul li {
-  margin-bottom: 5px;
-}
-
-/* Main content */
 main {
   background: white;
   padding: 20px;
   border-radius: 5px;
 }
 
-main section h2 {
-  color: #004080;
-  margin-bottom: 15px;
-}
-
-article {
+/* Filtros */
+#filters {
   margin-bottom: 20px;
 }
 
-article h3 {
-  color: #0066cc;
-  margin-bottom: 8px;
+.filter-group {
+  margin-bottom: 10px;
+  display: inline-block;
+  margin-right: 10px;
 }
+
+.filter-group label {
+  margin-right: 10px;
+}
+
+/* Calendar container: usamos grid para simular la vista semanal */
+#calendarContainer {
+  display: grid;
+  grid-template-columns: 60px repeat(7, 1fr); /* 1ra columna para la hora, luego 7 días */
+  grid-auto-rows: 60px; /* Cada fila representa 1 hora */
+  border: 1px solid #ddd;
+}
+
+/* Encabezados de días */
+.day-header {
+  background-color: #004080;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #ddd;
+}
+
+/* Celda de hora */
+.time-cell {
+  background-color: #eaeaea;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #ddd;
+  font-size: 0.9em;
+}
+
+/* Celda vacía */
+.empty-cell {
+  border: 1px solid #ddd;
+}
+
+/* Bloque de cita */
+.appointment {
+  position: absolute;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 2px;
+  font-size: 0.8em;
+  color: white;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Colores asignados para las citas (según el paciente) */
+.appointment.color1 { background-color: #e74c3c; }   /* rojo */
+.appointment.color2 { background-color: #3498db; }   /* azul */
+.appointment.color3 { background-color: #2ecc71; }   /* verde */
+.appointment.color4 { background-color: #f1c40f; }   /* amarillo */
+.appointment.color5 { background-color: #9b59b6; }   /* morado */
+.appointment.color6 { background-color: #e67e22; }   /* naranja */
+.appointment.color7 { background-color: #1abc9c; }   /* turquesa */
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 5px;
+}
+
+.close-button {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+/* Contenedor interno de cada celda */
+.cell-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
