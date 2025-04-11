@@ -19,7 +19,7 @@
   padding: 1.5rem;
 }
 
-.panel {
+.panel {  
   background-color: var(--color-fondo);
   padding: 1.5rem;
   border-radius: var(--radio-borde);
@@ -224,4 +224,15 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
+}
+.main-button.nuevo-button {
+  display: inline-block;
+  margin-left: auto;
+  text-align: center;
+  padding: 10px 20px;
+  background-color: #5e4b8b;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
 }
