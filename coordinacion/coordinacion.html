@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Citas Administrativas</title>
+    <link rel="stylesheet" href="css/coordinacion.css">
+</head>
+<body>
+  <header>
+    <h1>Gestión de Citas Administrativas</h1>
+    <nav>
+      <ul>
+        <li><a href="../agenda/agenda.html">Agenda</a></li>
+        <li><a href="../pacientes/pacientes.html">Pacientes</a></li>
+        <li><a href="../terapeuta/terapeuta.html">Terapeutas</a></li>
+        <li><a href="../salas/salas.html">Consultorios</a></li>
+        <li><a href="coordinacion.html">Coordinación</a></li>
+        <li><a href="../reportes/reportes.html">Reportes</a></li>
+        <li><a href="../administrador/administrador.html">Administrador</a></li>
+        <li><a href="../index.html">Salir</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="citasSection">
+      <h2>Listado de Citas</h2>
+      <table id="citasTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Paciente</th>
+            <th>Terapeuta</th>
+            <th>Consultorio</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Las filas se generarán dinámicamente -->
+        </tbody>
+      </table>
+      <button id="btnAgregarCita">Agregar Nueva Cita</button>
+    </section>
+
+    <!-- Modal para agregar/editar cita -->
+    <div id="modalCita" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="cerrarModalCita">&times;</span>
+        <h2 id="citaFormTitle">Agregar Cita</h2>
+        <form id="citaForm">
+          <input type="hidden" id="citaId" value="">
+          <div class="form-group">
+            <label for="paciente">Paciente:</label>
+            <input type="text" id="paciente" required>
+          </div>
+          <div class="form-group">
+            <label for="terapeuta">Terapeuta:</label>
+            <input type="text" id="terapeuta" required>
+          </div>
+          <div class="form-group">
+            <label for="consultorio">Consultorio:</label>
+            <input type="text" id="consultorio" required>
+          </div>
+          <div class="form-group">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" required>
+          </div>
+          <div class="form-group">
+            <label for="hora">Hora:</label>
+            <input type="time" id="hora" required>
+          </div>
+          <div class="form-group">
+            <label for="estado">Estado:</label>
+            <select id="estado" required>
+              <option value="">-- Seleccionar Estado --</option>
+              <option value="Programada">Programada</option>
+              <option value="Reprogramada">Reprogramada</option>
+              <option value="Cancelada">Cancelada</option>
+            </select>
+          </div>
+          <button type="submit" id="guardarCita">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </main>
+  <script src="js/coordinacion.js"></script>
+</body>
+</html>

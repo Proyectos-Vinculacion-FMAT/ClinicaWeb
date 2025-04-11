@@ -1,0 +1,143 @@
+/* Reset general */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+/* Header uniforme */
+header {
+  background-color: #004080;
+  color: white;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+header nav ul li a {
+  display: inline-block;
+  background-color: #0066cc;
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  background-color: #003d99;
+}
+
+/* Main contenido */
+main {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* Menú de pestañas */
+.tab-menu {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab-menu button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.tab-menu button.active,
+.tab-menu button:hover {
+  background-color: #004080;
+  color: white;
+}
+
+/* Secciones de contenido (tab-content) */
+.tab-content {
+  margin-top: 20px;
+}
+
+/* Formularios */
+form .form-group {
+  margin-bottom: 15px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  color: #004080;
+}
+
+form input[type="date"],
+form input[type="number"],
+form select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #004080;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button[type="submit"]:hover {
+  background-color: #0066cc;
+}
+
+/* Tabla de resultados */
+#reporteResultado {
+  margin-top: 20px;
+}
+
+#reporteResultado table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#reporteResultado th, 
+#reporteResultado td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+#reporteResultado th {
+  background-color: #004080;
+  color: white;
+}
+
+/* Mensaje de configuración */
+#configResultado {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #dff0d8;
+  color: #3c763d;
+  border: 1px solid #d6e9c6;
+  border-radius: 5px;
+}
