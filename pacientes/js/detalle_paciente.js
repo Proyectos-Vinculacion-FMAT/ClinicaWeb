@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let contenidoOriginal = null;
   let sesiones = [];
 
-  // Datos del paciente (simulados)
+  // Datos del paciente
   const paciente = {
     nombre: "María Aguilar",
     email: "maria.aguilar@correo.com",
@@ -46,37 +46,26 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   // ======================
-  // FUNCIONES DE INICIALIZACIÓN
+  // INICIALIZACIÓN
   // ======================
   function init() {
     cargarDatosPaciente();
     setupEventListeners();
-    cargarSesionesEjemplo();
+    cargarSesionInicial();
   }
 
-  function cargarSesionesEjemplo() {
-    sesiones = [
-      {
-        numero: 1,
-        fecha: "2024-08-01",
-        asistio: true,
-        cancelo: false,
-        quienCancelo: "",
-        motivoCancelacion: "",
-        descripcion: "Sesión inicial de evaluación. Paciente colaboradora.",
-        observaciones: "Se recomienda continuar con el proceso."
-      },
-      {
-        numero: 2,
-        fecha: "2024-08-08",
-        asistio: false,
-        cancelo: true,
-        quienCancelo: "Paciente",
-        motivoCancelacion: "Problemas de transporte",
-        descripcion: "",
-        observaciones: "Reprogramar para la siguiente semana."
-      }
-    ];
+  function cargarSesionInicial() {
+    // Solo cargamos una sesión inicial vacía
+    sesiones = [{
+      numero: 1,
+      fecha: '',
+      asistio: false,
+      cancelo: false,
+      quienCancelo: '',
+      motivoCancelacion: '',
+      descripcion: '',
+      observaciones: ''
+    }];
   }
 
   function cargarDatosPaciente() {
@@ -242,20 +231,9 @@ document.addEventListener('DOMContentLoaded', function() {
   function generarFormularioHojaControl() {
     let sesionesHTML = '';
     
+    // Generar solo la sesión actual
     sesiones.forEach(sesion => {
       sesionesHTML += generarCamposSesion(sesion);
-    });
-    
-    // Agregar campos para una nueva sesión
-    sesionesHTML += generarCamposSesion({
-      numero: sesiones.length + 1,
-      fecha: '',
-      asistio: false,
-      cancelo: false,
-      quienCancelo: '',
-      motivoCancelacion: '',
-      descripcion: '',
-      observaciones: ''
     });
     
     return `
@@ -275,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ${sesionesHTML}
         
         <div class="botones-formulario">
-          <button type="button" id="btnAgregarSesion" class="btn-action">➕ Agregar otra sesión</button>
+          <button type="button" id="btnAgregarSesion" class="btn-action">➕ Añadir otro reporte</button>
         </div>
       </form>
     `;
@@ -648,7 +626,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // ======================
-  // INICIALIZACIÓN
+  // INICIAR APLICACIÓN
   // ======================
   init();
 });
