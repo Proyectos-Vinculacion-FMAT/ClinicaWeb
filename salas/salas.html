@@ -8,46 +8,47 @@
 </head>
 <body>
   <header>
-    <h1>Administración de Consultorios</h1>
+    <h1>Administración de Salas</h1>
     <nav>
       <ul>
         <li><a href="../agenda/agenda.html">Agenda</a></li>
-        <li><a href="../pacientes/pacientes.html">Pacientes</a></li>
+        <li><a href="../pacientes/pacientes.html">Paciente</a></li>
         <li><a href="../terapeuta/terapeuta.html">Terapeutas</a></li>
-        <li><a href="salas.html">Consultorios</a></li>
+        <li><a href="salas.html">Salas</a></li>
         <li><a href="../coordinacion/coordinacion.html">Coordinación</a></li>
         <li><a href="../reportes/reportes.html">Reportes</a></li>
-        <li><a href="../administrador/administrador.html">Administrador</a></li>
         <li><a href="../index.html">Salir</a></li>
       </ul>
     </nav>
   </header>
+  
   <main>
-    <section id="consultorios-section">
-      <h2>Listado de Consultorios</h2>
-      <table id="consultoriosTable">
+    <section id="salas-section">
+      <h2>Listado de Salas</h2>
+      <table id="salasTable">
         <thead>
           <tr>
             <th>ID</th>
             <th>Nombre</th>
             <th>Tipo</th>
+            <th>Horario</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <!-- Las filas se generarán dinámicamente -->
+          <!-- Las filas se generarán dinámicamente mediante JS -->
         </tbody>
       </table>
-      <button id="btnAgregar">Agregar Nuevo Consultorio</button>
+      <button id="btnAgregarSala">Agregar Nueva Sala</button>
     </section>
     
     <!-- Modal para agregar/editar consultorio -->
-    <div id="modalForm" class="modal">
+    <div id="modalSala" class="modal">
       <div class="modal-content">
-        <span class="close-button" id="cerrarModal">&times;</span>
-        <h2 id="formTitle">Agregar Consultorio</h2>
-        <form id="consultorioForm">
-          <input type="hidden" id="consultorioId" value="">
+        <span class="close-button" id="cerrarModalSala">&times;</span>
+        <h2 id="formTitle">Agregar Sala</h2>
+        <form id="salaForm">
+          <input type="hidden" id="salaId" value="">
           <div class="form-group">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" required>
@@ -61,11 +62,24 @@
               <option value="Primer contacto">Primer contacto</option>
             </select>
           </div>
-          <button type="submit" id="guardarConsultorio">Guardar</button>
+          <!-- Campos para ingresar el horario operativo mediante controles de tiempo -->
+          <div class="form-group">
+            <label for="horaInicio">Hora de Inicio:</label>
+            <input type="time" id="horaInicio" min="09:00" max="18:00" required>
+          </div>
+          <div class="form-group">
+            <label for="horaFin">Hora de Fin:</label>
+            <input type="time" id="horaFin" min="09:00" max="18:00" required>
+          </div>
+          <button type="submit" id="guardarSala">Guardar</button>
         </form>
       </div>
     </div>
   </main>
+  
+  <script src="js/salas.js"></script>
+</body>
+</html>
   
   <script src="js/salas.js"></script>
 </body>
