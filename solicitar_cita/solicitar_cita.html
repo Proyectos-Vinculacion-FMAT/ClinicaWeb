@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Bienestar</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="notification" class="notification hidden"></div>
+  <div class="container">
+    <!-- Sección del Formulario -->
+    <div class="form-section">
+      <h1>Da el primer paso</h1>
+      <p class="subtitle">“Tu bienestar comienza aquí”</p>
+
+      <form>
+        <label for="nombre">
+          Nombre(s)
+          <input type="text" id="nombre" placeholder="Nombre">
+          <small>Ejemplo: Fernando Ismael</small>
+        </label>
+
+        <label for="apellido">
+          Apellido(s)
+          <input type="text" id="apellido" placeholder="Apellido">
+          <small>Ejemplo: Canul Caballero</small>
+        </label>
+
+        <label for="email">
+          Correo electrónico
+          <input type="email" id="email" placeholder="Correo electrónico">
+          <small>Ejemplo: fcanul@gmail.com</small>
+        </label>
+
+        <label for="telefono">
+          Número telefónico
+          <input type="tel" id="telefono" placeholder="Número telefónico">
+          <small>Ejemplo: 9994138553</small>
+        </label>
+
+        <button type="submit" class="main-button">✔ Confirmar</button>
+        <button type="button" class="main-button">X Cancelar</button>
+        <a href="../index.html" class="main-button back-button">← Regresar</a>
+      </form>
+    </div>
+
+    <!-- Sección del Calendario -->
+    <div class="calendar-section">
+      <div class="calendar-header">
+        <button class="nav-button prev">‹</button>
+        <span class="selected-date">Selecciona la fecha</span>
+        <button class="nav-button next">›</button>
+      </div>
+
+      <div class="calendar-grid">
+        <div class="calendar-month"></div>
+        <div class="calendar-days">
+          <span>Dom</span><span>Lun</span><span>Mar</span><span>Mié</span>
+          <span>Jue</span><span>Vie</span><span>Sáb</span>
+        </div>
+        <div class="calendar-dates" id="calendarDates"></div>
+        <div class="calendar-buttons">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/solicitar_cita.js"></script>
+</body>
+</html>
