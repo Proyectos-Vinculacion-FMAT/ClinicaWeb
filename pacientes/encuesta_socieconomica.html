@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Encuesta de Nivel Socioeconómico</title>
+  <link rel="stylesheet" href="css/nuevopaciente.css">
+</head>
+<body>
+  <header>
+    <h1>Encuesta de Nivel Socioeconómico</h1>
+    <p>Servicios Psicológicos, Facultad de Psicología, UADY</p>
+  </header>
+  <form id="form-nse">
+    <!-- Aviso de Privacidad -->
+    <fieldset>
+      <legend>Aviso de Privacidad</legend>
+      <p>Confirmación de aviso de privacidad: </p>
+      <label><input type="radio" name="avisoPrivacidad" value="acepto" required> Sí acepto</label>
+      <label><input type="radio" name="avisoPrivacidad" value="noAcepto"> No acepto</label>
+    </fieldset>
+
+    <!-- Datos Básicos -->
+    <fieldset>
+      <legend>Datos Básicos</legend>
+      <label for="folioNSE">Folio asignado:</label>
+      <input type="text" id="folioNSE" name="folioNSE" required>
+
+      <label for="nombreCompleto">Nombre completo:</label>
+      <input type="text" id="nombreCompleto" name="nombreCompleto" required>
+
+      <label for="emailNSE">Correo electrónico:</label>
+      <input type="email" id="emailNSE" name="emailNSE" required>
+
+      <label for="celularNSE">Número de celular:</label>
+      <input type="tel" id="celularNSE" name="celularNSE" required>
+    </fieldset>
+
+    <!-- Escolaridad y Otros Datos -->
+    <fieldset>
+      <legend>Datos Socioeconómicos</legend>
+      <label for="escolaridadNSE">Nivel de Escolaridad:</label>
+      <select id="escolaridadNSE" name="escolaridadNSE" required>
+        <option value="">Seleccione</option>
+        <option value="preescolar">Preescolar</option>
+        <option value="primaria_incompleta">Primaria incompleta</option>
+        <option value="primaria_completa">Primaria completa</option>
+        <option value="secundaria_incompleta">Secundaria incompleta</option>
+        <option value="secundaria_completa">Secundaria completa</option>
+        <option value="preparatoria_incompleta">Preparatoria incompleta</option>
+        <option value="preparatoria_completa">Preparatoria completa</option>
+        <option value="licenciatura_incompleta">Licenciatura incompleta</option>
+        <option value="licenciatura_completa">Licenciatura completa</option>
+        <option value="posgrado">Posgrado</option>
+      </select>
+
+      <label for="ultEstudios">Último año de estudios aprobado (jefe/jefa de hogar):</label>
+      <input type="number" id="ultEstudios" name="ultEstudios" min="0" required>
+
+      <p>¿Cuántos baños con regadera y W.C. hay en su vivienda?</p>
+      <label><input type="radio" name="numBanios" value="0" required> 0</label>
+      <label><input type="radio" name="numBanios" value="1"> 1</label>
+      <label><input type="radio" name="numBanios" value="2+"> 2 o más</label>
+
+      <label for="automoviles">¿Cuántos automóviles o camionetas tiene en su hogar?</label>
+      <input type="number" id="automoviles" name="automoviles" min="0" required>
+
+      <p>¿Su hogar cuenta con internet?</p>
+      <label><input type="radio" name="internet" value="si" required> Sí</label>
+      <label><input type="radio" name="internet" value="no"> No</label>
+
+      <label for="cuartosDormir">¿Cuántos cuartos se usan para dormir (excluyendo pasillos y baños)?</label>
+      <input type="number" id="cuartosDormir" name="cuartosDormir" min="0" required>
+    </fieldset>
+
+    <button type="submit">Enviar Encuesta</button>
+  </form>
+
+  <div id="notif-nse" class="notification hidden"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

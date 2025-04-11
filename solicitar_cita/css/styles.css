@@ -1,0 +1,196 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #2d2d2d;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .form-section {
+    max-width: 500px;
+    flex: 1;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subtitle {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 0.95rem;
+  }
+  
+  input {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 0.25rem;
+    font-size: 1rem;
+  }
+  
+  small {
+    color: #888;
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+  }
+  
+  .main-button {
+    background-color: #5e4b8b;
+    color: white;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .calendar-section {
+    border: 1px solid #aaa;
+    border-radius: 15px;
+    padding: 1.5rem;
+    width: 350px;
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .edit-icon {
+    cursor: pointer;
+  }
+  
+  .calendar-month {
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  
+  .calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .calendar-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 0.3rem;
+  }
+  
+  .calendar-dates span {
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .inactive {
+    color: #ccc;
+  }
+  
+  .circle {
+    border: 1px solid #5e4b8b;
+    color: #5e4b8b;
+  }
+  
+  .selected {
+    background-color: #5e4b8b;
+    color: white;
+  }
+  
+  .calendar-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+  }
+  
+  .cancel,
+  .confirm {
+    background: none;
+    border: none;
+    color: #5e4b8b;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .back-button {
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+    text-decoration: none;
+    background-color: #6c5ce7;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .back-button:hover {
+    background-color: #5a4bcf;
+  }
+  .notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #5e4b8b;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-20px);
+    display: block;
+  }
+  
+  .notification.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .notification.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  .nav-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #5e4b8b;
+  }
