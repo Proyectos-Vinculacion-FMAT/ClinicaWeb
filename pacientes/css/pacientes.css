@@ -156,12 +156,6 @@
 }
 
 /* Estilos para los radio buttons y su alineación */
-.estados-container {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 10px 0;
-}
 
 .estado-option {
   display: flex;
