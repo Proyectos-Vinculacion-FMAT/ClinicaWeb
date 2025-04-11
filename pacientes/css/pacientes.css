@@ -1,50 +1,151 @@
-  
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.panel {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.patient-item {
+  cursor: pointer;
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+  margin: 0 -1rem;
+  padding-left: 1rem;
+  transition: all 0.2s ease;
+}
+
+.patient-item:hover {
+  background-color: #e0f7fa;
+}
+
+.filters label {
+  display: block;
+  margin: 0.75rem 0 0.3rem;
+  font-size: 0.9rem;
+}
+
+.filters input,
+.filters select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.filter-buttons {
+  display: flex;
+  margin-top: 1.25rem;
+  gap: 0.5rem;
+}
+
+.filter-buttons button {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.filter-buttons button:hover {
+  background-color: #45a049;
+}
+
+/* Estados de los pacientes */
+.patient-item[data-estado="activo"] { 
+  border-left: 4px solid #4CAF50;
+  background-color: rgba(76, 175, 80, 0.05);
+}
+.patient-item[data-estado="espera"] { 
+  border-left: 4px solid #FFC107;
+  background-color: rgba(255, 193, 7, 0.05);
+}
+.patient-item[data-estado="archivado"] { 
+  border-left: 4px solid #9E9E9E;
+  background-color: rgba(158, 158, 158, 0.05);
+}
+
+/* Media Queries para diseño responsive */
+
+/* Tabletas (768px en adelante) */
+@media (min-width: 768px) {
   .layout {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 1rem;
-    padding: 1rem;
+      grid-template-columns: 1fr 2fr;
   }
   
-  .panel {
-    background-color: #f9f9f9;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  .panel:last-child {
+      grid-column: span 2;
   }
   
   .patient-item {
-    cursor: pointer;
-    padding: 0.5rem;
-    border-bottom: 1px solid #ddd;
+      margin: 0;
+      padding-left: 0.75rem;
+  }
+}
+
+/* Escritorios pequeños (992px en adelante) */
+@media (min-width: 992px) {
+  .layout {
+      grid-template-columns: 1fr 2fr 1fr;
   }
   
-  .patient-item:hover {
-    background-color: #e0f7fa;
+  .panel:last-child {
+      grid-column: auto;
   }
   
   .filters label {
-    display: block;
-    margin: 0.5rem 0 0.2rem;
+      font-size: 1rem;
   }
   
   .filters input,
   .filters select {
-    width: 100%;
-    padding: 0.3rem;
-    border: 1px solid #ccc;
-    border-radius: 0.3rem;
-  }
-  
-  .filter-buttons {
-    display: flex;
-    margin-top: 1rem;
+      padding: 0.6rem;
+      font-size: 1rem;
   }
   
   .filter-buttons button {
-    flex: 1;
+      padding: 0.6rem;
+      font-size: 1rem;
   }
+}
 
-  .patient-item[data-estado="activo"] { border-left: 4px solid #4CAF50; }
-  .patient-item[data-estado="espera"] { border-left: 4px solid #FFC107; }
-  .patient-item[data-estado="archivado"] { border-left: 4px solid #9E9E9E; }
+/* Escritorios grandes (1200px en adelante) */
+@media (min-width: 1200px) {
+  .layout {
+      max-width: 1400px;
+      margin: 0 auto;
+  }
+  
+  .panel {
+      padding: 1.25rem;
+  }
+}
+
+/* Ajustes para móviles muy pequeños (menos de 400px) */
+@media (max-width: 400px) {
+  .filter-buttons {
+      flex-direction: column;
+  }
+  
+  .filter-buttons button {
+      width: 100%;
+  }
+  
+  .patient-item {
+      padding: 0.6rem 0.5rem 0.6rem 0.5rem;
+  }
+}
