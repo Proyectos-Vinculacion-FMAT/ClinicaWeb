@@ -49,6 +49,135 @@ main {
   border-radius: 5px;
 }
 
+.main-container {
+  display: flex;
+  gap: 20px;
+}
+
+.inbox {
+  width: 350px;
+  background: #f9f9f9;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.content-area {
+  flex: 1;
+}
+
+.inbox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.inbox-header h2 {
+  margin: 0;
+}
+
+#newMessageBtn {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.inbox-tabs {
+  display: flex;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab-btn {
+  padding: 8px 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+}
+
+.tab-btn.active {
+  border-bottom-color: #004080;
+  font-weight: bold;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.request-item, .message-item {
+  background: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.request-item h3, .message-item h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.request-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.approve-btn {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.reject-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.view-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.status-pending {
+  color: #e67e22;
+  font-weight: bold;
+}
+
+.status-approved {
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+.status-rejected {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
 /* Filtros */
 #filters {
   margin-bottom: 20px;
@@ -79,6 +208,40 @@ main {
   text-align: center;
   padding: 5px;
   border: 1px solid #ddd;
+}
+
+/* Añadir estas reglas al CSS existente */
+
+.time-selection {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.time-selection .form-group {
+  flex: 1;
+}
+
+#diagnosticInterviewFields {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #5e4b8b;
+}
+
+#diagnosticInterviewFields h4 {
+  margin-top: 0;
+  color: #5e4b8b;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 /* Celda de hora */
@@ -126,16 +289,54 @@ main {
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.4);
+  overflow: auto; 
 }
 
 .modal-content {
   background-color: #fefefe;
-  margin: 10% auto;
+  margin: 5% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  max-width: 500px;
+  max-width: 600px;
   border-radius: 5px;
+  max-height: 90vh; /* Limitar altura máxima */
+  overflow-y: auto; /* Habilitar scroll vertical cuando sea necesario */
+}
+
+
+#initialInterviewForm {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 10px; /* Espacio para el scroll */
+}
+
+#diagnosticInterviewFields {
+  margin-top: 15px;
+  padding: 15px;
+  background: #f0f0f0;
+  border-radius: 5px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Estilo para el scroll */
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .close-button {
@@ -156,3 +357,25 @@ main {
   height: 100%;
 }
 
+/* Formulario de mensaje */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-group textarea {
+  resize: vertical;
+}

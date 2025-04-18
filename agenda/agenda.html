@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clínica - Agenda</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
   <header>
     <h1>Clínica de Atención Psicológica</h1>
@@ -22,30 +24,93 @@
     </nav>
   </header>
   <main>
-    <section id="filters">
-      <h2>Filtros de Agenda</h2>
-      <div class="filter-group">
-        <label for="filterPeriod">Periodo:</label>
-        <select id="filterPeriod">
-          <option value="day">Día</option>
-          <option value="week" selected>Semana</option>
-          <option value="month">Mes</option>
-        </select>
+    <div class="main-container">
+      <!-- Bandeja de entrada -->
+      <aside class="inbox">
+        <div class="inbox-header">
+          <h2>Bandeja de Entrada</h2>
+          <button id="newMessageBtn">Nuevo Mensaje</button>
+        </div>
+
+        <div class="inbox-tabs">
+          <button class="tab-btn active" data-tab="requests">Solicitudes</button>
+          <button class="tab-btn" data-tab="reschedules">Reprogramaciones</button>
+          <button class="tab-btn" data-tab="messages">Mensajes</button>
+        </div>
+
+        <div class="inbox-content">
+          <!-- Pestaña de Solicitudes -->
+          <div id="requests-tab" class="tab-content active">
+            <div class="request-item">
+              <h3>Solicitud de Cita</h3>
+              <p><strong>Paciente:</strong> Juan Pérez López</p>
+              <p><strong>Fecha solicitada:</strong> 15/12/2023</p>
+              <p><strong>Estado:</strong> <span class="status-pending">Pendiente</span></p>
+              <div class="request-actions">
+                <button class="approve-btn">Ver Solicitud</button>
+                <button class="reject-btn">Rechazar</button>
+              </div>
+            </div>
+            <!-- Más solicitudes... -->
+          </div>
+
+          <!-- Pestaña de Reprogramaciones -->
+          <div id="reschedules-tab" class="tab-content">
+            <div class="request-item">
+              <h3>Solicitud de Reprogramación</h3>
+              <p><strong>Paciente:</strong> Mariana López Sánchez</p>
+              <p><strong>Motivo:</strong> Conflicto de horario</p>
+              <p><strong>Nueva fecha propuesta:</strong> 22/12/2023 11:00</p>
+              <p><strong>Estado:</strong> <span class="status-pending">Pendiente</span></p>
+              <div class="request-actions">
+                <button class="approve-btn">Ver solicitud</button>
+                <button class="reject-btn">Rechazar</button>
+              </div>
+            </div>
+            <!-- Más reprogramaciones... -->
+          </div>
+
+          <!-- Pestaña de Mensajes -->
+          <div id="messages-tab" class="tab-content">
+            <div class="message-item">
+              <h3>Recordatorio de Pago</h3>
+              <p><strong>Para:</strong> Todos los pacientes</p>
+              <p><strong>Enviado:</strong> 10/12/2023 09:30</p>
+              <button class="view-btn">Ver</button>
+            </div>
+            <!-- Más mensajes... -->
+          </div>
+        </div>
+      </aside>
+
+      <!-- Contenido principal -->
+      <div class="content-area">
+        <section id="filters">
+          <h2>Filtros de Agenda</h2>
+          <div class="filter-group">
+            <label for="filterPeriod">Periodo:</label>
+            <select id="filterPeriod">
+              <option value="day">Día</option>
+              <option value="week" selected>Semana</option>
+              <option value="month">Mes</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="filterDate">Fecha:</label>
+            <input type="date" id="filterDate">
+          </div>
+          <div class="filter-group">
+            <button id="applyFilter">Aplicar Filtro</button>
+            <button id="printView">Imprimir</button>
+          </div>
+        </section>
+        <section id="calendarContainer">
+          <!--La vista de calendario se generará dinámicamente aquí -->
+        </section>
       </div>
-      <div class="filter-group">
-        <label for="filterDate">Fecha:</label>
-        <input type="date" id="filterDate">
-      </div>
-      <div class="filter-group">
-        <button id="applyFilter">Aplicar Filtro</button>
-        <button id="printView">Imprimir</button>
-      </div>
-    </section>
-    <section id="calendarContainer">
-      <!--La vista de calendario se generará dinámicamente aquí -->
-    </section>
+    </div>
   </main>
-  
+
   <!-- Modal para mostrar detalles de la cita -->
   <div id="appointmentModal" class="modal">
     <div class="modal-content">
@@ -54,7 +119,131 @@
       <div id="modalInfo"></div>
     </div>
   </div>
+
+  <!-- Modal para ver solicitud -->
+  <div id="requestModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeRequestModal">&times;</span>
+      <h2 id="requestModalTitle">Detalles de la Solicitud</h2>
+      <div id="requestModalInfo"></div>
+
+      <!-- Formulario para programar entrevista inicial -->
+      <div id="initialInterviewForm" class="hidden">
+        <h3>Programar Entrevista Inicial</h3>
+        <form id="scheduleInterviewForm">
+          <div class="form-group">
+            <label for="interviewDate">Fecha:</label>
+            <input type="date" id="interviewDate" required>
+          </div>
+          <div class="time-selection">
+            <div class="form-group">
+              <label for="interviewTime">Hora Inicial:</label>
+              <input type="time" id="interviewTime" required>
+            </div>
+
+            <div class="form-group">
+              <label for="interviewDuration">Duración (min):</label>
+              <select id="interviewDuration" required>
+                <option value="30">30 minutos</option>
+                <option value="45">45 minutos</option>
+                <option value="60" selected>60 minutos</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="interviewTherapist">Especialista:</label>
+            <select id="interviewTherapist" required>
+              <option value="">Seleccionar especialista</option>
+              <option value="1">Dra. Ana Rodríguez</option>
+              <option value="2">Dr. Carlos Sánchez</option>
+              <option value="3">Lic. Gabriela Morales</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="includeDiagnostic"> Realizar entrevista diagnóstica el mismo día
+            </label>
+          </div>
+          <div id="diagnosticInterviewFields" class="hidden">
+            <h4>Entrevista Diagnóstica</h4>
+
+            <div class="time-selection">
+              <div class="form-group">
+                <label for="diagnosticTime">Hora:</label>
+                <input type="time" id="diagnosticTime" required>
+              </div>
+
+              <div class="form-group">
+                <label for="diagnosticDuration">Duración (min):</label>
+                <select id="diagnosticDuration" required>
+                  <option value="30">30 minutos</option>
+                  <option value="45">45 minutos</option>
+                  <option value="60" selected>60 minutos</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="diagnosticTherapist">Especialista para diagnóstico:</label>
+              <select id="diagnosticTherapist">
+                <option value="">Seleccionar especialista</option>
+                <option value="1">Dra. Ana Rodríguez</option>
+                <option value="2">Dr. Carlos Sánchez</option>
+                <option value="3">Lic. Gabriela Morales</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="diagnosticRoom">Sala para diagnóstico:</label>
+              <select id="diagnosticRoom">
+                <option value="">Seleccionar sala</option>
+                <option value="101">Sala 101</option>
+                <option value="102">Sala 102</option>
+                <option value="103">Sala 103</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit">Programar Entrevista</button>
+          <button type="button" id="cancelScheduleBtn">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para nuevo mensaje -->
+  <div id="messageModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeMessageModal">&times;</span>
+      <h2>Nuevo Mensaje</h2>
+      <form id="messageForm">
+        <div class="form-group">
+          <label for="messageRecipient">Destinatario:</label>
+          <select id="messageRecipient">
+            <option value="all">Todos los pacientes</option>
+            <option value="specific">Paciente específico</option>
+            <option value="therapists">Todos los terapeutas</option>
+          </select>
+        </div>
+        <div id="specificPatientContainer" class="hidden">
+          <label for="specificPatient">Seleccionar paciente:</label>
+          <select id="specificPatient">
+            <option value="1">Juan Pérez López</option>
+            <option value="2">Mariana López Sánchez</option>
+            <!-- Más pacientes... -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="messageSubject">Asunto:</label>
+          <input type="text" id="messageSubject" required>
+        </div>
+        <div class="form-group">
+          <label for="messageContent">Mensaje:</label>
+          <textarea id="messageContent" rows="5" required></textarea>
+        </div>
+        <button type="submit">Enviar Mensaje</button>
+      </form>
+    </div>
+  </div>
+
   <script src="js/agenda.js"></script>
 </body>
-</html>
 
+</html>
