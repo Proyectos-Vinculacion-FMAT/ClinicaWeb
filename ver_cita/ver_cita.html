@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Próxima Cita</title>
+  <link rel="stylesheet" href="css/ver_cita.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Consulta tu próxima cita</h1>
+    
+    <!-- Sección de búsqueda -->
+    <div class="search-section">
+      <h2>Buscar cita</h2>
+      <form id="searchForm">
+        <label for="searchName">Nombre (paciente o tutor)</label>
+        <input type="text" id="searchName" placeholder="Ingresa tu nombre completo" required>
+        
+        <label for="searchContact">Teléfono o Correo electrónico</label>
+        <input type="text" id="searchContact" placeholder="Ingresa tu teléfono o correo" required>
+        
+        <button type="submit">Buscar cita</button>
+        <a href="../index.html" class="main-button back-button">← Regresar</a>
+      </form>
+    </div>
+    
+    <!-- Información de la cita -->
+    <div id="appointmentInfo" class="appointment-info hidden">
+      <h2>Tu próxima cita</h2>
+      <div class="appointment-details">
+        <p><strong>Fecha:</strong> <span id="appointmentDate"></span></p>
+        <p><strong>Hora:</strong> <span id="appointmentTime"></span></p>
+        <p><strong>Especialista:</strong> <span id="appointmentSpecialist"></span></p>
+        <p><strong>Ubicación:</strong> <span id="appointmentLocation"></span></p>
+      </div>
+      
+      <button id="requestReprogramBtn">Solicitar reprogramación</button>
+    </div>
+    
+    <!-- Formulario de reprogramación -->
+    <div id="reprogramSection" class="reprogram-section hidden">
+      <h2>Solicitar reprogramación</h2>
+      <form id="reprogramForm">
+        <label for="reprogramReason">Motivo de la reprogramación</label>
+        <select id="reprogramReason" required>
+          <option value="">Selecciona un motivo</option>
+          <option value="conflict">Conflicto de horario</option>
+          <option value="emergency">Emergencia</option>
+          <option value="other">Otro</option>
+        </select>
+        
+        <label for="reprogramDetails">Explicación detallada</label>
+        <textarea id="reprogramDetails" rows="4" required></textarea>
+        
+        <label for="preferredDate">Fecha preferida para la nueva cita</label>
+        <input type="date" id="preferredDate" required>
+        
+        <label for="preferredTime">Hora preferida</label>
+        <input type="time" id="preferredTime" required>
+        
+        <button type="submit">Enviar solicitud</button>
+        <button type="button" id="cancelReprogramBtn">Cancelar</button>
+      </form>
+    </div>
+    
+    <!-- Estado de la reprogramación -->
+    <div id="reprogramStatus" class="reprogram-status hidden">
+      <h2>Estado de tu solicitud</h2>
+      <div class="status-details">
+        <p><strong>Solicitud:</strong> <span id="requestStatus" class="status-pending">En revisión</span></p>
+        <p><strong>Fecha solicitada:</strong> <span id="requestedDate"></span></p>
+        <p><strong>Motivo:</strong> <span id="requestedReason"></span></p>
+        <div id="resolutionDetails" class="hidden">
+          <p><strong>Nueva fecha:</strong> <span id="newAppointmentDate"></span></p>
+          <p><strong>Hora:</strong> <span id="newAppointmentTime"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/ver_cita.js"></script>
+</body>
+</html>
