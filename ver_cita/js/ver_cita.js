@@ -34,10 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
         status: "approved",
         reason: "emergency",
         details: "Necesito viajar por emergencia familiar",
-        preferredDate: "2023-12-22",
-        preferredTime: "11:00",
-        newDate: "2023-12-22",
-        newTime: "11:30",
+        requestDate: "2023-12-27",
+        adminResponse:
+          "Hemos recibido su solicitud. Le contactaremos dentro de 24 horas para asignarle una nueva fecha.",
       },
     },
   ];
