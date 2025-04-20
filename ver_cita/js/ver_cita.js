@@ -31,10 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
       specialist: "Dr. Carlos Sánchez",
       location: "Consultorio 5, Piso 1",
       reprogramRequest: {
-        status: "approved",
+        status: "pending",
         reason: "emergency",
         details: "Necesito viajar por emergencia familiar",
-        requestDate: "2023-12-27",
+        requestDate: "2023-12-19",
         adminResponse:
           "Hemos recibido su solicitud. Le contactaremos dentro de 24 horas para asignarle una nueva fecha.",
       },
