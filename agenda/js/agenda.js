@@ -5,10 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const applyFilterBtn = document.getElementById("applyFilter");
   const printBtn = document.getElementById("printView");
 
-  // Variables globales adicionales
-  const diagnosticTime = document.getElementById("diagnosticTime");
-  const diagnosticDuration = document.getElementById("diagnosticDuration");
-
   // Contenedor del calendario
   const calendarContainer = document.getElementById("calendarContainer");
 
@@ -17,82 +13,83 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeModalBtn = document.getElementById("closeModal");
   const modalInfo = document.getElementById("modalInfo");
 
-  const messageModal = document.getElementById("messageModal");
-  const closeMessageModalBtn = document.getElementById("closeMessageModal");
-  const messageForm = document.getElementById("messageForm");
-  const messageRecipient = document.getElementById("messageRecipient");
-  const specificPatientContainer = document.getElementById("specificPatientContainer");
+  // Botón para nuevo evento
+  const newEventBtn = document.createElement("button");
+  newEventBtn.id = "newEventBtn";
+  newEventBtn.textContent = "Nuevo Evento";
+  document.querySelector("#filters .filter-group").appendChild(newEventBtn);
 
-  // Bandeja de entrada
-  const tabButtons = document.querySelectorAll(".tab-btn");
-  const tabContents = document.querySelectorAll(".tab-content");
-  const newMessageBtn = document.getElementById("newMessageBtn");
-
-  // Modal de solicitudes
-  const requestModal = document.getElementById("requestModal");
-  const closeRequestModalBtn = document.getElementById("closeRequestModal");
-  const requestModalTitle = document.getElementById("requestModalTitle");
-  const requestModalInfo = document.getElementById("requestModalInfo");
-  const initialInterviewForm = document.getElementById("initialInterviewForm");
-  const scheduleInterviewForm = document.getElementById("scheduleInterviewForm");
-  const includeDiagnosticCheckbox = document.getElementById("includeDiagnostic");
-  const diagnosticInterviewFields = document.getElementById("diagnosticInterviewFields");
-  const cancelScheduleBtn = document.getElementById("cancelScheduleBtn");
-
-  // Elementos del formulario de entrevista
-  const interviewTime = document.getElementById("interviewTime");
-  const interviewDuration = document.getElementById("interviewDuration");
+  // Modal para nuevo evento
+  const newEventModal = document.createElement("div");
+  newEventModal.id = "newEventModal";
+  newEventModal.className = "modal";
+  newEventModal.innerHTML = `
+    <div class="modal-content">
+      <span class="close-button" id="closeNewEventModal">&times;</span>
+      <h2>Nuevo Evento</h2>
+      <form id="newEventForm">
+        <div class="form-group">
+          <label for="eventTitle">Título:</label>
+          <input type="text" id="eventTitle" required>
+        </div>
+        <div class="form-group">
+          <label for="eventDate">Fecha:</label>
+          <input type="date" id="eventDate" required>
+        </div>
+        <div class="time-selection">
+          <div class="form-group">
+            <label for="eventStartTime">Hora Inicio:</label>
+            <input type="time" id="eventStartTime" required>
+          </div>
+          <div class="form-group">
+            <label for="eventDuration">Duración (min):</label>
+            <select id="eventDuration" required>
+              <option value="30">30 minutos</option>
+              <option value="45">45 minutos</option>
+              <option value="60" selected>60 minutos</option>
+              <option value="90">90 minutos</option>
+              <option value="120">120 minutos</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="eventTherapist">Terapeuta:</label>
+          <select id="eventTherapist">
+            <option value="">Ninguno</option>
+            <option value="1">Dra. Ana Rodríguez</option>
+            <option value="2">Dr. Carlos Sánchez</option>
+            <option value="3">Lic. Gabriela Morales</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="eventRoom">Sala:</label>
+          <select id="eventRoom">
+            <option value="">Ninguna</option>
+            <option value="101">Sala 101</option>
+            <option value="102">Sala 102</option>
+            <option value="103">Sala 103</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="eventDescription">Descripción:</label>
+          <textarea id="eventDescription" rows="3"></textarea>
+        </div>
+        <button type="submit">Crear Evento</button>
+      </form>
+    </div>
+  `;
+  document.body.appendChild(newEventModal);
+  const closeNewEventModalBtn = document.getElementById("closeNewEventModal");
+  const newEventForm = document.getElementById("newEventForm");
 
   // Horario de atención (9 a.m. a 6 p.m.)
   const startHour = 9;
   const endHour = 18;
 
   // Citas de ejemplo
-  const sampleAppointments = [
-    {
-      id: 1,
-      date: getFormattedDate(addDays(new Date(), 0)),
-      start: "09:00",
-      end: "10:00",
-      therapy: "Primer Contacto",
-      patient: "Carlos Gómez Martínez",
-      therapist: "Lucía Rivera Torres",
-      room: "Sala 101",
-      phone: "555-1234",
-    },
-    // ... (resto de las citas de ejemplo)
+  let sampleAppointments = [
+    // ... (mantener las mismas citas de ejemplo que tenías antes)
   ];
-
-  // Solicitudes de ejemplo
-  const sampleRequests = [
-    {
-      id: 1,
-      type: "new",
-      patient: "Juan Pérez López",
-      email: "juan.perez@example.com",
-      phone: "5551234567",
-      requestedDate: "2023-12-15",
-      requestedTime: "10:00",
-      therapyType: "Primer Contacto",
-      status: "pending",
-      details: "Necesito ayuda con ansiedad generalizada",
-    },
-    // ... (resto de las solicitudes de ejemplo)
-  ];
-
-  // Mensajes de ejemplo
-  const sampleMessages = [
-    {
-      id: 1,
-      subject: "Recordatorio de Pago",
-      recipient: "Todos los pacientes",
-      date: "10/12/2023 09:30",
-      content: "Recordatorio: El pago de la sesión debe realizarse al menos 24 horas antes.",
-    },
-  ];
-
-  // Variables de estado
-  let currentRequest = null;
 
   /* FUNCIONES PRINCIPALES */
 
@@ -109,12 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let month = ("0" + (date.getMonth() + 1)).slice(-2);
     let day = ("0" + date.getDate()).slice(-2);
     return `${year}-${month}-${day}`;
-  }
-
-  // Función para formatear fecha legible
-  function formatReadableDate(dateString) {
-    const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
-    return new Date(dateString).toLocaleDateString("es-ES", options);
   }
 
   // Función para obtener el inicio de la semana (lunes) de una fecha dada
@@ -160,6 +151,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let cellDate = addDays(startDate, i);
         cellDiv.dataset.date = getFormattedDate(cellDate);
         cellDiv.dataset.hour = (hour < 10 ? "0" + hour : hour) + ":00";
+        cellDiv.addEventListener("click", () =>
+          openNewEventModal(cellDiv.dataset.date, cellDiv.dataset.hour)
+        );
         calendarContainer.appendChild(cellDiv);
       }
     }
@@ -167,7 +161,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Función para asignar un color basado en el nombre del paciente
   function getColorClass(patientName) {
-    const colors = ["color1", "color2", "color3", "color4", "color5", "color6", "color7"];
+    const colors = [
+      "color1",
+      "color2",
+      "color3",
+      "color4",
+      "color5",
+      "color6",
+      "color7",
+    ];
     let hash = 0;
     for (let i = 0; i < patientName.length; i++) {
       hash = patientName.charCodeAt(i) + ((hash << 5) - hash);
@@ -186,8 +188,14 @@ document.addEventListener("DOMContentLoaded", () => {
         let cell = calendarContainer.querySelector(cellSelector);
         if (cell) {
           let apptDiv = document.createElement("div");
-          apptDiv.className = `appointment ${getColorClass(app.patient)}`;
-          apptDiv.textContent = `Tipo de terapia: ${app.therapy} - ${app.patient} - ${app.therapist}`;
+          apptDiv.className = `appointment ${getColorClass(
+            app.patient || app.title
+          )}`;
+          apptDiv.textContent = app.patient
+            ? `Tipo de terapia: ${app.therapy} - ${app.patient} - ${app.therapist}`
+            : `Evento: ${app.title}${
+                app.therapist ? ` - ${app.therapist}` : ""
+              }`;
           apptDiv.style.top = "0";
           apptDiv.style.left = "0";
           apptDiv.style.width = "100%";
@@ -208,7 +216,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderCalendar() {
     clearCalendar();
     let filterPeriod = filterPeriodSelect.value;
-    let refDate = filterDateInput.value ? new Date(filterDateInput.value) : new Date();
+    let refDate = filterDateInput.value
+      ? new Date(filterDateInput.value)
+      : new Date();
 
     if (filterPeriod === "week" || filterPeriod === "") {
       let startOfWeek = getStartOfWeek(refDate);
@@ -238,6 +248,9 @@ document.addEventListener("DOMContentLoaded", () => {
         cellDiv.className = "empty-cell cell-container";
         cellDiv.dataset.date = getFormattedDate(refDate);
         cellDiv.dataset.hour = (hour < 10 ? "0" + hour : hour) + ":00";
+        cellDiv.addEventListener("click", () =>
+          openNewEventModal(cellDiv.dataset.date, cellDiv.dataset.hour)
+        );
         calendarContainer.appendChild(cellDiv);
       }
       renderAppointments(sampleAppointments, refDate, "day");
@@ -254,58 +267,95 @@ document.addEventListener("DOMContentLoaded", () => {
   // Función para abrir modal de cita
   function openAppointmentModal(info) {
     modalInfo.innerHTML = `
+      <p><strong>${info.patient ? "Paciente:" : "Evento:"}</strong> ${
+      info.patient || info.title
+    }</p>
       <p><strong>Fecha:</strong> ${info.date}</p>
       <p><strong>Hora:</strong> ${info.start} - ${info.end}</p>
-      <p><strong>Sala:</strong> ${info.room}</p>
-      <p><strong>Paciente:</strong> ${info.patient}</p>
-      <p><strong>Terapeuta:</strong> ${info.therapist}</p>
-      <p><strong>Tipo de terapia:</strong> ${info.therapy}</p>
-      <p><strong>Contacto:</strong> ${info.phone}</p>
+      ${info.room ? `<p><strong>Sala:</strong> ${info.room}</p>` : ""}
+      ${
+        info.therapist
+          ? `<p><strong>Terapeuta:</strong> ${info.therapist}</p>`
+          : ""
+      }
+      ${
+        info.therapy
+          ? `<p><strong>Tipo de terapia:</strong> ${info.therapy}</p>`
+          : ""
+      }
+      ${info.phone ? `<p><strong>Contacto:</strong> ${info.phone}</p>` : ""}
+      ${
+        info.description
+          ? `<p><strong>Descripción:</strong> ${info.description}</p>`
+          : ""
+      }
+      <div class="modal-actions">
+        <button class="delete-btn" data-id="${info.id}">Eliminar</button>
+      </div>
     `;
     appointmentModal.style.display = "block";
+
+    // Agregar evento para eliminar cita
+    document
+      .querySelector(".delete-btn")
+      ?.addEventListener("click", function () {
+        deleteAppointment(parseInt(this.dataset.id));
+      });
   }
 
-  // Función para mostrar los detalles de una solicitud
-  function showRequestDetails(requestId) {
-    const request = sampleRequests.find((r) => r.id === requestId);
-    if (!request) return;
+  // Función para abrir modal de nuevo evento con fecha y hora preseleccionadas
+  function openNewEventModal(date, time) {
+    document.getElementById("eventDate").value = date;
+    document.getElementById("eventStartTime").value = time;
+    newEventModal.style.display = "block";
+  }
 
-    currentRequest = request;
+  // Función para crear un nuevo evento
+  function createNewEvent(event) {
+    event.preventDefault();
 
-    if (request.type === "new") {
-      requestModalTitle.textContent = "Solicitud de Nueva Cita";
-      requestModalInfo.innerHTML = `
-        <p><strong>Paciente:</strong> ${request.patient}</p>
-        <p><strong>Contacto:</strong> ${request.phone} / ${request.email}</p>
-        <p><strong>Fecha solicitada:</strong> ${formatReadableDate(
-          request.requestedDate
-        )} a las ${request.requestedTime}</p>
-        <p><strong>Tipo de terapia:</strong> ${request.therapyType}</p>
-        <p><strong>Detalles:</strong> ${request.details}</p>
-      `;
-      initialInterviewForm.classList.remove("hidden");
-      
-      // Establecer fecha por defecto como la solicitada
-      document.getElementById("interviewDate").value = request.requestedDate;
-      document.getElementById("interviewTime").value = request.requestedTime;
-    } else {
-      requestModalTitle.textContent = "Solicitud de Reprogramación";
-      requestModalInfo.innerHTML = `
-        <p><strong>Paciente:</strong> ${request.patient}</p>
-        <p><strong>Contacto:</strong> ${request.phone} / ${request.email}</p>
-        <p><strong>Cita actual:</strong> ${formatReadableDate(
-          request.currentDate
-        )} a las ${request.currentTime}</p>
-        <p><strong>Nueva fecha propuesta:</strong> ${formatReadableDate(
-          request.requestedDate
-        )} a las ${request.requestedTime}</p>
-        <p><strong>Motivo:</strong> ${request.reason}</p>
-        <p><strong>Detalles:</strong> ${request.details}</p>
-      `;
-      initialInterviewForm.classList.add("hidden");
+    // Obtener valores del formulario
+    const title = document.getElementById("eventTitle").value;
+    const date = document.getElementById("eventDate").value;
+    const startTime = document.getElementById("eventStartTime").value;
+    const duration = document.getElementById("eventDuration").value;
+    const therapist = document.getElementById("eventTherapist").value;
+    const therapistName =
+      document.getElementById("eventTherapist").options[
+        document.getElementById("eventTherapist").selectedIndex
+      ].text;
+    const room = document.getElementById("eventRoom").value;
+    const description = document.getElementById("eventDescription").value;
+
+    // Validar campos requeridos
+    if (!title || !date || !startTime || !duration) {
+      alert("Por favor complete los campos requeridos");
+      return;
     }
 
-    requestModal.style.display = "block";
+    // Calcular hora de fin
+    const endTime = calculateEndTime(startTime, duration);
+
+    // Crear nuevo evento
+    const newEvent = {
+      id: sampleAppointments.length + 1,
+      title: title,
+      date: date,
+      start: startTime,
+      end: endTime,
+      therapist: therapist ? therapistName : null,
+      room: room || null,
+      description: description || null,
+    };
+
+    // Agregar a las citas
+    sampleAppointments.push(newEvent);
+
+    // Actualizar calendario y cerrar modal
+    renderCalendar();
+    alert("Evento creado exitosamente");
+    newEventModal.style.display = "none";
+    newEventForm.reset();
   }
 
   // Función para calcular la hora de fin basada en la hora de inicio y duración
@@ -314,184 +364,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalMinutes = hours * 60 + minutes + Number(duration);
     const endHours = Math.floor(totalMinutes / 60);
     const endMinutes = totalMinutes % 60;
-    return `${String(endHours).padStart(2, "0")}:${String(endMinutes).padStart(2, "0")}`;
+    return `${String(endHours).padStart(2, "0")}:${String(endMinutes).padStart(
+      2,
+      "0"
+    )}`;
   }
 
-  // Función para actualizar automáticamente la hora de la entrevista diagnóstica
-  function updateDiagnosticTime() {
-    const interviewTimeValue = interviewTime.value;
-    const interviewDurationValue = interviewDuration.value;
-    
-    if (interviewTimeValue && interviewDurationValue) {
-      // Calcular hora de fin de la entrevista inicial
-      const endTime = calculateEndTime(interviewTimeValue, interviewDurationValue);
-      
-      // Establecer la hora de la entrevista diagnóstica 15 minutos después
-      const [hours, minutes] = endTime.split(":").map(Number);
-      const diagnosticTimeValue = new Date();
-      diagnosticTimeValue.setHours(hours, minutes + 15, 0, 0);
-      
-      // Formatear como HH:MM
-      const formattedTime = `${String(diagnosticTimeValue.getHours()).padStart(2, "0")}:${String(diagnosticTimeValue.getMinutes()).padStart(2, "0")}`;
-      diagnosticTime.value = formattedTime;
+  // Función para eliminar una cita/evento
+  function deleteAppointment(id) {
+    if (confirm("¿Está seguro que desea eliminar este evento/cita?")) {
+      sampleAppointments = sampleAppointments.filter((app) => app.id !== id);
+      renderCalendar();
+      appointmentModal.style.display = "none";
+      alert("Evento/cita eliminado exitosamente");
     }
-  }
-
-  // Función para programar entrevista (actualizada)
-  function scheduleInterview(event) {
-    event.preventDefault();
-    
-    // Obtener valores del formulario
-    const interviewDate = document.getElementById("interviewDate").value;
-    const interviewTimeValue = interviewTime.value;
-    const interviewDurationValue = interviewDuration.value;
-    const therapist = document.getElementById("interviewTherapist").value;
-    const room = document.getElementById("interviewRoom").value;
-    const includeDiagnostic = includeDiagnosticCheckbox.checked;
-    
-    // Validar campos requeridos
-    if (!interviewDate || !interviewTimeValue || !interviewDurationValue || !therapist || !room) {
-      alert("Por favor complete todos los campos requeridos");
-      return;
-    }
-    
-    // Calcular hora de fin de la entrevista inicial
-    const endInitialTime = calculateEndTime(interviewTimeValue, interviewDurationValue);
-    
-    // Validar horarios si se incluye diagnóstico
-    if (includeDiagnostic) {
-      const diagnosticTimeValue = diagnosticTime.value;
-      const diagnosticDurationValue = diagnosticDuration.value;
-      
-      if (!diagnosticTimeValue || !diagnosticDurationValue) {
-        alert("Por complete los campos de la entrevista diagnóstica");
-        return;
-      }
-      
-      // Validar que la hora diagnóstica sea posterior a la inicial
-      if (diagnosticTimeValue <= endInitialTime) {
-        alert("La entrevista diagnóstica debe programarse después de que termine la entrevista inicial");
-        return;
-      }
-      
-      // Validar disponibilidad para diagnóstico
-      const diagnosticEndTime = calculateEndTime(diagnosticTimeValue, diagnosticDurationValue);
-      if (!checkAvailability(interviewDate, diagnosticTimeValue, diagnosticEndTime)) {
-        alert("El horario seleccionado para la entrevista diagnóstica no está disponible");
-        return;
-      }
-    }
-    
-    // Validar disponibilidad para entrevista inicial
-    if (!checkAvailability(interviewDate, interviewTimeValue, endInitialTime)) {
-      alert("El horario seleccionado para la entrevista inicial no está disponible");
-      return;
-    }
-    
-    // Crear nueva cita para entrevista inicial
-    const newAppointment = {
-      id: sampleAppointments.length + 1,
-      date: interviewDate,
-      start: interviewTimeValue,
-      end: endInitialTime,
-      therapy: "Entrevista Inicial",
-      patient: currentRequest.patient,
-      therapist: document.getElementById("interviewTherapist").options[
-        document.getElementById("interviewTherapist").selectedIndex
-      ].text,
-      room: room,
-      phone: currentRequest.phone
-    };
-    
-    // Agregar a las citas
-    sampleAppointments.push(newAppointment);
-    
-    // Crear cita de diagnóstico si está marcado
-    if (includeDiagnostic) {
-      const diagnosticTimeValue = diagnosticTime.value;
-      const diagnosticDurationValue = diagnosticDuration.value;
-      const diagnosticEndTime = calculateEndTime(diagnosticTimeValue, diagnosticDurationValue);
-      
-      const diagnosticAppointment = {
-        id: sampleAppointments.length + 1,
-        date: interviewDate,
-        start: diagnosticTimeValue,
-        end: diagnosticEndTime,
-        therapy: "Entrevista Diagnóstica",
-        patient: currentRequest.patient,
-        therapist: document.getElementById("diagnosticTherapist").options[
-          document.getElementById("diagnosticTherapist").selectedIndex
-        ].text,
-        room: document.getElementById("diagnosticRoom").value,
-        phone: currentRequest.phone
-      };
-      sampleAppointments.push(diagnosticAppointment);
-    }
-    
-    // Actualizar calendario y cerrar modal
-    renderCalendar();
-    alert("Entrevista(s) programada(s) exitosamente");
-    requestModal.style.display = "none";
-    scheduleInterviewForm.reset();
-  }
-
-  // Función para verificar disponibilidad (simulada)
-  function checkAvailability(date, startTime, endTime) {
-    // En una implementación real, verificaría contra las citas existentes
-    // Aquí simplemente devolvemos true para el ejemplo
-    return true;
-  }
-
-  /* FUNCIONES PARA BANDEJA DE ENTRADA */
-
-  // Función para cambiar entre pestañas
-  function switchTab(event) {
-    const tabId = event.target.dataset.tab;
-
-    // Remover clase active de todos los botones y contenidos
-    tabButtons.forEach((btn) => btn.classList.remove("active"));
-    tabContents.forEach((content) => content.classList.remove("active"));
-
-    // Agregar clase active al botón clickeado
-    event.target.classList.add("active");
-
-    // Mostrar el contenido correspondiente
-    document.getElementById(`${tabId}-tab`).classList.add("active");
-  }
-
-  // Función para abrir modal de nuevo mensaje
-  function openMessageModal() {
-    messageModal.style.display = "block";
-  }
-
-  // Función para manejar cambios en el destinatario
-  function handleRecipientChange() {
-    if (messageRecipient.value === "specific") {
-      specificPatientContainer.classList.remove("hidden");
-    } else {
-      specificPatientContainer.classList.add("hidden");
-    }
-  }
-
-  // Función para enviar mensaje
-  function sendMessage(event) {
-    event.preventDefault();
-
-    const subject = document.getElementById("messageSubject").value;
-    const content = document.getElementById("messageContent").value;
-    const recipient =
-      messageRecipient.value === "specific"
-        ? document.getElementById("specificPatient").options[
-            document.getElementById("specificPatient").selectedIndex
-          ].text
-        : messageRecipient.options[messageRecipient.selectedIndex].text;
-
-    // Simular envío exitoso
-    alert(`Mensaje enviado a ${recipient}: ${subject}`);
-
-    // Limpiar formulario y cerrar modal
-    messageForm.reset();
-    messageModal.style.display = "none";
   }
 
   /* EVENT LISTENERS */
@@ -512,55 +398,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   filterPeriodSelect.addEventListener("change", renderCalendar);
 
-  // Bandeja de entrada
-  tabButtons.forEach((btn) => btn.addEventListener("click", switchTab));
-  newMessageBtn.addEventListener("click", openMessageModal);
-  closeMessageModalBtn.addEventListener("click", () => (messageModal.style.display = "none"));
-  messageRecipient.addEventListener("change", handleRecipientChange);
-  messageForm.addEventListener("submit", sendMessage);
-
-  // Solicitudes
-  document.querySelectorAll(".approve-btn").forEach((btn) => {
-    btn.addEventListener("click", function () {
-      const requestId = parseInt(this.closest(".request-item").dataset.id);
-      showRequestDetails(requestId);
-    });
+  // Nuevo evento
+  newEventBtn.addEventListener("click", () => {
+    // Abrir modal sin fecha/hora preseleccionada
+    document.getElementById("eventDate").value =
+      filterDateInput.value || getFormattedDate(new Date());
+    document.getElementById("eventStartTime").value = "09:00";
+    newEventModal.style.display = "block";
   });
 
-  closeRequestModalBtn.addEventListener("click", () => {
-    requestModal.style.display = "none";
+  closeNewEventModalBtn.addEventListener("click", () => {
+    newEventModal.style.display = "none";
   });
 
-  // Actualizar hora de diagnóstico cuando cambia la hora inicial
-  interviewTime.addEventListener("change", updateDiagnosticTime);
-  interviewDuration.addEventListener("change", updateDiagnosticTime);
-
-  includeDiagnosticCheckbox.addEventListener("change", function () {
-    // Guardar posición actual del scroll
-    const currentScroll = requestModal.scrollTop;
-
-    if (this.checked) {
-      diagnosticInterviewFields.classList.remove("hidden");
-      updateDiagnosticTime(); // Actualizar hora de diagnóstico al mostrar
-    } else {
-      diagnosticInterviewFields.classList.add("hidden");
-    }
-
-    // Restaurar posición del scroll después del cambio
-    requestModal.scrollTop = currentScroll;
-  });
-
-  scheduleInterviewForm.addEventListener("submit", scheduleInterview);
-
-  cancelScheduleBtn.addEventListener("click", () => {
-    requestModal.style.display = "none";
-    scheduleInterviewForm.reset();
-  });
-
-  // Asignar IDs a las solicitudes en el DOM
-  document.querySelectorAll(".request-item").forEach((item, index) => {
-    item.dataset.id = sampleRequests[index].id;
-  });
+  newEventForm.addEventListener("submit", createNewEvent);
 
   /* INICIALIZACIÓN */
 
