@@ -53,12 +53,6 @@
         <label for="reprogramDetails">Explicación detallada</label>
         <textarea id="reprogramDetails" rows="4" required></textarea>
         
-        <label for="preferredDate">Fecha preferida para la nueva cita</label>
-        <input type="date" id="preferredDate" required>
-        
-        <label for="preferredTime">Hora preferida</label>
-        <input type="time" id="preferredTime" required>
-        
         <button type="submit">Enviar solicitud</button>
         <button type="button" id="cancelReprogramBtn">Cancelar</button>
       </form>
@@ -68,12 +62,13 @@
     <div id="reprogramStatus" class="reprogram-status hidden">
       <h2>Estado de tu solicitud</h2>
       <div class="status-details">
-        <p><strong>Solicitud:</strong> <span id="requestStatus" class="status-pending">En revisión</span></p>
-        <p><strong>Fecha solicitada:</strong> <span id="requestedDate"></span></p>
+        <p><strong>Fecha de solicitud:</strong> <span id="requestDate"></span></p>
         <p><strong>Motivo:</strong> <span id="requestedReason"></span></p>
-        <div id="resolutionDetails" class="hidden">
-          <p><strong>Nueva fecha:</strong> <span id="newAppointmentDate"></span></p>
-          <p><strong>Hora:</strong> <span id="newAppointmentTime"></span></p>
+        <p><strong>Explicación:</strong> <span id="requestedDetails"></span></p>
+        <p><strong>Estado:</strong> <span id="requestStatus" class="status-pending">En revisión</span></p>
+        <div id="responseMessage" class="hidden">
+          <h3>Respuesta:</h3>
+          <p><span id="adminResponse"></span></p>
         </div>
       </div>
     </div>
