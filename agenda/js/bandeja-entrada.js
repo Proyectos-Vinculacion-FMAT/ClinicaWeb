@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         patient: "Juan Pérez López",
         email: "juan.perez@example.com",
         phone: "5551234567",
-        requestedDate: "2023-12-15",
+        requestedDate: "2025-04-21",
         requestedTime: "10:00",
         therapyType: "Primer Contacto",
         status: "pending",
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (request.type === "new") {
         requestModalTitle.textContent = "Solicitud de Nueva Cita";
         requestModalInfo.innerHTML = `
-          <p><strong>Paciente:</strong> ${request.patient}</p>
+          <p><strong>Candidato:</strong> ${request.patient}</p>
           <p><strong>Contacto:</strong> ${request.phone} / ${request.email}</p>
           <p><strong>Fecha solicitada:</strong> ${formatReadableDate(
             request.requestedDate
