@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Paciente Archivado</title>
+    <link rel="stylesheet" href="css/detalle_paciente_archivado.css">
+    <link rel="stylesheet" href="../agenda/css/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Clínica de Atención Psicológica</h1>
+    </header>
+
+    <main>
+        <div class="patient-header">
+            <h2>Ana García - Psicodiagnóstico</h2>
+            <span class="patient-status archivado">Archivado</span>
+        </div>
+
+        <div class="detail-layout">
+            <!-- Columna Izquierda - Información y Asistencias -->
+            <div class="left-column">
+                <section class="info-section">
+                    <h3>Información Básica</h3>
+                    <div class="info-grid">
+                        <div class="info-label">Celular:</div>
+                        <div class="info-value">55 5555 5555</div>
+
+                        <div class="info-label">Email:</div>
+                        <div class="info-value">ana.garcia@example.com</div>
+
+                        <div class="info-label">Servicio:</div>
+                        <div class="info-value">Psicodiagnóstico</div>
+
+                        <div class="info-label">Terapeuta:</div>
+                        <div class="info-value">Dr. Luis Hernández</div>
+
+                        <div class="info-label">Fecha Registro:</div>
+                        <div class="info-value">01/02/2024</div>
+
+                        <div class="info-label">Fecha de alta:</div>
+                        <div class="info-value">15/04/2024</div>
+                    </div>
+                </section>
+                <br>
+
+                <section class="attendance-section">
+                    <h3>Asistencias</h3>
+                    <div class="attendance-grid">
+                        <div class="att-label">Sesiones completadas:</div>
+                        <div class="att-value">12</div>
+
+                        <div class="att-label">Sesiones faltantes:</div>
+                        <div class="att-value">0</div>
+
+                        <div class="att-label">Faltas justificadas:</div>
+                        <div class="att-value">2</div>
+
+                        <div class="att-label">Faltas injustificadas:</div>
+                        <div class="att-value">1</div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Columna Central - Documentos -->
+            <div class="center-column">
+                <h3>Documentos</h3>
+                <div class="documents-grid">
+                    <a href="#" class="document-item">1. Entrevista inicial</a>
+                    <a href="#" class="document-item">2. Encuesta socioeconómica</a>
+                    <a href="#" class="document-item">3. Contrato de atención</a>
+                    <a href="#" class="document-item">4. Consentimiento</a>
+                    <a href="#" class="document-item">5. Derechos del cliente</a>
+                    <a href="#" class="document-item">6. Hoja de control</a>
+                    <a href="#" class="document-item">7. Evaluación de servicio</a>
+                    <a href="#" class="document-item">8. Reporte Final</a>
+                    <a href="#" class="document-item">9. Documentos adjuntos</a>
+                </div>
+            </div>
+
+            <!-- Columna Derecha - Acciones (solo volver) -->
+            <div class="right-column">
+                <h3>Acciones</h3>
+                <div class="actions-container">
+                    <button id="volver-lista" class="action-button back-button">Volver a lista de pacientes</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/detalle_paciente_archivado.js"></script>
+</body>
+
+</html>

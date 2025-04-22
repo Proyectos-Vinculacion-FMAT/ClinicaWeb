@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Paciente en Espera</title>
+    <link rel="stylesheet" href="css/detalle_paciente_espera.css">
+    <link rel="stylesheet" href="../agenda/css/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Clínica de Atención Psicológica</h1>
+    </header>
+
+    <main>
+        <div class="patient-header">
+            <h2>Carlos Ruiz - Sin tipo</h2>
+            <span class="patient-status espera">En espera</span>
+        </div>
+
+        <div class="detail-layout">
+            <!-- Columna Izquierda - Información -->
+            <div class="left-column">
+                <section class="info-section">
+                    <h3>Información Básica</h3>
+                    <div class="info-grid">
+                        <div class="info-label">Celular:</div>
+                        <div class="info-value">55 8765 4321</div>
+
+                        <div class="info-label">Email:</div>
+                        <div class="info-value">carlos.ruiz@example.com</div>
+
+                        <div class="info-label">Terapeuta asignado:</div>
+                        <div class="info-value">Por asignar</div>
+
+                        <div class="info-label">Fecha Registro:</div>
+                        <div class="info-value">10/04/2024</div>
+
+                        <div class="info-label">Fecha para entrevista:</div>
+                        <div class="info-value">30/04/2024 - 10:00 hrs</div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Columna Central - Documentos -->
+            <div class="center-column">
+                <h3>Documentos</h3>
+                <div class="documents-grid">
+                    <a href="#" class="document-item">1. Entrevista inicial</a>
+                    <a href="#" class="document-item">2. Encuesta socioeconómica</a>
+                    <a href="#" class="document-item">3. Contrato de atención</a>
+                    <a href="#" class="document-item">4. Consentimiento</a>
+                    <a href="#" class="document-item">5. Derechos del cliente</a>
+                    <a href="#" class="document-item locked">6. Hoja de control</a>
+                    <a href="#" class="document-item locked">7. Evaluación de servicio</a>
+                    <a href="#" class="document-item locked">8. Reporte Final</a>
+                    <a href="#" class="document-item locked">9. Documentos adjuntos</a>
+                </div>
+            </div>
+
+            <!-- Columna Derecha - Acciones -->
+            <div class="right-column">
+                <h3>Acciones</h3>
+                <div class="actions-container">
+                    <button id="volver-lista" class="action-button back-button">Volver a lista de pacientes</button>
+                    <button id="iniciar-expediente" class="action-button start-button">Inicializar expediente</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/detalle_paciente_espera.js"></script>
+</body>
+
+</html>

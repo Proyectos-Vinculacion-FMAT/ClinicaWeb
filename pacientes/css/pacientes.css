@@ -14,7 +14,7 @@
 /* Estructura principal */
 .layout {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 2fr;
   gap: 1.5rem;
   padding: 1.5rem;
 }

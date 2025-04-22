@@ -1,0 +1,159 @@
+:root {
+    --color-primario: #004080;
+    --color-secundario: #0066cc;
+    --color-exito: #4caf50;
+    --color-advertencia: #ffc107;
+    --color-peligro: #f44336;
+    --color-inactivo: #9e9e9e;
+    --color-fondo: #f9f9f9;
+    --color-borde: #ddd;
+    --sombra-panel: 0 0 10px rgba(0, 0, 0, 0.1);
+    --radio-borde: 0.5rem;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+  
+  .patient-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: white;
+    box-shadow: var(--sombra-panel);
+    margin-bottom: 1.5rem;
+  }
+  
+  .patient-status {
+    font-size: 0.9rem;
+    padding: 0.3rem 1rem;
+    border-radius: 1rem;
+    font-weight: 500;
+    color: white;
+  }
+  
+  .patient-status.activo {
+    background-color: var(--color-exito);
+  }
+  
+  .detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+  }
+  
+  .left-column, .center-column, .right-column {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra-panel);
+  }
+  
+  /* Estilos para información básica */
+  .info-section h3, .attendance-section h3, .center-column h3, .right-column h3 {
+    color: var(--color-primario);
+    border-bottom: 2px solid var(--color-borde);
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+  }
+  
+  .info-grid, .attendance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  
+  .info-label, .att-label {
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .info-value, .att-value {
+    color: #333;
+  }
+  
+  /* Estilos para documentos */
+  .documents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .document-item {
+    padding: 0.8rem;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    text-decoration: none;
+    color: var(--color-primario);
+    transition: all 0.2s;
+    text-align: center;
+  }
+  
+  .document-item:hover {
+    background-color: rgba(0, 64, 128, 0.05);
+    border-color: var(--color-primario);
+  }
+  
+  /* Estilos para acciones */
+  .actions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .action-button {
+    padding: 0.8rem;
+    border: none;
+    border-radius: var(--radio-borde);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+  }
+  
+  .back-button {
+    background-color: var(--color-primario);
+    color: white;
+  }
+  
+  .back-button:hover {
+    background-color: var(--color-secundario);
+  }
+  
+  .archive-button {
+    background-color: var(--color-peligro);
+    color: white;
+  }
+  
+  .archive-button:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .detail-layout {
+      grid-template-columns: 1fr;
+    }
+    
+    .documents-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .info-grid, .attendance-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .documents-grid {
+      grid-template-columns: 1fr;
+    }
+  }

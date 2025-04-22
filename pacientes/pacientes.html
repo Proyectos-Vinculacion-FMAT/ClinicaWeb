@@ -27,56 +27,27 @@
 
   <main>
     <section class="layout">
-      <!-- Panel central: lista de pacientes -->
-      <div class="panel">
-        <h3>Pacientes</h3>
-        <a href="nuevo_paciente.html" class="main-button nuevo-button">Nuevo</a>
-        <div class="patient-list">
-          <a href="detalle_paciente.html?nombre=María López" class="patient-item" data-nombre="María López"
-            data-tipo="tipo1" data-estado="activo">
-            <span>María López - Tipo 1</span>
-            <span class="patient-status" data-estado="activo">Activo</span>
-          </a>
-          <a href="detalle_paciente.html?nombre=Juan Pérez" class="patient-item" data-nombre="Juan Pérez"
-            data-tipo="tipo2" data-estado="activo">
-            <span>Juan Pérez - Tipo 2</span>
-            <span class="patient-status" data-estado="activo">Activo</span>
-          </a>
-          <a href="detalle_paciente.html?nombre=Carlos Ruiz" class="patient-item" data-nombre="Carlos Ruiz" data-tipo=""
-            data-estado="espera">
-            <span>Carlos Ruiz - Sin tipo</span>
-            <span class="patient-status" data-estado="espera">En espera</span>
-          </a>
-          <a href="detalle_paciente.html?nombre=Ana García" class="patient-item" data-nombre="Ana García"
-            data-tipo="tipo1" data-estado="archivado">
-            <span>Ana García - Tipo 1</span>
-            <span class="patient-status" data-estado="archivado">Archivado</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Panel derecho: filtros -->
+      <!-- Filtros izquierda -->
       <div class="panel filters">
         <h3>Filtros</h3>
-
         <label for="buscar-nombre">Buscar por nombre</label>
         <input type="text" id="buscar-nombre" placeholder="Ej. Ana García">
 
         <label for="tipo-servicio">Tipo de servicio</label>
         <select id="tipo-servicio">
           <option value="">Todos</option>
-          <option value="tipo1">Tipo 1</option>
-          <option value="tipo2">Tipo 2</option>
+          <option value="psicoterapia">Psicoterapia</option>
+          <option value="psicodiagnostico">Psicodiagnóstico</option>
         </select>
 
         <label>Estado del paciente</label>
         <div class="estados-container">
           <div class="estado-option">
-            <input type="radio" id="estado-todos" name="estado" value="todos">
+            <input type="radio" id="estado-todos" name="estado" value="todos" checked>
             <label for="estado-todos">Todos</label>
           </div>
           <div class="estado-option">
-            <input type="radio" id="estado-activo" name="estado" value="activo" checked>
+            <input type="radio" id="estado-activo" name="estado" value="activo">
             <label for="estado-activo">Activos</label>
           </div>
           <div class="estado-option">
@@ -88,10 +59,29 @@
             <label for="estado-archivado">Archivados</label>
           </div>
         </div>
+      </div>
 
-        <div class="filter-buttons">
-          <button id="aplicar-filtros">Aplicar Filtros</button>
-          <button id="eliminar-filtros">Eliminar Filtros</button>
+      <!-- Lista de pacientes -->
+      <div class="panel main-panel">
+        <h3>Pacientes</h3>
+        <div class="patient-list">
+          <!-- Paciente Activo -->
+          <a href="detalle_paciente_activo.html" class="patient-item" data-estado="activo" data-servicio="psicoterapia">
+            <span>María López - Psicoterapia</span>
+            <span class="patient-status activo">Activo</span>
+          </a>
+          
+          <!-- Paciente en Espera -->
+          <a href="detalle_paciente_espera.html" class="patient-item" data-estado="espera" data-servicio="">
+            <span>Carlos Ruiz - Sin tipo</span>
+            <span class="patient-status espera">En espera</span>
+          </a>
+          
+          <!-- Paciente Archivado -->
+          <a href="detalle_paciente_archivado.html" class="patient-item" data-estado="archivado" data-servicio="psicodiagnostico">
+            <span>Ana García - Psicodiagnóstico</span>
+            <span class="patient-status archivado">Archivado</span>
+          </a>
         </div>
       </div>
     </section>
@@ -99,5 +89,4 @@
 
   <script src="js/pacientes.js"></script>
 </body>
-
 </html>
