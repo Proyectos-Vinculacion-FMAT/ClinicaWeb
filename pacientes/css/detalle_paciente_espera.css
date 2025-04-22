@@ -138,28 +138,6 @@ body {
   background-color: #3d8b40;
 }
 
-/* Estilos para documentos bloqueados */
-.document-item.locked {
-  position: relative;
-  color: #999 !important;
-  border-color: #eee !important;
-  background-color: #f9f9f9 !important;
-  cursor: not-allowed !important;
-}
-
-.document-item.locked::after {
-  content: "🔒";
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.document-item.locked:hover {
-  background-color: #f9f9f9 !important;
-  border-color: #eee !important;
-}
-
 /* Responsive */
 @media (max-width: 1024px) {
   .detail-layout {

@@ -18,17 +18,4 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = '../pacientes/pacientes.html';
       }
     });
-  
-    // Opcional: Lógica para abrir documentos
-    document.querySelectorAll('.document-item').forEach(item => {
-        item.addEventListener('click', function(e) {
-          if(this.classList.contains('locked')) {
-            e.preventDefault();
-            alert('Este documento no está disponible hasta que el paciente sea activado');
-            return;
-          }
-          // Resto de la lógica para documentos desbloqueados
-          alert(`Abriendo: ${this.textContent.replace('🔒', '').trim()}`);
-        });
-      });
   });
