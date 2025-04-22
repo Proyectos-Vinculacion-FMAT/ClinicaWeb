@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrevista Inicial</title>
+  <link rel="stylesheet" href="../css/entrevista_inicial.css">
+</head>
+<body>
+  <header>
+    <h1>Clínica de Atención Psicológica</h1>
+  </header>
+
+  <main>
+    <div class="patient-header">
+      <h2>Entrevista Inicial - María López</h2>
+    </div>
+
+    <div class="form-layout">
+      <!-- Columna Izquierda - Opciones -->
+      <div class="left-column">
+        <div class="options-menu">
+          <div class="option active" data-target="formulario">
+            <span>1. Formulario</span>
+          </div>
+          <div class="option" data-target="adjunto">
+            <span>2. Archivo adjunto</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Central - Contenido -->
+      <div class="center-column">
+        <!-- Formulario (visible por defecto) -->
+        <div id="formulario" class="content-section active">
+          <form id="entrevista-form">
+            <h3>Formato de entrevista inicial</h3>
+            <div class="form-header">
+              <div class="form-group">
+                <label>Fecha de llenado:</label>
+                <input type="date" name="fecha">
+              </div>
+              <div class="form-group">
+                <label>Folio:</label>
+                <input type="text" name="folio">
+              </div>
+            </div>
+
+            <!-- Sección de datos del prestador -->
+            <fieldset>
+              <legend>Datos del prestador</legend>
+              <div class="form-group">
+                <label>Prestador asignado:</label>
+                <input type="text" name="prestador">
+              </div>
+              
+              <div class="checkbox-group">
+                <label>Maestría Adultos</label>
+                <input type="checkbox" name="maestria_adultos">
+                
+                <label>Maestría Infantil</label>
+                <input type="checkbox" name="maestria_infantil">
+                
+                <label>Servicio Social</label>
+                <input type="checkbox" name="servicio_social">
+              </div>
+              
+              <!-- Más campos del formulario según el PDF... -->
+              <!-- Secciones adicionales se implementarían aquí -->
+              
+              <div class="form-group">
+                <label>Observaciones:</label>
+                <textarea name="observaciones" rows="4"></textarea>
+              </div>
+            </fieldset>
+            
+            <!-- Sección de datos del solicitante -->
+            <fieldset>
+              <legend>Datos del solicitante</legend>
+              <div class="form-group">
+                <label>Nombre del solicitante:</label>
+                <input type="text" name="nombre_solicitante">
+              </div>
+              
+              <!-- Más campos según el PDF... -->
+            </fieldset>
+            
+            <!-- Sección de datos generales del paciente -->
+            <fieldset>
+              <legend>Datos generales del paciente</legend>
+              <div class="form-group">
+                <label>Nombre:</label>
+                <input type="text" name="nombre_paciente">
+              </div>
+              
+              <!-- Más campos según el PDF... -->
+            </fieldset>
+          </form>
+        </div>
+
+        <!-- Adjunto (oculto por defecto) -->
+        <div id="adjunto" class="content-section">
+          <div class="upload-container">
+            <h3>Cargar archivo de entrevista</h3>
+            <div class="drop-zone" id="drop-zone">
+              <span>Arrastra y suelta tu archivo aquí</span>
+              <span>o</span>
+              <input type="file" id="file-input" accept=".pdf,.jpg,.png">
+              <label for="file-input" class="browse-btn">Seleccionar archivo</label>
+            </div>
+            <div class="file-info" id="file-info"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha - Acciones -->
+      <div class="right-column">
+        <!-- Acciones para formulario -->
+        <div id="form-actions" class="actions-container">
+          <button id="volver-documentos" class="action-button back-button">Volver a lista de documentos</button>
+          <button id="editar-formato" class="action-button edit-button">Editar formato</button>
+          <button id="guardar-cambios" class="action-button save-button">Guardar cambios</button>
+          <button id="deshacer-cambios" class="action-button undo-button">Deshacer cambios</button>
+          <button id="imprimir-formulario" class="action-button print-button">Imprimir formulario</button>
+        </div>
+
+        <!-- Acciones para adjunto -->
+        <div id="adjunto-actions" class="actions-container" style="display: none;">
+          <button id="volver-documentos-adjunto" class="action-button back-button">Volver a lista de documentos</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/entrevista_inicial.js"></script>
+</body>
+</html>
