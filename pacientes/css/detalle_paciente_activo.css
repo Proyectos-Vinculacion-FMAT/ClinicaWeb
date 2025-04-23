@@ -136,6 +136,75 @@
   .archive-button:hover {
     background-color: #d32f2f;
   }
+
+  /* Añade estas reglas al archivo CSS existente */
+
+/* Estilos para el encabezado de sección con botón de editar */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.edit-info-button {
+  background: none;
+  border: none;
+  color: var(--color-primario);
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.edit-info-button:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para los campos de entrada en modo edición */
+.info-value input,
+.info-value select {
+  width: 100%;
+  padding: 0.3rem;
+  border: 1px solid transparent;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.info-value input:disabled,
+.info-value select:disabled {
+  border-color: transparent;
+  background: transparent;
+  color: inherit;
+  cursor: default;
+}
+
+.info-value input:not(:disabled),
+.info-value select:not(:disabled) {
+  border-color: var(--color-borde);
+  background: white;
+  padding: 0.5rem;
+  border-radius: var(--radio-borde);
+}
+
+/* Botones del formulario */
+.form-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+  justify-content: flex-end;
+}
+
+.cancel-button {
+  background-color: var(--color-peligro);
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #d32f2f;
+}
   
   /* Responsive */
   @media (max-width: 1024px) {

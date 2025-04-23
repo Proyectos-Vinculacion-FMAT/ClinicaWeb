@@ -25,25 +25,54 @@
       <div class="left-column">
         <section class="info-section">
           <h3>Información Básica</h3>
-          <div class="info-grid">
-            <div class="info-label">Celular:</div>
-            <div class="info-value">55 1234 5678</div>
+          <button id="editar-info" class="edit-info-button">✏️ Editar</button>
+          <form id="info-form">
+            <div class="info-grid">
+              <div class="info-label">Celular:</div>
+              <div class="info-value">
+                <input type="tel" name="celular" value="55 1234 5678" disabled>
+              </div>
 
-            <div class="info-label">Email:</div>
-            <div class="info-value">maria.lopez@example.com</div>
+              <div class="info-label">Email:</div>
+              <div class="info-value">
+                <input type="email" name="email" value="maria.lopez@example.com" disabled>
+              </div>
 
-            <div class="info-label">Servicio:</div>
-            <div class="info-value">Psicodiagnóstico</div>
+              <div class="info-label">Servicio:</div>
+              <div class="info-value">
+                <select name="servicio" disabled>
+                  <option value="psicodiagnostico" selected>Psicodiagnóstico</option>
+                  <option value="psicoterapia">Psicoterapia</option>
+                  <option value="orientacion">Orientación</option>
+                </select>
+              </div>
 
-            <div class="info-label">Terapeuta:</div>
-            <div class="info-value">Dra. Ana Martínez</div>
+              <div class="info-label">Terapeuta:</div>
+              <div class="info-value">
+                <select name="terapeuta" disabled>
+                  <option value="1" selected>Dra. Ana Martínez</option>
+                  <option value="2">Dr. Juan Pérez</option>
+                  <option value="3">Lic. Laura García</option>
+                </select>
+              </div>
 
-            <div class="info-label">Fecha Registro:</div>
-            <div class="info-value">15/03/2024</div>
+              <div class="info-label">Fecha Registro:</div>
+              <div class="info-value">
+                <input type="date" name="fecha_registro" value="2024-03-15" disabled>
+              </div>
 
-            <div class="info-label">Próxima Sesión:</div>
-            <div class="info-value">25/04/2024 - 16:00 hrs</div>
-          </div>
+              <div class="info-label">Próxima Sesión:</div>
+              <div class="info-value">
+                <input type="datetime-local" name="proxima_sesion" value="2024-04-25T16:00" disabled>
+              </div>
+            </div>
+
+            <!-- Botones de acción del formulario (ocultos inicialmente) -->
+            <div class="form-actions" style="display: none;">
+              <button type="button" id="guardar-info" class="action-button save-button">Guardar</button>
+              <button type="button" id="cancelar-edicion" class="action-button cancel-button">Cancelar</button>
+            </div>
+          </form>
         </section>
         <br>
 
@@ -77,7 +106,7 @@
           <a href="#" class="document-item">3. Contrato de atención</a>
           <a href="#" class="document-item">4. Consentimiento</a>
           <a href="#" class="document-item">5. Derechos del cliente</a>
-          <a href="#" class="document-item">6. Control de sesión</a>
+          <a href="documentos/hoja_control.html" class="document-item">6. Control de sesión</a>
           <a href="#" class="document-item">7. Evaluación de servicio</a>
           <a href="#" class="document-item">8. Reporte Final</a>
           <a href="#" class="document-item">9. Documentos adjuntos</a>

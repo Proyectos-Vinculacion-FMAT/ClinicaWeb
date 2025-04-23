@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control de Sesión</title>
+  <link rel="stylesheet" href="../css/hoja_control.css">
+</head>
+<body>
+  <header>
+    <h1>Clínica de Atención Psicológica</h1>
+  </header>
+
+  <main>
+    <div class="patient-header">
+      <h2>Hoja de Control de Sesión - María López</h2>
+    </div>
+
+    <div class="form-layout">
+      <!-- Columna Izquierda - Opciones -->
+      <div class="left-column">
+        <div class="options-menu">
+          <div class="option active" data-target="formulario">
+            <span>1. Formulario</span>
+          </div>
+          <div class="option" data-target="adjunto">
+            <span>2. Archivo adjunto</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Central - Contenido -->
+      <div class="center-column">
+        <!-- Formulario (visible por defecto) -->
+        <div id="formulario" class="content-section active">
+          <form id="control-form">
+            <h3>Hoja de Control de Sesión</h3>
+            <div class="form-header">
+              <div class="form-group">
+                <label>Nombre del Paciente:</label>
+                <input type="text" name="nombre_paciente" readonly>
+              </div>
+              <div class="form-group">
+                <label>Edad:</label>
+                <input type="number" name="edad" readonly>
+              </div>
+              <div class="form-group">
+                <label>Sexo:</label>
+                <input type="text" name="sexo" readonly>
+              </div>
+            </div>
+
+            <!-- Sección de datos del terapeuta -->
+            <div class="form-group">
+              <label>Nombre del Terapeuta:</label>
+              <input type="text" name="terapeuta" readonly>
+            </div>
+
+            <!-- Contenedor de sesiones -->
+            <div id="sesiones-container">
+              <!-- Sesión 1 (inicial) -->
+              <div class="sesion-item" data-sesion-id="1">
+                <fieldset>
+                  <legend>Sesión 1</legend>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>No. de Sesión:</label>
+                      <input type="number" name="sesion_numero[]" disabled>
+                    </div>
+                    <div class="form-group">
+                      <label>Fecha:</label>
+                      <input type="date" name="sesion_fecha[]" disabled>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Asistió el paciente:</label>
+                    <div class="radio-group">
+                      <label><input type="radio" name="sesion_asistio_1" value="si" disabled> Sí</label>
+                      <label><input type="radio" name="sesion_asistio_1" value="no" disabled> No</label>
+                      <label><input type="radio" name="sesion_asistio_1" value="cancelo" disabled> Canceló</label>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group" id="quien-cancelo-1" style="display:none;">
+                    <label>¿Quién canceló?</label>
+                    <input type="text" name="sesion_quien_cancelo[]" disabled>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Motivo de Cancelación:</label>
+                    <input type="text" name="sesion_motivo_cancelacion[]" disabled>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Descripción de la Sesión:</label>
+                    <textarea name="sesion_descripcion[]" rows="4" disabled></textarea>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Observación del Terapeuta:</label>
+                    <textarea name="sesion_observacion[]" rows="4" disabled></textarea>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Adjunto (oculto por defecto) -->
+        <div id="adjunto" class="content-section">
+          <div class="upload-container">
+            <h3>Cargar archivo de control de sesión</h3>
+            <div class="drop-zone" id="drop-zone">
+              <span>Arrastra y suelta tu archivo aquí</span>
+              <span>o</span>
+              <input type="file" id="file-input" accept=".pdf,.jpg,.png">
+              <label for="file-input" class="browse-btn">Seleccionar archivo</label>
+            </div>
+            <div class="file-info" id="file-info"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha - Acciones -->
+      <div class="right-column">
+        <!-- Acciones para formulario -->
+        <div id="form-actions" class="actions-container">
+          <button id="volver-documentos" class="action-button back-button">Volver a lista de documentos</button>
+          <button id="editar-formato" class="action-button edit-button">Editar formato</button>
+          <button id="agregar-sesion" class="action-button add-button" style="display:none;">Agregar sesión</button>
+          <button id="guardar-cambios" class="action-button save-button">Guardar cambios</button>
+          <button id="deshacer-cambios" class="action-button undo-button">Deshacer cambios</button>
+          <button id="imprimir-formulario" class="action-button print-button">Imprimir formulario</button>
+        </div>
+
+        <!-- Acciones para adjunto -->
+        <div id="adjunto-actions" class="actions-container" style="display: none;">
+          <button id="volver-documentos-adjunto" class="action-button back-button">Volver a lista de documentos</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/hoja_control.js"></script>
+</body>
+</html>
