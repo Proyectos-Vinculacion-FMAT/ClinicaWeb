@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Solicitud de Cita - Clínica Psicológica</title>
+    <style>
+        :root {
+            --primary-color: #4A90E2;
+            --secondary-color: #2C3E50;
+            --background-color: #F8F9FA;
+            --text-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            display: flex;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        /* Sección del Formulario */
+        .form-section {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+            outline: none;
+        }
+
+        small {
+            display: block;
+            color: #666;
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+
+        /* Sección del Calendario */
+        .calendar-section {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .calendar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .month-navigation {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-button {
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .current-month {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .calendar-day {
+            text-align: center;
+            padding: 10px;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .calendar-date {
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+            border: 1px solid #eee;
+        }
+
+        .calendar-date:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .calendar-date.selected {
+            background: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+
+        .disabled {
+            background: #f8f8f8;
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Sección de Horas */
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .time-slot {
+            padding: 12px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .time-slot:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .time-slot.selected {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Botones */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .main-button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .submit-button {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .submit-button:hover {
+            background: var(--secondary-color);
+        }
+
+        .cancel-button {
+            background: #e74c3c;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                margin: 20px auto;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+            }
+
+            .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Animaciones */
+        @keyframes modalEntry {
+            0% {
+                transform: scale(0.8) translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes checkmarkAnim {
+            0% {
+                stroke-dashoffset: 48;
+            }
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes circleAnim {
+            0% {
+                stroke-dashoffset: 157;
+            }
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal.show {
+            display: flex;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            transform-origin: center;
+            animation: modalEntry 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .checkmark__circle {
+            stroke: #4a90e2;
+            stroke-width: 2;
+            stroke-dasharray: 157;
+            stroke-dashoffset: 157;
+            animation: circleAnim 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        .checkmark__check {
+            transform-origin: 50% 50%;
+            stroke: #4a90e2;
+            stroke-width: 2;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: checkmarkAnim 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.4s forwards;
+        }
+
+        .modal-title {
+            color: #2c3e50;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .modal-list {
+            text-align: left;
+            margin: 1.5rem 0;
+            padding-left: 1.2rem;
+        }
+
+        .modal-list li {
+            margin: 0.8rem 0;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .credentials {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 0.8rem;
+            margin: 1.2rem 0;
+            font-size: 0.9rem;
+        }
+
+        .modal-button {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .modal-button:hover {
+            background: #357ABD;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-content {
+                padding: 1.5rem;
+                border-radius: 1rem;
+            }
+
+            .modal-title {
+                font-size: 1.4rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Formulario -->
+    <div class="form-section">
+        <h1>Solicitud de Cita</h1>
+        <p class="subtitle">Completa tus datos para agendar tu cita</p>
+
+        <form id="appointmentForm">
+            <div class="form-grid">
+                <div class="full-width">
+                    <label>
+                        Nombre completo
+                        <input required type="text">
+                        <small>Ejemplo: María Guadalupe Pérez Hernández</small>
+                    </label>
+                </div>
+
+                <label>
+                    Fecha de nacimiento
+                    <input required type="date">
+                </label>
+
+                <label>
+                    Correo electrónico
+                    <input required type="email">
+                </label>
+
+                <label>
+                    Teléfono
+                    <input pattern="[0-9]{10}" required type="tel">
+                    <small>10 dígitos sin espacios</small>
+                </label>
+
+                <div class="full-width">
+                    <label>
+                        Motivo de la consulta
+                        <input type="text">
+                        <small>Breve descripción (opcional)</small>
+                    </label>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="main-button submit-button" type="submit">Agendar Cita</button>
+                <button class="main-button cancel-button" type="reset">Limpiar</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Calendario -->
+    <div class="calendar-section">
+        <div class="calendar-header">
+            <div class="month-navigation">
+                <button class="nav-button prev">‹</button>
+                <span class="current-month">Septiembre 2023</span>
+                <button class="nav-button next">›</button>
+            </div>
+        </div>
+
+        <div class="calendar-grid">
+            <!-- Días de la semana -->
+            <div class="calendar-day">Dom</div>
+            <div class="calendar-day">Lun</div>
+            <div class="calendar-day">Mar</div>
+            <div class="calendar-day">Mié</div>
+            <div class="calendar-day">Jue</div>
+            <div class="calendar-day">Vie</div>
+            <div class="calendar-day">Sáb</div>
+
+            <!-- Fechas -->
+            <div class="calendar-date disabled">29</div>
+            <div class="calendar-date disabled">30</div>
+            <div class="calendar-date">1</div>
+            <div class="calendar-date">2</div>
+            <div class="calendar-date">3</div>
+            <!-- ... más fechas ... -->
+        </div>
+
+        <div class="time-slots">
+            <div class="time-slot">09:00 AM</div>
+            <div class="time-slot">10:00 AM</div>
+            <div class="time-slot">11:00 AM</div>
+            <div class="time-slot">12:00 PM</div>
+            <div class="time-slot">04:00 PM</div>
+            <div class="time-slot">05:00 PM</div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="confirmationModal">
+    <div class="modal-content">
+        <div class="animation-container">
+            <svg class="checkmark" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+                <circle class="checkmark__circle" cx="26" cy="26" fill="none" r="25"/>
+                <path class="checkmark__check" d="M14.1 27.2l7.1 7.2 16.7-16.8" fill="none"/>
+            </svg>
+        </div>
+        <h2 class="modal-title">¡Solicitud Exitosa! 🎉</h2>
+        <div class="modal-body">
+            <p>Hemos recibido tu solicitud correctamente:</p>
+            <ul class="modal-list">
+                <li>✔️ Recibirás una llamada para confirmar disponibilidad</li>
+                <li>✔️ Se envió un correo de confirmación a tu dirección</li>
+                <li>✔️ Si es aprobada, recibirás credenciales temporales</li>
+            </ul>
+            <div class="credentials">
+                <p>Usuario: <span id="temp-email">(tu correo electrónico)</span></p>
+                <p>Contraseña temporal: <span id="temp-password">******</span></p>
+            </div>
+        </div>
+        <button class="modal-button" id="modalClose">Entendido</button>
+    </div>
+</div>
+
+<script>
+    // Lógica del calendario
+    let currentDate = new Date();
+    let selectedDate = null;
+    let selectedTime = null;
+
+    function generateCalendar(date) {
+        // Implementar lógica para generar el calendario
+    }
+
+    document.querySelectorAll('.calendar-date').forEach(date => {
+        date.addEventListener('click', function () {
+            if (!this.classList.contains('disabled')) {
+                document.querySelectorAll('.calendar-date').forEach(d => d.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedDate = this.textContent;
+                document.querySelector('.time-slots').classList.remove('hidden');
+            }
+        });
+    });
+
+    document.querySelectorAll('.time-slot').forEach(slot => {
+        slot.addEventListener('click', function () {
+            document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('selected'));
+            this.classList.add('selected');
+            selectedTime = this.textContent;
+        });
+    });
+
+    document.getElementById('appointmentForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        if (!selectedDate || !selectedTime) {
+            alert('Por favor selecciona fecha y hora');
+            return;
+        }
+
+        // Mostrar modal
+        const modal = document.getElementById('confirmationModal');
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('show'), 10);
+
+        // Reiniciar animaciones
+        document.querySelectorAll('.checkmark__circle, .checkmark__check').forEach(el => {
+            el.style.animation = 'none';
+            void el.offsetWidth; // Trigger reflow
+            el.style.animation = null;
+        });
+    });
+
+    document.getElementById('modalClose').addEventListener('click', function () {
+        document.getElementById('confirmationModal').classList.remove('show');
+        setTimeout(() => {
+            window.location.href = '../index.html'; // Ajustar ruta
+        }, 300);
+    });
+
+</script>
+</body>
+</html>
