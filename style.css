@@ -1,0 +1,273 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    margin-right: 15px;
+}
+
+.clinic-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4a90e2;
+    margin: 0;
+}
+
+.nav a {
+    text-decoration: none;
+    font-size: 1rem;
+    margin-left: 25px;
+    color: #4a90e2;
+    transition: all 0.3s;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.nav a:hover {
+    color: #357ABD;
+    background-color: #f0f7ff;
+}
+
+.main-content {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.welcome-section h2 {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.welcome-section p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    color: #555;
+}
+
+.actions-section {
+    margin: 80px auto;
+}
+
+.actions-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    color: #2c3e50;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.primary-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    background-color: #4a90e2;
+    color: #fff;
+    padding: 25px 35px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 220px;
+    box-shadow: 0 4px 8px rgba(74, 144, 226, 0.2);
+}
+
+.primary-btn:hover {
+    background-color: #357ABD;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(74, 144, 226, 0.3);
+}
+
+.btn-subtext {
+    font-size: 0.85rem;
+    margin-top: 8px;
+    opacity: 0.9;
+    font-weight: 300;
+    text-align: center;
+}
+
+.footer {
+    background-color: #2c3e50;
+    text-align: center;
+    padding: 30px;
+    margin-top: 80px;
+    color: #ecf0f1;
+    font-size: 0.95rem;
+}
+
+.footer p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+
+/* Modificaciones al CSS existente */
+
+.hero-image img {
+    max-width: 100%;
+    max-height: 400px; /* Altura máxima reducida */
+    height: auto;
+    width: auto;
+    object-fit: cover;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+.info-section {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    margin: 60px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-section h3 {
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.info-section ul {
+    padding: 0;
+}
+
+.info-section li {
+    font-size: 1.1rem;
+    margin: 10px;
+    padding: 15px 25px;
+    background-color: #f8fafc;
+    border-radius: 6px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    min-width: 200px;
+}
+
+.info-section li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.info-section li::after {
+    content: '+';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4a90e2;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+.info-section li.servicio-expandido {
+    background-color: #4a90e2;
+    color: white;
+    transform: translateY(-5px);
+    padding: 25px;
+    margin: 15px 0;
+    display: block;
+    text-align: left;
+}
+
+.info-section li.servicio-expandido::after {
+    content: '-';
+    transform: translateY(-50%) rotate(180deg);
+    color: white;
+}
+
+.info-section li.servicio-expandido::before {
+    content: attr(data-descripcion);
+    display: block;
+    font-size: 0.95rem;
+    margin-top: 10px;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+/* Nuevas animaciones */
+.fade-in {
+    opacity: 0;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .nav {
+        margin-top: 20px;
+    }
+
+    .nav a {
+        margin: 0 10px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .primary-btn {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .welcome-section h2 {
+        font-size: 1.8rem;
+    }
+}
