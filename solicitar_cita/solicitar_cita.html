@@ -3,121 +3,390 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulario de Bienestar</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <title>Solicitud de Cita - Clínica Psicológica</title>
+  <style>
+    :root {
+      --primary-color: #4A90E2;
+      --secondary-color: #2C3E50;
+      --background-color: #F8F9FA;
+      --text-color: #333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+
+    .container {
+      display: flex;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    /* Sección del Formulario */
+    .form-section {
+      flex: 1;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      color: var(--secondary-color);
+      margin-bottom: 15px;
+      font-size: 2em;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 500;
+      color: var(--secondary-color);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1em;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+      outline: none;
+    }
+
+    small {
+      display: block;
+      color: #666;
+      font-size: 0.85em;
+      margin-top: 5px;
+    }
+
+    /* Sección del Calendario */
+    .calendar-section {
+      flex: 1;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .calendar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+
+    .month-navigation {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .nav-button {
+      background: var(--primary-color);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2em;
+      transition: all 0.3s ease;
+    }
+
+    .nav-button:hover {
+      background: var(--secondary-color);
+      transform: scale(1.1);
+    }
+
+    .current-month {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: var(--secondary-color);
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      margin-bottom: 20px;
+    }
+
+    .calendar-day {
+      text-align: center;
+      padding: 10px;
+      font-weight: 600;
+      color: var(--secondary-color);
+    }
+
+    .calendar-date {
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: white;
+      border: 1px solid #eee;
+    }
+
+    .calendar-date:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .calendar-date.selected {
+      background: var(--secondary-color);
+      color: white;
+      border-color: var(--secondary-color);
+    }
+
+    .disabled {
+      background: #f8f8f8;
+      color: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Sección de Horas */
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .time-slot {
+      padding: 12px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .time-slot:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .time-slot.selected {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    /* Botones */
+    .button-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .main-button {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      flex: 1;
+    }
+
+    .submit-button {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .submit-button:hover {
+      background: var(--secondary-color);
+    }
+
+    .cancel-button {
+      background: #e74c3c;
+      color: white;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        margin: 20px auto;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .calendar-grid {
+        grid-template-columns: repeat(7, 1fr);
+      }
+
+      .time-slots {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
 </head>
 <body>
-  <div id="notification" class="notification hidden"></div>
-  <div class="container">
-    <!-- Sección del Formulario -->
-    <div class="form-section">
-      <h1>Da el primer paso</h1>
-      <p class="subtitle">“Tu bienestar comienza aquí”</p>
+<div class="container">
+  <!-- Formulario -->
+  <div class="form-section">
+    <h1>Solicitud de Cita</h1>
+    <p class="subtitle">Completa tus datos para agendar tu cita</p>
 
-      <form id="mainForm">
-        <label for="nombre">
-          Nombre(s)
-          <input type="text" id="nombre" placeholder="Nombre" required>
-          <small>Ejemplo: Fernando Ismael</small>
-        </label>
+    <form id="appointmentForm">
+      <div class="form-grid">
+        <div class="full-width">
+          <label>
+            Nombre completo
+            <input type="text" required>
+            <small>Ejemplo: María Guadalupe Pérez Hernández</small>
+          </label>
+        </div>
 
-        <label for="primerApellido">
-          Primer apellido
-          <input type="text" id="primerApellido" placeholder="Primer apellido" required>
-          <small>Ejemplo: Canul</small>
-        </label>
-
-        <label for="segundoApellido">
-          Segundo apellido
-          <input type="text" id="segundoApellido" placeholder="Segundo apellido">
-          <small>Ejemplo: Caballero</small>
-        </label>
-
-        <label for="fechaNacimiento">
+        <label>
           Fecha de nacimiento
-          <input type="date" id="fechaNacimiento" required>
+          <input type="date" required>
         </label>
 
-        <label for="email">
+        <label>
           Correo electrónico
-          <input type="email" id="email" placeholder="Correo electrónico" required>
-          <small>Ejemplo: fcanul@gmail.com</small>
+          <input type="email" required>
         </label>
 
-        <label for="telefono">
-          Número telefónico
-          <input type="tel" id="telefono" placeholder="Número telefónico" required>
-          <small>Ejemplo: 9994138553</small>
+        <label>
+          Teléfono
+          <input type="tel" pattern="[0-9]{10}" required>
+          <small>10 dígitos sin espacios</small>
         </label>
 
-        <!-- Sección del Tutor (oculta inicialmente) -->
-        <div id="tutorSection" class="hidden">
-          <h3>Datos del tutor</h3>
-          
-          <label for="tutorNombre">
-            Nombre(s) del tutor
-            <input type="text" id="tutorNombre" placeholder="Nombre del tutor">
-          </label>
-
-          <label for="tutorPrimerApellido">
-            Primer apellido del tutor
-            <input type="text" id="tutorPrimerApellido" placeholder="Primer apellido del tutor">
-          </label>
-
-          <label for="tutorSegundoApellido">
-            Segundo apellido del tutor
-            <input type="text" id="tutorSegundoApellido" placeholder="Segundo apellido del tutor">
-          </label>
-
-          <label for="tutorEdad">
-            Edad del tutor
-            <input type="number" id="tutorEdad" placeholder="Edad del tutor" min="18">
-          </label>
-
-          <label for="tutorParentesco">
-            Parentesco
-            <input type="text" id="tutorParentesco" placeholder="Parentesco con el menor">
-            <small>Ejemplo: Padre, Madre, Tío, etc.</small>
-          </label>
-
-          <label for="tutorEmail">
-            Correo electrónico del tutor
-            <input type="email" id="tutorEmail" placeholder="Correo electrónico del tutor">
-          </label>
-
-          <label for="tutorTelefono">
-            Número telefónico del tutor
-            <input type="tel" id="tutorTelefono" placeholder="Número telefónico del tutor">
+        <div class="full-width">
+          <label>
+            Motivo de la consulta
+            <input type="text">
+            <small>Breve descripción (opcional)</small>
           </label>
         </div>
-
-        <button type="submit" class="main-button">✔ Confirmar</button>
-        <button type="button" id="cancelButton" class="main-button">X Cancelar</button>
-        <a href="../index.html" class="main-button back-button">← Regresar</a>
-      </form>
-    </div>
-
-    <!-- Sección del Calendario -->
-    <div class="calendar-section">
-      <div class="calendar-header">
-        <button class="nav-button prev">‹</button>
-        <span class="selected-date">Selecciona la fecha</span>
-        <button class="nav-button next">›</button>
       </div>
 
-      <div class="calendar-grid">
-        <div class="calendar-month"></div>
-        <div class="calendar-days">
-          <span>Dom</span><span>Lun</span><span>Mar</span><span>Mié</span>
-          <span>Jue</span><span>Vie</span><span>Sáb</span>
-        </div>
-        <div class="calendar-dates" id="calendarDates"></div>
-        <div class="calendar-buttons">
-        </div>
+      <div class="button-group">
+        <button type="submit" class="main-button submit-button">Agendar Cita</button>
+        <button type="reset" class="main-button cancel-button">Limpiar</button>
       </div>
-    </div>
+    </form>
   </div>
 
-  <script src="js/solicitar_cita.js"></script>
+  <!-- Calendario -->
+  <div class="calendar-section">
+    <div class="calendar-header">
+      <div class="month-navigation">
+        <button class="nav-button prev">‹</button>
+        <span class="current-month">Septiembre 2023</span>
+        <button class="nav-button next">›</button>
+      </div>
+    </div>
+
+    <div class="calendar-grid">
+      <!-- Días de la semana -->
+      <div class="calendar-day">Dom</div>
+      <div class="calendar-day">Lun</div>
+      <div class="calendar-day">Mar</div>
+      <div class="calendar-day">Mié</div>
+      <div class="calendar-day">Jue</div>
+      <div class="calendar-day">Vie</div>
+      <div class="calendar-day">Sáb</div>
+
+      <!-- Fechas -->
+      <div class="calendar-date disabled">29</div>
+      <div class="calendar-date disabled">30</div>
+      <div class="calendar-date">1</div>
+      <div class="calendar-date">2</div>
+      <div class="calendar-date">3</div>
+      <!-- ... más fechas ... -->
+    </div>
+
+    <div class="time-slots">
+      <div class="time-slot">09:00 AM</div>
+      <div class="time-slot">10:00 AM</div>
+      <div class="time-slot">11:00 AM</div>
+      <div class="time-slot">12:00 PM</div>
+      <div class="time-slot">04:00 PM</div>
+      <div class="time-slot">05:00 PM</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Lógica del calendario
+  let currentDate = new Date();
+  let selectedDate = null;
+  let selectedTime = null;
+
+  function generateCalendar(date) {
+    // Implementar lógica para generar el calendario
+  }
+
+  document.querySelectorAll('.calendar-date').forEach(date => {
+    date.addEventListener('click', function() {
+      if(!this.classList.contains('disabled')) {
+        document.querySelectorAll('.calendar-date').forEach(d => d.classList.remove('selected'));
+        this.classList.add('selected');
+        selectedDate = this.textContent;
+        document.querySelector('.time-slots').classList.remove('hidden');
+      }
+    });
+  });
+
+  document.querySelectorAll('.time-slot').forEach(slot => {
+    slot.addEventListener('click', function() {
+      document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('selected'));
+      this.classList.add('selected');
+      selectedTime = this.textContent;
+    });
+  });
+
+  document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    if(!selectedDate || !selectedTime) {
+      alert('Por favor selecciona fecha y hora');
+      return;
+    }
+    // Enviar formulario
+    alert('Cita agendada exitosamente!');
+  });
+</script>
 </body>
 </html>
