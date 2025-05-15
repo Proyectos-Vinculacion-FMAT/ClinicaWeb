@@ -245,8 +245,26 @@
   margin-left: 0.3rem;
 }
 
+.documento-pendiente {
+    background-color: #fff8e1; /* Fondo amarillo claro */
+    border-color: #ffe0b2 !important; /* Borde naranja claro */
+    color: #ff8f00; /* Texto ámbar oscuro */
+}
+
+.badge-pendiente {
+    font-size: 0.7rem;
+    color: #ff8f00;
+    font-weight: bold;
+    margin-left: 0.3rem;
+}
+
 /* Mantener el hover effect pero con tonos verdes */
 .documento-completado:hover {
-  background-color: #dcedc8;
-  border-color: #a5d6a7 !important;
+    background-color: #dcedc8;
+    border-color: #a5d6a7 !important;
+}
+
+.documento-pendiente:hover {
+    background-color: #ffecb3;
+    border-color: #ffcc80 !important;
 }
