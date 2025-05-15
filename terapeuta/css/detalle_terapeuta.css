@@ -12,7 +12,7 @@
 /* Estructura principal */
 .detalle-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   gap: 1.5rem;
   padding: 1.5rem;
   min-height: calc(100vh - 150px);
@@ -205,6 +205,87 @@
     align-items: flex-start;
     gap: 1rem;
   }
+}
+
+.week-calendar {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.calendar-header {
+  display: flex;
+  background: #f5f5f5;
+  font-weight: bold;
+}
+
+.calendar-header .day,
+.time-slot {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  border-right: 1px solid #ddd;
+}
+
+.calendar-header .time-column {
+  width: 80px;
+  padding: 10px;
+}
+
+.calendar-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.time-row {
+  display: flex;
+  min-height: 40px;
+  border-bottom: 1px solid #eee;
+}
+
+.time-label {
+  width: 80px;
+  padding: 5px;
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+}
+
+.day-slot {
+  flex: 1;
+  border-right: 1px solid #eee;
+  position: relative;
+}
+
+/* Bloques de horario ocupados/disponibles */
+.slot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.slot.disponible {
+  background: #e3f7e8;
+  border: 1px solid #a0d9b4;
+}
+
+.slot.ocupado {
+  background: #ffebee;
+  border: 1px solid #ffcdd2;
+}
+
+.edit-detalle {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 10px;
+  width: 200px;
 }
 
 /* Estilos para los modos de vista y edición */

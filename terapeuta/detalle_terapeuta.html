@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,36 +8,25 @@
     <link rel="stylesheet" href="../agenda/css/styles.css">
     <link rel="stylesheet" href="css/detalle_terapeuta.css">
 </head>
+
 <body>
     <header>
         <h1>Clínica de Atención Psicológica</h1>
+        <nav>
+            <ul>
+                <li><a href="../agenda/agenda.html">Agenda</a></li>
+                <li><a href="../pacientes/pacientes.html">Paciente</a></li>
+                <li>Terapeuta</li>
+                <li><a href="../salas/salas.html">Salas</a></li>
+                <li><a href="../coordinacion/coordinacion.html">Coordinación</a></li>
+                <li><a href="../reportes/reportes.html">Reportes</a></li>
+                <li><a href="../index.html">Salir</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main class="detalle-container">
-        <!-- Panel izquierdo: Pacientes del terapeuta -->
-        <div class="panel pacientes-list">
-            <button class="btn-back" onclick="window.location.href='terapeuta.html'">← Volver</button>
-            <h2>Pacientes asignados</h2>
-            <div class="search-box">
-                <input type="text" placeholder="Buscar paciente...">
-            </div>
-            <div class="pacientes-container">
-                <div class="paciente-item">
-                    <span><a href="../pacientes/detalle_paciente_activo.html">Maria López</a> </span>
-                    <span class="paciente-status">Activo</span>
-                </div>
-                <div class="paciente-item">
-                    <span>Juan Pérez</span>
-                    <span class="paciente-status">En espera</span>
-                </div>
-                <div class="paciente-item">
-                    <span>Ana García</span>
-                    <span class="paciente-status">Activo</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Panel derecho: Información del terapeuta -->
+        <!-- Panel izquierdo: Información del terapeuta -->
         <div class="panel terapeuta-info">
             <div class="terapeuta-header">
                 <h2 id="terapeuta-nombre">Ana García</h2>
@@ -58,9 +48,17 @@
                 </div>
 
                 <div class="info-section">
-                    <h3>Horarios disponibles</h3>
-                    <div class="horarios-list" id="horarios-view">
-                        <!-- Horarios se cargan dinámicamente -->
+                    <h3>Horarios</h3>
+                    <div class="week-calendar">
+                        <div class="calendar-header">
+                            <div class="time-column"></div>
+                            <div class="day">Lunes</div>
+                            <div class="day">Martes</div>
+                            <div class="day">Miércoles</div>
+                            <div class="day">Jueves</div>
+                            <div class="day">Viernes</div>
+                        </div>
+                        <div class="calendar-body" id="calendar-slots"></div>
                     </div>
                 </div>
             </div>
@@ -96,15 +94,30 @@
 
                 <div class="info-section">
                     <h3>Horarios disponibles</h3>
-                    <div id="horarios-edit">
-                        <!-- Horarios editables se cargan dinámicamente -->
-                    </div>
+                    <div id="horarios-edit"></div>
                     <button type="button" class="btn-add" id="btnAddHorario">➕ Añadir Horario</button>
                 </div>
             </form>
+        </div>
+
+        <!-- Panel Derecho: Pacientes del terapeuta -->
+        <div class="panel pacientes-list">
+            <button class="btn-edit" onclick="window.location.href='terapeuta.html'">← Volver a lista de
+                terapeutas</button>
+            <h2>Pacientes asignados</h2>
+            <div class="search-box">
+                <input type="text" placeholder="Buscar paciente...">
+            </div>
+            <div class="pacientes-container">
+                <div class="paciente-item">
+                    <span><a href="../pacientes/detalle_paciente_activo.html">Maria López</a></span>
+                    <span class="paciente-status">Activo</span>
+                </div>
+            </div>
         </div>
     </main>
 
     <script src="js/detalle_terapeuta.js"></script>
 </body>
+
 </html>

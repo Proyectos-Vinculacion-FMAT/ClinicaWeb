@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="../agenda/css/styles.css">
   <link rel="stylesheet" href="css/terapeuta.css">
 </head>
+
 <body>
   <header>
     <h1>Clínica de Atención Psicológica</h1>
@@ -25,30 +27,13 @@
 
   <main class="terapeutas-container">
     <section class="layout">
-      <!-- Panel central: lista de terapeutas -->
-      <div class="panel">
-        <h3>Terapeutas</h3>
-        <div class="therapist-list">
-          <a href="detalle_terapeuta.html" class="therapist-list" data-nombre="Ana García" data-tipo="tipo1">
-            <span>Ana García - Psicodiagnóstico</span>
-            <span class="therapist-status">Activo</span>
-          </a>
-          <div class="therapist-list" data-nombre="Carlos Méndez" data-tipo="tipo2">
-            <span>Carlos Méndez - Terapia Individual</span>
-            <span class="therapist-status">Activo</span>
-          </div>
-          <div class="therapist-list" data-nombre="Luisa Fernández" data-tipo="tipo1">
-            <span>Luisa Fernández - Psicodiagnóstico</span>
-            <span class="therapist-status">Pasante</span>
-          </div>
-        </div>
-      </div>
+
 
       <!-- Panel derecho: filtros y acciones -->
       <div class="panel filters">
         <h3>Filtros</h3>
         <button class="btn-action" id="btnNuevoTerapeuta">➕ Nuevo Terapeuta</button>
-        
+
         <label for="buscar-nombre">Buscar por nombre</label>
         <input type="text" id="buscar-nombre" placeholder="Ej: Ana García">
 
@@ -67,6 +52,25 @@
           <option value="externo">Externo</option>
         </select>
       </div>
+
+      <!-- Panel central: lista de terapeutas -->
+      <div class="panel">
+        <h3>Terapeutas</h3>
+        <div class="therapist-list">
+          <a href="detalle_terapeuta.html" class="therapist-list" data-nombre="Ana García" data-tipo="tipo1">
+            <span>Ana García - Psicodiagnóstico</span>
+            <span class="therapist-status">Activo</span>
+          </a>
+          <div class="therapist-list" data-nombre="Carlos Méndez" data-tipo="tipo2">
+            <span>Carlos Méndez - Terapia Individual</span>
+            <span class="therapist-status">Activo</span>
+          </div>
+          <div class="therapist-list" data-nombre="Luisa Fernández" data-tipo="tipo1">
+            <span>Luisa Fernández - Psicodiagnóstico</span>
+            <span class="therapist-status">Pasante</span>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -80,17 +84,17 @@
           <label for="nombre">Nombre completo</label>
           <input type="text" id="nombre" required>
         </div>
-        
+
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" id="email" required>
         </div>
-        
+
         <div class="form-group">
           <label for="telefono">Teléfono</label>
           <input type="tel" id="telefono">
         </div>
-        
+
         <div class="form-group">
           <label for="rol">Rol</label>
           <select id="rol" required>
@@ -99,7 +103,7 @@
             <option value="externo">Externo</option>
           </select>
         </div>
-        
+
         <div class="form-group">
           <label for="tipo-servicio-modal">Tipo de servicio</label>
           <select id="tipo-servicio-modal" required>
@@ -107,13 +111,13 @@
             <option value="tipo2">Terapia Individual</option>
           </select>
         </div>
-        
+
         <h3>Horarios Disponibles</h3>
         <div id="horarios-container">
           <!-- Los horarios se añadirán dinámicamente -->
         </div>
         <button type="button" class="btn-add" id="btnAddHorario">➕ Añadir Horario</button>
-        
+
         <div class="form-actions">
           <button type="submit" class="btn-primary">Guardar</button>
           <button type="button" class="btn-cancel close-modal">Cancelar</button>
@@ -124,4 +128,5 @@
 
   <script src="js/terapeuta.js"></script>
 </body>
+
 </html>
