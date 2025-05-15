@@ -25,7 +25,87 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Panel izquierdo: Lista de pacientes */
+/* Panel izquierdo: Información del terapeuta */
+.terapeuta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-primario);
+}
+
+.terapeuta-header h2 {
+  color: var(--color-primario);
+  margin: 0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-edit, .btn-save, .btn-cancel {
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-edit {
+  background-color: var(--color-primario);
+}
+
+.btn-edit:hover {
+  background-color: var(--color-secundario);
+}
+
+.btn-save {
+  background-color: var(--color-exito);
+}
+
+.btn-cancel {
+  background-color: var(--color-peligro);
+}
+
+.info-section {
+  margin-bottom: 1.5rem;
+}
+
+.info-section h3 {
+  color: var(--color-secundario);
+  margin-bottom: 1rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Badges para roles */
+.badge[data-rol="activo"] {
+  background-color: var(--color-exito);
+  color: white;
+}
+
+.badge[data-rol="pasante"] {
+  background-color: var(--color-advertencia);
+  color: #333;
+}
+
+.badge[data-rol="externo"] {
+  background-color: #9e9e9e;
+  color: white;
+}
+
+/* Panel Derecho: Lista de pacientes */
 .pacientes-list h2 {
   color: var(--color-primario);
   margin-bottom: 1.5rem;
@@ -70,147 +150,11 @@
   color: white;
 }
 
-.paciente-status[data-status="espera"] {
-  background-color: var(--color-advertencia);
-  color: #333;
-}
-
-/* Panel derecho: Información del terapeuta */
-.terapeuta-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--color-primario);
-}
-
-.terapeuta-header h2 {
-  color: var(--color-primario);
-  margin: 0;
-}
-
-.btn-edit {
-  background-color: var(--color-primario);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.btn-edit:hover {
-  background-color: var(--color-secundario);
-}
-
-.info-section {
-  margin-bottom: 2rem;
-}
-
-.info-section h3 {
-  color: var(--color-secundario);
-  margin-bottom: 1rem;
-}
-
-.badge {
-  display: inline-block;
-  padding: 0.3rem 0.6rem;
-  border-radius: 1rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.rol-activo {
-  background-color: var(--color-exito);
-  color: white;
-}
-
-.rol-pasante {
-  background-color: var(--color-advertencia);
-  color: #333;
-}
-
-.rol-externo {
-  background-color: var(--color-peligro);
-  color: white;
-}
-
-/* Horarios */
-.horarios-list {
-  margin-top: 1rem;
-}
-
-.horario-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.7rem;
-  border-bottom: 1px solid var(--color-borde);
-}
-
-.dia {
-  font-weight: 500;
-}
-
-/* Estadísticas */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.stat-item {
-  background-color: white;
-  padding: 1rem;
-  border-radius: 0.3rem;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.stat-number {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--color-primario);
-  display: block;
-}
-
-.stat-label {
-  font-size: 0.8rem;
-  color: #666;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .detalle-container {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem;
-  }
-
-  .panel {
-    padding: 1rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .terapeuta-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-}
-
+/* Calendario de horarios */
 .week-calendar {
   display: flex;
   flex-direction: column;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-borde);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -221,12 +165,11 @@
   font-weight: bold;
 }
 
-.calendar-header .day,
-.time-slot {
+.calendar-header .day {
   flex: 1;
   padding: 10px;
   text-align: center;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid var(--color-borde);
 }
 
 .calendar-header .time-column {
@@ -259,7 +202,7 @@
   position: relative;
 }
 
-/* Bloques de horario ocupados/disponibles */
+/* Bloques de horario */
 .slot {
   position: absolute;
   left: 0;
@@ -280,52 +223,7 @@
   border: 1px solid #ffcdd2;
 }
 
-.edit-detalle {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-left: 10px;
-  width: 200px;
-}
-
-/* Estilos para los modos de vista y edición */
-#view-mode,
-#edit-mode {
-  transition: all 0.3s ease;
-}
-
-.action-buttons {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.btn-save {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.3rem;
-  cursor: pointer;
-}
-
-.btn-cancel {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.3rem;
-  cursor: pointer;
-}
-
-.btn-add {
-  background: none;
-  border: none;
-  color: #004080;
-  cursor: pointer;
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-}
-
+/* Formulario de edición */
 .form-group {
   margin-bottom: 1rem;
 }
@@ -340,12 +238,12 @@
 .form-group select {
   width: 100%;
   padding: 0.6rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-borde);
   border-radius: 0.3rem;
   font-size: 0.9rem;
 }
 
-/* Estilos para los horarios editables */
+/* Horarios editables */
 .horario-editable {
   display: flex;
   gap: 0.5rem;
@@ -354,30 +252,61 @@
 }
 
 .horario-editable select,
-.horario-editable input {
+.horario-editable input[type="time"] {
   padding: 0.5rem;
+}
+
+.edit-detalle {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 10px;
+  width: 200px;
+}
+
+.btn-add {
+  background: none;
+  border: none;
+  color: var(--color-primario);
+  cursor: pointer;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
 }
 
 .btn-remove-horario {
   background: none;
   border: none;
-  color: #f44336;
+  color: var(--color-peligro);
   cursor: pointer;
   font-size: 1rem;
 }
 
-/* Badges para roles */
-.badge[data-rol="activo"] {
-  background-color: #4caf50;
-  color: white;
+/* Responsive */
+@media (max-width: 1024px) {
+  .detalle-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .panel {
+    padding: 1rem;
+  }
 }
 
-.badge[data-rol="pasante"] {
-  background-color: #ffc107;
-  color: #333;
-}
-
-.badge[data-rol="externo"] {
-  background-color: #9e9e9e;
-  color: white;
+@media (max-width: 600px) {
+  .terapeuta-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .horario-editable {
+    flex-wrap: wrap;
+  }
+  
+  .edit-detalle {
+    width: 100%;
+    margin-left: 0;
+  }
 }
