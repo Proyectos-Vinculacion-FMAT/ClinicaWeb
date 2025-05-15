@@ -207,13 +207,13 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     const marcarDocumentosCompletados = () => {
         // Documentos marcados como completados (simulado)
-        const docsCompletados = ['Entrevista inicial', 'Control de sesión'];
+        const docsCompletados = ['Entrevista inicial'];
         
         documentosItems.forEach(item => {
             const docName = item.textContent.replace(/^\d+\.\s*/, '').trim();
             if(docsCompletados.includes(docName)) {
                 item.classList.add('documento-completado');
-                item.innerHTML += ' <span class="badge-completo">✓</span>';
+                item.innerHTML += ' <span class="badge-completo">-Completado-</span>';
             }
         });
     };

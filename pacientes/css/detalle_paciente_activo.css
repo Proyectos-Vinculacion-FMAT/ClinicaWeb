@@ -226,3 +226,27 @@
       grid-template-columns: 1fr;
     }
   }
+
+  /* Añade esto al final de tu archivo CSS */
+
+/* Estilo para documentos completados */
+.documento-completado {
+  background-color: #e8f5e9; /* Verde muy claro */
+  border-color: #c8e6c9 !important; /* Borde verde claro */
+  position: relative;
+  color: #2e7d32; 
+}
+
+/* Estilo para el badge de completado */
+.badge-completo {
+  font-size: 0.7rem;
+  color: var(--color-exito);
+  font-weight: bold;
+  margin-left: 0.3rem;
+}
+
+/* Mantener el hover effect pero con tonos verdes */
+.documento-completado:hover {
+  background-color: #dcedc8;
+  border-color: #a5d6a7 !important;
+}
