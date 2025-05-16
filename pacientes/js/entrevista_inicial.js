@@ -151,6 +151,12 @@ document.addEventListener("DOMContentLoaded", function () {
       displayFileInfo(file);
       hasUploadedFile = true;
       updateDropZoneUI();
+
+      // Ocultar mensaje temporal si existe
+      const tempMessage = document.querySelector('.temp-message');
+      if (tempMessage) {
+        tempMessage.remove();
+      }
     }
   }
 
