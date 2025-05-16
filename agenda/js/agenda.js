@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalNuevo.style.display = 'block';
   }
 
-  // --- Borrar cita real ---
+  // --- Borrar cita real  ---
   function borraCita(id) {
     const idx = citasReales.findIndex(c => c.id === id);
     if (idx > -1) citasReales.splice(idx, 1);
