@@ -1,5 +1,5 @@
 /* ==========================================================================
-   bandeja-entrada.js – lógica de solicitudes, mensajería y programación
+   bandeja-entrada.js – lógica de solicitudes, mensajería y programación 
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
   /* -----------------------------------------------------------------------
