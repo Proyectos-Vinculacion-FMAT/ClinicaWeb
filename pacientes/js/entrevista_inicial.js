@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Estado para controlar si hay archivo cargado
   let hasUploadedFile = false;
-  const fakeFileName = "1.2 Encuesta de Nivel Socioeconómico.pdf";
+  const fakeFileName = "1.1 Entrevista inicial.pdf";
   const samplePdfUrl = 'https://drive.google.com/file/d/13GVOSS5QLQ2Ma-L5cwVIjB-5SG61tnR0/view?usp=sharing';
 
   // Función para bloquear el formulario
