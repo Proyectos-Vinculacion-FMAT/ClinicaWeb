@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="../css/entrevista_inicial.css">
   <link rel="stylesheet" href="../../agenda/css/styles.css">
 </head>
+
 <body>
   <header>
     <h1>Clínica de Atención Psicológica</h1>
@@ -54,27 +56,27 @@
                 <label>Prestador asignado:</label>
                 <input type="text" name="prestador">
               </div>
-              
+
               <div class="checkbox-group">
                 <label>Maestría Adultos</label>
                 <input type="checkbox" name="maestria_adultos">
-                
+
                 <label>Maestría Infantil</label>
                 <input type="checkbox" name="maestria_infantil">
-                
+
                 <label>Servicio Social</label>
                 <input type="checkbox" name="servicio_social">
               </div>
-              
+
               <!-- Más campos del formulario según el PDF... -->
               <!-- Secciones adicionales se implementarían aquí -->
-              
+
               <div class="form-group">
                 <label>Observaciones:</label>
                 <textarea name="observaciones" rows="4"></textarea>
               </div>
             </fieldset>
-            
+
             <!-- Sección de datos del solicitante -->
             <fieldset>
               <legend>Datos del solicitante</legend>
@@ -82,10 +84,10 @@
                 <label>Nombre del solicitante:</label>
                 <input type="text" name="nombre_solicitante">
               </div>
-              
+
               <!-- Más campos según el PDF... -->
             </fieldset>
-            
+
             <!-- Sección de datos generales del paciente -->
             <fieldset>
               <legend>Datos generales del paciente</legend>
@@ -93,7 +95,7 @@
                 <label>Nombre:</label>
                 <input type="text" name="nombre_paciente">
               </div>
-              
+
               <!-- Más campos según el PDF... -->
             </fieldset>
           </form>
@@ -133,6 +135,19 @@
     </div>
   </main>
 
+  <!-- Modal para vista previa -->
+  <!-- Modal para vista previa del PDF -->
+  <div id="file-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <iframe id="file-viewer" style="width:100%; height:80vh; border:none;"></iframe>
+      <div class="modal-actions">
+        <button id="download-pdf" class="action-button download-button">Descargar PDF</button>
+      </div>
+    </div>
+  </div>
+
   <script src="../js/entrevista_inicial.js"></script>
 </body>
+
 </html>
