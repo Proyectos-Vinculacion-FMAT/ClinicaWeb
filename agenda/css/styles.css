@@ -1,6 +1,4 @@
-/* ==========================================================================
-   RESET BÁSICO Y VARIABLES DE DISEÑO
-   ========================================================================== */
+/* -------------- RESET & VARIABLES ------------------------------ */
 *,
 *::before,
 *::after {
@@ -11,8 +9,8 @@
 
 :root {
   /* Paleta principal */
-  --clr-primary: #004080;
-  --clr-primary-light: #0066cc;
+  --clr-primary:      #004080;
+  --clr-primary-light:#0066cc;
   --clr-primary-dark: #003d99;
 
   /* Estados */
@@ -23,31 +21,29 @@
 
   /* Neutros */
   --clr-bg-light: #f9f9f9;
-  --clr-bg: #ffffff;
-  --clr-text: #333333;
+  --clr-bg:       #ffffff;
+  --clr-text:     #333333;
 
   /* Sombras y radio */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 2px 5px rgba(0, 0, 0, 0.15);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 2px 5px rgba(0,0,0,0.15);
   --radius: 6px;
 }
 
+/* -------------- GLOBAL ------------------------------------------------ */
 html {
   scroll-behavior: smooth;
   font-size: 16px;
 }
-
 body {
-  font-family: 'Arial', sans-serif;
-  background: #f4f7fc;
+  font-family: Arial,Helvetica,sans-serif;
+  background: var(--clr-bg-light);
   color: var(--clr-text);
   line-height: 1.5;
   padding: 20px;
 }
 
-/* ==========================================================================
-   ENCABEZADO
-   ========================================================================== */
+/* -------------- HEADER & NAVIGATION ---------------------------------- */
 header {
   background: var(--clr-primary);
   color: #fff;
@@ -56,20 +52,17 @@ header {
   margin-bottom: 1.5rem;
   box-shadow: var(--shadow-md);
 }
-
 header h1 {
-  margin-bottom: 0.5rem;
   font-size: 1.75rem;
+  margin-bottom: 0.5rem;
 }
-
 nav ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
 }
-
-nav ul li a {
+nav a {
   display: inline-block;
   background: var(--clr-primary-light);
   color: #fff;
@@ -77,33 +70,27 @@ nav ul li a {
   padding: 0.5rem 1rem;
   border-radius: var(--radius);
   font-weight: 500;
-  transition: background 0.25s ease-in-out, transform 0.15s ease-in-out;
+  transition: background 0.25s, transform 0.15s;
 }
-
-nav ul li a:hover,
-nav ul li a.active {
+nav a:hover,
+nav a.active {
   background: var(--clr-primary-dark);
   transform: translateY(-1px);
 }
 
-/* ==========================================================================
-   LAYOUT PRINCIPAL
-   ========================================================================== */
+/* -------------- LAYOUT PRINCIPAL ------------------------------------- */
 main {
   background: var(--clr-bg);
   padding: 1.5rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow-md);
 }
-
 .main-container {
   display: flex;
   gap: 1.5rem;
 }
 
-/* ==========================================================================
-   BANDEJA DE ENTRADA
-   ========================================================================== */
+/* -------------- BANDEJA DE ENTRADA ----------------------------------- */
 .inbox {
   width: 340px;
   background: var(--clr-bg-light);
@@ -112,38 +99,14 @@ main {
   box-shadow: var(--shadow-sm);
   flex-shrink: 0;
 }
-
 .inbox-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 1rem;
 }
-
-.inbox-header h2 {
-  font-size: 1.15rem;
-}
-
-#newMessageBtn {
-  background: var(--clr-success);
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: background 0.25s;
-}
-
-#newMessageBtn:hover {
-  background: #27b061;
-}
-
 .inbox-tabs {
   display: flex;
   border-bottom: 2px solid #ddd;
   margin-bottom: 1rem;
 }
-
 .tab-btn {
   flex: 1;
   padding: 0.5rem;
@@ -154,82 +117,62 @@ main {
   border-bottom: 3px solid transparent;
   transition: color 0.25s, border-color 0.25s;
 }
-
 .tab-btn:hover {
   color: var(--clr-primary-dark);
 }
-
 .tab-btn.active {
   border-bottom-color: var(--clr-primary);
   color: var(--clr-primary);
 }
-
 .tab-content {
   display: none;
 }
-
 .tab-content.active {
   display: block;
 }
-
-.request-item,
-.message-item {
+.request-item {
   background: var(--clr-bg);
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
 }
-
-.request-item h3,
-.message-item h3 {
-  margin-bottom: 0.75rem;
+.request-item h3 {
   font-size: 1rem;
   color: var(--clr-primary-dark);
+  margin-bottom: 0.75rem;
 }
-
 .request-actions {
+  margin-top: 0.75rem;
   display: flex;
   gap: 0.5rem;
-  margin-top: 0.75rem;
 }
-
-.approve-btn,
-.reject-btn,
-.view-btn {
+.approve-btn {
+  background: var(--clr-info);
+  color: #fff;
   border: none;
   padding: 0.4rem 0.75rem;
   border-radius: var(--radius);
   cursor: pointer;
   font-size: 0.85rem;
-  color: #fff;
   transition: background 0.25s;
 }
+.approve-btn:hover {
+  background: #2d83c5;
+}
+.status-pending {
+  color: var(--clr-warning);
+  font-weight: 600;
+}
 
-.approve-btn  { background: var(--clr-success); }
-.reject-btn   { background: var(--clr-danger);  }
-.view-btn     { background: var(--clr-info);    }
-
-.approve-btn:hover { background: #27b061; }
-.reject-btn:hover  { background: #cf3f30; }
-.view-btn:hover    { background: #2d83c5; }
-
-.status-pending  { color: #e67e22; font-weight: 600; }
-.status-approved { color: var(--clr-success); font-weight: 600; }
-.status-rejected { color: var(--clr-danger);  font-weight: 600; }
-
-/* ==========================================================================
-   FILTROS DE AGENDA
-   ========================================================================== */
+/* -------------- FILTROS DE AGENDA ------------------------------------ */
 #filters {
   margin-bottom: 1.5rem;
 }
-
 #filters h2 {
   margin-bottom: 0.75rem;
   color: var(--clr-primary-dark);
 }
-
 .filter-group {
   display: inline-flex;
   align-items: center;
@@ -237,11 +180,9 @@ main {
   margin-right: 1rem;
   margin-bottom: 0.75rem;
 }
-
 .filter-group label {
   font-weight: 500;
 }
-
 .filter-group input,
 .filter-group select,
 .filter-group button {
@@ -250,21 +191,16 @@ main {
   border-radius: var(--radius);
   font-size: 0.9rem;
 }
-
 .filter-group button {
-  cursor: pointer;
   background: var(--clr-primary-light);
   color: #fff;
+  cursor: pointer;
   transition: background 0.25s;
 }
-
 .filter-group button:hover {
   background: var(--clr-primary-dark);
 }
-
-/* Botón de Nuevo Evento inyectado */
 #newEventBtn {
-  margin-left: 0.75rem;
   background: var(--clr-info);
   color: #fff;
   border: none;
@@ -273,48 +209,49 @@ main {
   cursor: pointer;
   transition: background 0.25s;
 }
-
 #newEventBtn:hover {
   background: #2d83c5;
 }
 
-/* ==========================================================================
-   CALENDARIO (CSS GRID)
-   ========================================================================== */
+/* -------------- CALENDARIO (CSS GRID) ------------------------------ */
 #calendarContainer {
   display: grid;
-  grid-template-columns: 60px repeat(5, 1fr); /* solo L-V */
+  grid-template-columns: 60px repeat(5, 1fr);
   grid-auto-rows: 60px;
   border: 1px solid #ddd;
   position: relative;
 }
-
 .day-header {
   background: var(--clr-primary);
   color: #fff;
-  text-align: center;
-  padding: 0.35rem;
-  font-size: 0.9rem;
-  border: 1px solid #ddd;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+  padding: 0.35rem;
 }
-
-time-cell {
+.day-low {
+  background: var(--clr-success);
+}
+.day-mid {
+  background: var(--clr-warning);
+  color: #222;
+}
+.day-high {
+  background: var(--clr-danger);
+}
+.time-cell {
   background: #ebeff5;
   text-align: center;
-  padding: 0.3rem;
-  font-size: 0.85rem;
   border: 1px solid #ddd;
+  font-size: 0.85rem;
+  padding: 0.3rem;
 }
-
 .empty-cell {
   border: 1px solid #ddd;
   position: relative;
-  overflow: visible;
 }
-
 .cell-container {
   position: relative;
   width: 100%;
@@ -325,9 +262,7 @@ time-cell {
   padding: 2px;
 }
 
-/* ==========================================================================
-   CITAS / EVENTOS
-   ========================================================================== */
+/* -------------- CITAS / EVENTOS ------------------------------------- */
 .appointment {
   flex: 1 1 auto;
   border-radius: var(--radius);
@@ -335,48 +270,36 @@ time-cell {
   font-size: 0.78rem;
   color: #fff;
   cursor: pointer;
-  overflow: hidden;
   display: flex;
   align-items: center;
+  overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition: opacity 0.2s, transform 0.2s;
 }
-
 .appointment:hover {
   opacity: 0.9;
   transform: scale(1.02);
 }
-
-/* Colores genéricos */
-.appointment.color1 { background: var(--clr-danger);  }
-.appointment.color2 { background: var(--clr-info);    }
-.appointment.color3 { background: var(--clr-success); }
-.appointment.color4 { background: var(--clr-warning); color: #222; }
-
-/* ========================================================================
-   COLORES PARA TIPOS DE CITA
-   ======================================================================== */
-.appointment.tipo-primer-contacto {
-  background: #E74C3C; /* Rojo intenso */
+.appointment.tipo-1 {
+  background: var(--clr-danger);
+}
+.appointment.tipo-2 {
+  background: var(--clr-info);
+}
+.appointment.tipo-3 {
+  background: var(--clr-success);
 }
 
-.appointment.tipo-terapia {
-  background: #3498DB; /* Azul vibrante */
-}
-
-/* ==========================================================================
-   MODALES
-   ========================================================================== */
+/* -------------- MODALES ----------------------------------------------- */
 .modal {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0,0,0,0.45);
   z-index: 1000;
   overflow-y: auto;
   padding: 2rem 1rem;
 }
-
 .modal-content {
   background: var(--clr-bg);
   margin: auto;
@@ -389,7 +312,6 @@ time-cell {
   box-shadow: var(--shadow-md);
   position: relative;
 }
-
 .close-button {
   position: absolute;
   top: 0.6rem;
@@ -399,29 +321,22 @@ time-cell {
   border: none;
   color: var(--clr-text);
   cursor: pointer;
-  line-height: 1;
   transition: color 0.2s;
 }
-
 .close-button:hover {
   color: var(--clr-danger);
 }
 
-/* ==========================================================================
-   FORMULARIOS
-   ========================================================================== */
+/* -------------- FORMULARIOS ----------------------------------------- */
 .form-group {
   margin-bottom: 1rem;
 }
-
 .form-group label {
   display: block;
   margin-bottom: 0.35rem;
   font-weight: 500;
 }
-
 .form-group input,
-.form-group textarea,
 .form-group select {
   width: 100%;
   padding: 0.5rem 0.6rem;
@@ -429,30 +344,18 @@ time-cell {
   border-radius: var(--radius);
   font-size: 0.9rem;
 }
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
 .time-selection {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
-
 .time-selection .form-group {
   flex: 1 1 150px;
 }
-
-.form-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.75rem;
-  margin-top: 1rem;
+.duration-info {
+  font-size: 0.9rem;
 }
-
-.form-actions button,
+#saveBtn,
 .modal-content button[type="submit"] {
   background: var(--clr-primary-light);
   color: #fff;
@@ -463,54 +366,38 @@ time-cell {
   transition: background 0.25s;
   font-size: 0.9rem;
 }
-
-.form-actions button:hover,
+#saveBtn:hover,
 .modal-content button[type="submit"]:hover {
   background: var(--clr-primary-dark);
 }
 
-/* ==========================================================================
-   SECCIÓN DIAGNÓSTICA
-   ========================================================================== */
-#diagnosticInterviewFields {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: #eef0f7;
-  border-left: 4px solid #5e4b8b;
-  border-radius: var(--radius);
+/* -------------- VALORACIÓN AUTOMÁTICA ------------------------------ */
+#autoValWrapper {
+  margin-bottom: 1rem;
+}
+#autoTherGroup {
+  margin-top: 0.5rem;
 }
 
-/* ==========================================================================
-   UTILITARIOS
-   ========================================================================== */
-.hidden { display: none !important; }
+/* -------------- UTILITARIOS ---------------------------------------- */
+.hidden {
+  display: none !important;
+}
 
-/* ==========================================================================
-   RESPONSIVE
-   ========================================================================== */
+/* -------------- RESPONSIVE ----------------------------------------- */
 @media (max-width: 768px) {
   .main-container {
     flex-direction: column;
   }
-
   .inbox {
     width: 100%;
     order: 2;
   }
-
   #calendarContainer {
     grid-template-columns: 60px 1fr;
   }
-
   .day-header:nth-child(n+3) {
     display: none;
   }
-
-  .empty-cell:nth-child(odd):not(:nth-child(2n+1)) {
-    display: none;
-  }
-
-  .time-cell {
-    font-size: 0.75rem;
-  }
 }
+
