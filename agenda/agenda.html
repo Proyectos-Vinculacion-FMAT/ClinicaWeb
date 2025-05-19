@@ -24,249 +24,149 @@
 
   <main>
     <div class="main-container">
-      <!-- Bandeja de Entrada -->
+      <!-- BANDEJA --------------------------------------------------------- -->
       <aside class="inbox">
         <div class="inbox-header">
           <h2>Bandeja de Entrada</h2>
-          <button id="newMessageBtn">Nuevo Mensaje</button>
         </div>
+
         <div class="inbox-tabs">
-          <button class="tab-btn active" data-tab="requests">Solicitudes</button>
-          <button class="tab-btn"        data-tab="reschedules">Reprogramaciones</button>
+          <button class="tab-btn active" data-tab="requests">
+            Solicitudes <span id="requests-count">(0)</span>
+          </button>
+          <button class="tab-btn" data-tab="reschedules">
+            Reprogramaciones <span id="reschedules-count">(0)</span>
+          </button>
         </div>
+
         <div class="inbox-content">
-          <!-- Solicitudes -->
-          <div id="requests-tab" class="tab-content active">
-            <div class="request-item">
-              <h3>Solicitud de Cita</h3>
-              <p><strong>Candidato:</strong> Juan Pérez López</p>
-              <p><strong>Fecha solicitada:</strong> 20/04/2025</p>
-              <p><strong>Estado:</strong> <span class="status-pending">Pendiente</span></p>
-              <div class="request-actions">
-                <button class="approve-btn">Ver Solicitud</button>
-              </div>
-            </div>
-          </div>
-          <!-- Reprogramaciones -->
-          <div id="reschedules-tab" class="tab-content">
-            <div class="request-item">
-              <h3>Solicitud de Reprogramación</h3>
-              <p><strong>Paciente:</strong> Mariana López Sánchez</p>
-              <p><strong>Nueva fecha propuesta:</strong> 22/12/2023 11:00</p>
-              <p><strong>Estado:</strong> <span class="status-pending">Pendiente</span></p>
-              <div class="request-actions">
-                <button class="approve-btn">Ver Solicitud</button>
-              </div>
-            </div>
-          </div>
+          <div id="requests-tab"    class="tab-content active"></div>
+          <div id="reschedules-tab" class="tab-content"></div>
         </div>
       </aside>
 
-      <!-- Contenido Principal -->
+      <!-- CONTENIDO PRINCIPAL ------------------------------------------- -->
       <div class="content-area">
         <section id="filters">
           <h2>Filtros de Agenda</h2>
+
           <div class="filter-group">
             <label for="filterPeriod">Periodo:</label>
             <select id="filterPeriod">
-              <option value="day" selected>Día</option>
-              <option value="week">Semana</option>
-              <option value="month">Mes</option>
+              <option value="day">Día</option>
+              <option value="week" selected>Semana</option>
             </select>
           </div>
+
           <div class="filter-group">
             <label for="filterDate">Fecha:</label>
             <input type="date" id="filterDate">
           </div>
+
           <div class="filter-group">
             <button id="applyFilter">Aplicar Filtro</button>
             <button id="printView">Imprimir</button>
+            <button id="newEventBtn">Nuevo Evento</button>
           </div>
         </section>
-        <section id="calendarContainer">
-          <!-- Aquí se genera dinámicamente la cuadrícula -->
-        </section>
+
+        <section id="calendarContainer"><!-- grid dinámico --></section>
       </div>
     </div>
   </main>
 
-  <!-- Modal: Detalles de Cita -->
+  <!-- MODAL DETALLES ---------------------------------------------------- -->
   <div id="appointmentModal" class="modal">
     <div class="modal-content">
       <span class="close-button" id="closeModal">&times;</span>
-      <h2>Detalles de la Cita</h2>
+      <h2>Detalles del Evento</h2>
       <div id="modalInfo"></div>
     </div>
   </div>
 
-  <!-- Modal: Ver Solicitud -->
-  <div id="requestModal" class="modal">
-    <div class="modal-content">
-      <span class="close-button" id="closeRequestModal">&times;</span>
-      <h2 id="requestModalTitle">Detalles de la Solicitud</h2>
-      <div id="requestModalInfo"></div>
-      <div id="initialInterviewForm" class="hidden">
-        <h3>Programar Entrevista Inicial</h3>
-        <form id="scheduleInterviewForm">
-          <div class="form-group">
-            <label for="interviewDate">Fecha:</label>
-            <input type="date" id="interviewDate" required>
-          </div>
-          <div class="time-selection">
-            <div class="form-group">
-              <label for="interviewTime">Hora Inicial:</label>
-              <input type="time" id="interviewTime" required>
-            </div>
-            <div class="form-group">
-              <label for="interviewDuration">Duración (min):</label>
-              <select id="interviewDuration" required>
-                <option value="30">30</option>
-                <option value="45">45</option>
-                <option value="60" selected>60</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="interviewTherapist">Especialista:</label>
-            <select id="interviewTherapist" required>
-              <option value="">Seleccionar especialista</option>
-              <option>Dra. Ana Rodríguez</option>
-              <option>Dr. Carlos Sánchez</option>
-              <option>Lic. Gabriela Morales</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label><input type="checkbox" id="includeDiagnostic"> Realizar entrevista diagnóstica el mismo día</label>
-          </div>
-          <div id="diagnosticInterviewFields" class="hidden">
-            <h4>Entrevista Diagnóstica</h4>
-            <div class="time-selection">
-              <div class="form-group">
-                <label for="diagnosticTime">Hora:</label>
-                <input type="time" id="diagnosticTime" required>
-              </div>
-              <div class="form-group">
-                <label for="diagnosticDuration">Duración (min):</label>
-                <select id="diagnosticDuration" required>
-                  <option value="30">30</option>
-                  <option value="45">45</option>
-                  <option value="60" selected>60</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="diagnosticTherapist">Especialista para diagnóstico:</label>
-              <select id="diagnosticTherapist">
-                <option value="">Seleccionar especialista</option>
-                <option>Dra. Ana Rodríguez</option>
-                <option>Dr. Carlos Sánchez</option>
-                <option>Lic. Gabriela Morales</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="diagnosticRoom">Sala para diagnóstico:</label>
-              <select id="diagnosticRoom">
-                <option value="">Seleccionar sala</option>
-                <option>Sala 101</option>
-                <option>Sala 102</option>
-                <option>Sala 103</option>
-              </select>
-            </div>
-          </div>
-          <button type="submit">Programar Entrevista</button>
-          <button type="button" id="cancelScheduleBtn">Cancelar</button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal: Nuevo Mensaje -->
-  <div id="messageModal" class="modal">
-    <div class="modal-content">
-      <span class="close-button" id="closeMessageModal">&times;</span>
-      <h2>Nuevo Mensaje</h2>
-      <form id="messageForm">
-        <div class="form-group">
-          <label for="messageRecipient">Destinatario:</label>
-          <select id="messageRecipient">
-            <option value="all">Todos los pacientes</option>
-            <option value="specific">Paciente específico</option>
-            <option value="therapists">Todos los terapeutas</option>
-          </select>
-        </div>
-        <div id="specificPatientContainer" class="hidden">
-          <label for="specificPatient">Seleccionar paciente:</label>
-          <select id="specificPatient">
-            <option value="1">Juan Pérez López</option>
-            <option value="2">Mariana López Sánchez</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="messageSubject">Asunto:</label>
-          <input type="text" id="messageSubject" required>
-        </div>
-        <div class="form-group">
-          <label for="messageContent">Mensaje:</label>
-          <textarea id="messageContent" rows="4" required></textarea>
-        </div>
-        <button type="submit">Enviar Mensaje</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Modal: Nuevo Evento -->
+  <!-- MODAL NUEVO / REPROG. -------------------------------------------- -->
   <div id="newEventModal" class="modal">
     <div class="modal-content">
       <span class="close-button" id="closeNewEventModal">&times;</span>
-      <h2>Nuevo Evento</h2>
+      <h2 id="newEventTitle">Nuevo Evento</h2>
+
       <form id="newEventForm">
+        <!-- tipo -->
         <div class="form-group">
-          <label for="eventTitle">Título:</label>
-          <input type="text" id="eventTitle" required>
+          <label for="eventType">Tipo de Evento:</label>
+          <select id="eventType" name="eventType" required>
+            <option value="">Seleccionar tipo</option>
+            <option value="1">Evaluación Socioeconómica</option>
+            <option value="2">Consulta de Valoración Psicológica</option>
+            <option value="3">Cita de Terapia</option>
+          </select>
         </div>
+
+        <!-- paciente -->
+        <div class="form-group">
+          <label for="eventPatient">Paciente:</label>
+          <select id="eventPatient" name="eventPatient" required>
+            <option value="">Seleccionar paciente</option>
+            <option>Ana Martínez</option><option>Luis García</option>
+            <option>Carmen Robles</option><option>José Romero</option>
+            <option>María Torres</option><option>Diego Fuentes</option>
+            <option>Sofía Paredes</option><option>Ricardo Vargas</option>
+            <option>Elena Castillo</option><option>Pedro Rivas</option>
+          </select>
+        </div>
+
+        <!-- checkbox automático -->
+        <div class="form-group hidden" id="autoValWrapper">
+          <label>
+            <input type="checkbox" id="autoValChk">
+            Programar consulta de valoración inmediatamente después
+          </label>
+        </div>
+
+        <!-- terapeuta valoración automático -->
+        <div class="form-group hidden" id="autoTherGroup">
+          <label for="autoTherSel">Terapeuta para valoración:</label>
+          <select id="autoTherSel" name="autoTherSel" class="hidden">
+            <!-- se llena dinámicamente -->
+          </select>
+        </div>
+
+        <!-- fecha -->
         <div class="form-group">
           <label for="eventDate">Fecha:</label>
-          <input type="date" id="eventDate" required>
+          <input type="date" id="eventDate" name="eventDate" required>
         </div>
+
+        <!-- hora -->
         <div class="time-selection">
           <div class="form-group">
             <label for="eventStartTime">Hora Inicio:</label>
-            <input type="time" id="eventStartTime" required>
-          </div>
-          <div class="form-group">
-            <label for="eventDuration">Duración (min):</label>
-            <select id="eventDuration" required>
-              <option value="30">30</option>
-              <option value="45">45</option>
-              <option value="60" selected>60</option>
-              <option value="90">90</option>
-              <option value="120">120</option>
-            </select>
+            <input type="time" id="eventStartTime" name="eventStartTime" required>
           </div>
         </div>
-        <div class="form-group">
+
+        <!-- duración -->
+        <div class="form-group duration-info">
+          <strong>Duración:</strong> <span id="eventDurationLabel">--</span>
+          <input type="hidden" id="eventDuration" name="eventDuration">
+        </div>
+
+        <!-- terapeuta (normal) -->
+        <div class="form-group" id="therapistGroup">
           <label for="eventTherapist">Terapeuta:</label>
-          <select id="eventTherapist">
-            <option value="">Ninguno</option>
-            <option>Dra. Ana Rodríguez</option>
-            <option>Dr. Carlos Sánchez</option>
-            <option>Lic. Gabriela Morales</option>
-          </select>
+          <select id="eventTherapist" name="eventTherapist"></select>
         </div>
+
+        <!-- sala -->
         <div class="form-group">
           <label for="eventRoom">Sala:</label>
-          <select id="eventRoom">
-            <option value="">Ninguna</option>
-            <option>Sala 101</option>
-            <option>Sala 102</option>
-            <option>Sala 103</option>
+          <select id="eventRoom" name="eventRoom" required>
+            <option value="">Seleccionar sala</option>
+            <option>Sala 101</option><option>Sala 102</option><option>Sala 103</option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="eventDescription">Descripción:</label>
-          <textarea id="eventDescription" rows="3"></textarea>
-        </div>
-        <button type="submit">Crear Evento</button>
+
+        <button type="submit" id="saveBtn">Guardar</button>
       </form>
     </div>
   </div>
