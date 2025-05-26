@@ -1,156 +1,124 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Elementos del DOM
-  const consultoriosTableBody = document.querySelector('#salasTable tbody');
-  const btnAgregar = document.getElementById('btnAgregarSala');
-  const modalForm = document.getElementById('modalSala');
-  const cerrarModal = document.getElementById('cerrarModalSala');
-  const consultorioForm = document.getElementById('salaForm');
-  const formTitle = document.getElementById('formTitle');
-  const inputId = document.getElementById('salaId');
-  const inputNombre = document.getElementById('nombre');
-  const inputTipo = document.getElementById('tipo');
-  const inputHoraInicio = document.getElementById('horaInicio');  // Control para la hora de inicio
-  const inputHoraFin = document.getElementById('horaFin');        // Control para la hora de fin
+document.addEventListener('DOMContentLoaded', () => {
+  /* ---------- refs DOM ---------- */
+  const tbody          = document.querySelector('#salasTable tbody');
+  const btnAgregar     = document.getElementById('btnAgregarSala');
+  const modal          = document.getElementById('modalSala');
+  const cerrarModalBtn = document.getElementById('cerrarModalSala');
+  const form           = document.getElementById('salaForm');
+  const formTitle      = document.getElementById('formTitle');
 
-  let consultorios = [];
+  const fId        = document.getElementById('salaId');
+  const fNombre    = document.getElementById('nombre');
+  const fHoraIni   = document.getElementById('horaInicio');
+  const fHoraFin   = document.getElementById('horaFin');
 
-  // Cargar consultorios del localStorage si existen
-  function loadConsultorios() {
-    const data = localStorage.getItem('consultorios');
-    consultorios = data ? JSON.parse(data) : [];
-  }
+  /* ---------- estado ---------- */
+  let salas = [];
 
-  // Guardar consultorios en localStorage
-  function saveConsultorios() {
-    localStorage.setItem('consultorios', JSON.stringify(consultorios));
-  }
+  const load = () => {
+    salas = JSON.parse(localStorage.getItem('salas')||'[]');
+  };
+  const save = () => localStorage.setItem('salas', JSON.stringify(salas));
 
-  // Renderizar consultorios en la tabla
-  function renderConsultorios() {
-    consultoriosTableBody.innerHTML = '';
-    consultorios.forEach((consultorio, index) => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${index + 1}</td>
-        <td>${consultorio.nombre}</td>
-        <td>${consultorio.tipo}</td>
-        <td>${consultorio.horaInicio} - ${consultorio.horaFin}</td>
+  /* ---------- UI helpers ---------- */
+  const closeModal = () => {
+    modal.style.display='none';
+    form.reset();
+    fId.value='';
+    [...form.querySelectorAll('input[name="servicios"]')].forEach(c=>c.checked=false);
+  };
+  const openModal = () => modal.style.display='block';
+
+  /* ---------- render tabla ---------- */
+  const render = () => {
+    tbody.innerHTML='';
+    salas.forEach((sala,i)=>{
+      const tr=document.createElement('tr');
+      tr.innerHTML=`
+        <td>${i+1}</td>
+        <td>${sala.nombre}</td>
+        <td>${sala.servicios.join(', ')}</td>
+        <td>${sala.horaInicio} – ${sala.horaFin}</td>
         <td>
-          <button class="edit-btn" data-index="${index}">Editar</button>
-          <button class="delete-btn" data-index="${index}">Eliminar</button>
-        </td>
-      `;
-      consultoriosTableBody.appendChild(row);
-    });
-    // Asignar eventos a los botones de editar y eliminar
-    const editButtons = document.querySelectorAll('.edit-btn');
-    editButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const index = this.dataset.index;
-        abrirFormularioEdicion(index);
-      });
+          <button class="edit-btn" data-i="${i}">Editar</button>
+          <button class="del-btn"  data-i="${i}">Eliminar</button>
+        </td>`;
+      tbody.appendChild(tr);
     });
 
-    const deleteButtons = document.querySelectorAll('.delete-btn');
-    deleteButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const index = this.dataset.index;
-        eliminarConsultorio(index);
-      });
+    /* eventos editar / borrar */
+    tbody.querySelectorAll('.edit-btn').forEach(btn=>{
+      btn.onclick=()=>{
+        const i=btn.dataset.i;
+        const s=salas[i];
+        fId.value=i;
+        fNombre.value=s.nombre;
+        fHoraIni.value=s.horaInicio;
+        fHoraFin.value=s.horaFin;
+        /* marcar checkboxes */
+        [...form.querySelectorAll('input[name="servicios"]')].forEach(c=>{
+          c.checked=s.servicios.includes(c.value);
+        });
+        formTitle.textContent='Editar Sala';
+        openModal();
+      };
     });
-  }
+    tbody.querySelectorAll('.del-btn').forEach(btn=>{
+      btn.onclick=()=>{
+        const i=btn.dataset.i;
+        if(confirm('¿Eliminar esta sala?')){
+          salas.splice(i,1);
+          save(); render();
+        }
+      };
+    });
+  };
 
-  // Abrir modal para agregar/editar consultorio
-  function abrirModal() {
-    modalForm.style.display = 'block';
-  }
+  /* ---------- validación horario ---------- */
+  const horarioValido = (ini,fin) => {
+    if(ini >= fin) return false;
+    return ini >= '09:00' && fin <= '18:00';
+  };
 
-  function cerrarModalForm() {
-    modalForm.style.display = 'none';
-    consultorioForm.reset();
-    inputId.value = '';
-  }
-
-  // Abrir formulario con datos para editar
-  function abrirFormularioEdicion(index) {
-    const consultorio = consultorios[index];
-    inputId.value = index;
-    inputNombre.value = consultorio.nombre;
-    inputTipo.value = consultorio.tipo;
-    inputHoraInicio.value = consultorio.horaInicio;
-    inputHoraFin.value = consultorio.horaFin;
-    formTitle.textContent = 'Editar Consultorio';
-    abrirModal();
-  }
-
-  // Eliminar consultorio
-  function eliminarConsultorio(index) {
-    if (confirm('¿Está seguro de eliminar este consultorio?')) {
-      consultorios.splice(index, 1);
-      saveConsultorios();
-      renderConsultorios();
-    }
-  }
-
-  // Manejar el envío del formulario
-  consultorioForm.addEventListener('submit', function(e) {
+  /* ---------- submit form ---------- */
+  form.onsubmit = e =>{
     e.preventDefault();
-    const nombre = inputNombre.value.trim();
-    const tipo = inputTipo.value;
-    const horaInicio = inputHoraInicio.value;
-    const horaFin = inputHoraFin.value;
-    const id = inputId.value;
+    const nombre   = fNombre.value.trim();
+    const servicios= [...form.querySelectorAll('input[name="servicios"]:checked')].map(c=>c.value);
+    const hIni     = fHoraIni.value;
+    const hFin     = fHoraFin.value;
 
-    // Validar campos obligatorios
-    if (!nombre || !tipo || !horaInicio || !horaFin) {
-      alert('Por favor, complete todos los campos.');
+    if(!nombre||servicios.length===0||!hIni||!hFin){
+      alert('Complete todos los campos y seleccione al menos un servicio.');
+      return;
+    }
+    if(!horarioValido(hIni,hFin)){
+      alert('Horario inválido (09:00 – 18:00 y fin después de inicio).');
       return;
     }
 
-    // Validar que la hora de inicio sea menor a la hora de fin
-    if (horaInicio >= horaFin) {
-      alert('La hora de inicio debe ser menor a la hora de fin.');
-      return;
+    const data={nombre,servicios,horaInicio:hIni,horaFin:hFin};
+
+    if(fId.value===''){          /* alta */
+      salas.push(data);
+    }else{                       /* edición */
+      salas[Number(fId.value)]=data;
     }
+    save(); render(); closeModal();
+  };
 
-    // Validar límites: la hora de inicio no antes de 09:00 y la hora de fin no después de 18:00
-    if (horaInicio < "09:00" || horaFin > "18:00") {
-      alert('El horario operativo debe estar entre 09:00 y 18:00.');
-      return;
-    }
+  /* ---------- eventos globales ---------- */
+  btnAgregar.onclick = ()=>{
+    form.reset();
+    [...form.querySelectorAll('input[name="servicios"]')].forEach(c=>c.checked=false);
+    fId.value='';
+    formTitle.textContent='Agregar Sala';
+    openModal();
+  };
+  cerrarModalBtn.onclick=closeModal;
+  window.onclick=e=>{ if(e.target===modal) closeModal(); };
 
-    if (id === '') {
-      // Crear nuevo consultorio
-      const nuevoConsultorio = { nombre, tipo, horaInicio, horaFin };
-      consultorios.push(nuevoConsultorio);
-    } else {
-      // Actualizar consultorio existente
-      consultorios[id] = { nombre, tipo, horaInicio, horaFin };
-    }
-    saveConsultorios();
-    renderConsultorios();
-    cerrarModalForm();
-  });
-
-  // Eventos de botones
-  btnAgregar.addEventListener('click', function() {
-    consultorioForm.reset();
-    inputId.value = '';
-    formTitle.textContent = 'Agregar Consultorio';
-    abrirModal();
-  });
-
-  cerrarModal.addEventListener('click', cerrarModalForm);
-
-  // Cerrar modal al hacer clic fuera del contenido
-  window.addEventListener('click', function(e) {
-    if (e.target === modalForm) {
-      cerrarModalForm();
-    }
-  });
-
-  // Inicializar datos y renderizar
-  loadConsultorios();
-  renderConsultorios();
+  /* ---------- init ---------- */
+  load(); render();
 });
 
