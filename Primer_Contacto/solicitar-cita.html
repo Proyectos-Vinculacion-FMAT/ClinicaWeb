@@ -5,6 +5,23 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Solicitud de Cita - Clínica Psicológica</title>
     <style>
+                .material-style-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            font-size: 1rem;
+            background: #fff;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            appearance: none;
+        }
+        
+        .material-style-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+            outline: none;
+        }
+
         :root {
             --primary-color: #4A90E2;
             --secondary-color: #2C3E50;
@@ -441,21 +458,15 @@
                 </label>
 
                 <div class="full-width">
-                    <md-outlined-select label="Motivo de la consulta" name="motivo" required>
-                        <md-select-option value="" disabled selected>Selecciona una opción</md-select-option>
-                        <md-select-option value="medica">Consulta médica</md-select-option>
-                        <md-select-option value="psicologica">Consulta psicológica</md-select-option>
-                        <md-select-option value="nutricional">Consulta nutricional</md-select-option>
-                    </md-outlined-select>
-                    <md-outlined-text-field 
-                        label="Descripción adicional"
-                        name="descripcion"
-                        supporting-text="Opcional: puedes agregar una breve explicación"
-                        rows="2"
-                        textarea>
-                    </md-outlined-text-field>
+                    <label for="motivo">Motivo de la consulta</label>
+                    <select id="motivo" name="motivo" class="material-style-select" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="medica">Consulta médica</option>
+                        <option value="psicologica">Consulta psicológica</option>
+                        <option value="nutricional">Consulta nutricional</option>
+                    </select>
+                    <small>Breve descripción (opcional)</small>
                 </div>
-
             </div>
 
             <div class="button-group">
