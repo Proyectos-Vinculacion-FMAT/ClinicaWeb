@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Administración de Consultorios</title>
+  <title>Administración de Salas</title>
   <link rel="stylesheet" href="css/salas.css">
 </head>
 <body>
@@ -12,56 +12,55 @@
     <nav>
       <ul>
         <li><a href="../agenda/agenda.html">Agenda</a></li>
-        <li><a href="../pacientes/pacientes.html">Paciente</a></li>
+        <li><a href="../pacientes/pacientes.html">Pacientes</a></li>
         <li><a href="../terapeuta/terapeuta.html">Terapeutas</a></li>
-        <li><a href="salas.html">Salas</a></li>
+        <li><a href="salas.html" class="active">Salas</a></li>
         <li><a href="../reportes/reportes.html">Reportes</a></li>
         <li><a href="../index.html">Salir</a></li>
       </ul>
     </nav>
   </header>
-  
+
   <main>
     <section id="salas-section">
       <h2>Listado de Salas</h2>
       <table id="salasTable">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>#</th>
             <th>Nombre</th>
-            <th>Tipo</th>
+            <th>Servicios</th>
             <th>Horario</th>
             <th>Acciones</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- Las filas se generarán dinámicamente mediante JS -->
-        </tbody>
+        <tbody><!-- filas dinámicas --></tbody>
       </table>
-      <button id="btnAgregarSala">Agregar Nueva Sala</button>
+      <button id="btnAgregarSala">Agregar Sala</button>
     </section>
-    
-    <!-- Modal para agregar/editar consultorio -->
+
+    <!-- Modal alta / edición -->
     <div id="modalSala" class="modal">
       <div class="modal-content">
         <span class="close-button" id="cerrarModalSala">&times;</span>
         <h2 id="formTitle">Agregar Sala</h2>
+
         <form id="salaForm">
-          <input type="hidden" id="salaId" value="">
+          <input type="hidden" id="salaId">
+
           <div class="form-group">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" required>
           </div>
+
+          <!-- Servicios disponibles -->
           <div class="form-group">
-            <label for="tipo">Tipo:</label>
-            <select id="tipo" required>
-              <option value="">-- Seleccionar Tipo --</option>
-              <option value="Adulto">Adulto</option>
-              <option value="Infantil">Infantil</option>
-              <option value="Primer contacto">Primer contacto</option>
-            </select>
+            <label>Servicios que atiende:</label>
+            <label><input type="checkbox" name="servicios" value="Evaluación inicial integral"> Evaluación inicial integral</label><br>
+            <label><input type="checkbox" name="servicios" value="Cita de terapia"> Cita de terapia</label>
           </div>
-          <!-- Campos para ingresar el horario operativo mediante controles de tiempo -->
+
+          <!-- Horario operativo -->
           <div class="form-group">
             <label for="horaInicio">Hora de Inicio:</label>
             <input type="time" id="horaInicio" min="09:00" max="18:00" required>
@@ -70,16 +69,14 @@
             <label for="horaFin">Hora de Fin:</label>
             <input type="time" id="horaFin" min="09:00" max="18:00" required>
           </div>
+
           <button type="submit" id="guardarSala">Guardar</button>
         </form>
       </div>
     </div>
   </main>
-   
+
   <script src="js/salas.js"></script>
 </body>
 </html>
-  
-  <script src="js/salas.js"></script>
-</body>
-</html>
+
