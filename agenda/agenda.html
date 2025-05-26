@@ -2,11 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Clínica - Agenda</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica – Agenda</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <!-- ================= CABECERA ================= -->
   <header>
     <h1>Clínica de Atención Psicológica</h1>
     <nav>
@@ -22,13 +23,12 @@
     </nav>
   </header>
 
+  <!-- ================= CONTENIDO ================= -->
   <main>
     <div class="main-container">
-      <!-- BANDEJA --------------------------------------------------------- -->
+      <!-- -------- BANDEJA DE ENTRADA -------- -->
       <aside class="inbox">
-        <div class="inbox-header">
-          <h2>Bandeja de Entrada</h2>
-        </div>
+        <div class="inbox-header"><h2>Bandeja de Entrada</h2></div>
 
         <div class="inbox-tabs">
           <button class="tab-btn active" data-tab="requests">
@@ -45,37 +45,38 @@
         </div>
       </aside>
 
-      <!-- CONTENIDO PRINCIPAL ------------------------------------------- -->
+      <!-- -------- ÁREA DE AGENDA -------- -->
       <div class="content-area">
+        <!-- Filtros -->
         <section id="filters">
           <h2>Filtros de Agenda</h2>
 
           <div class="filter-group">
             <label for="filterPeriod">Periodo:</label>
             <select id="filterPeriod">
-              <option value="day">Día</option>
-              <option value="week" selected>Semana</option>
+              <option value="day" selected>Día</option>
+              <option value="week">Semana</option>
             </select>
           </div>
 
           <div class="filter-group">
             <label for="filterDate">Fecha:</label>
-            <input type="date" id="filterDate">
+            <input type="date" id="filterDate" />
           </div>
 
           <div class="filter-group">
-            <button id="applyFilter">Aplicar Filtro</button>
             <button id="printView">Imprimir</button>
             <button id="newEventBtn">Nuevo Evento</button>
           </div>
         </section>
 
+        <!-- Calendario -->
         <section id="calendarContainer"><!-- grid dinámico --></section>
       </div>
     </div>
   </main>
 
-  <!-- MODAL DETALLES ---------------------------------------------------- -->
+  <!-- ================= MODAL DETALLES ================= -->
   <div id="appointmentModal" class="modal">
     <div class="modal-content">
       <span class="close-button" id="closeModal">&times;</span>
@@ -84,25 +85,24 @@
     </div>
   </div>
 
-  <!-- MODAL NUEVO / REPROG. -------------------------------------------- -->
+  <!-- ================= MODAL NUEVO / REPROG. ================= -->
   <div id="newEventModal" class="modal">
     <div class="modal-content">
       <span class="close-button" id="closeNewEventModal">&times;</span>
       <h2 id="newEventTitle">Nuevo Evento</h2>
 
       <form id="newEventForm">
-        <!-- tipo -->
+        <!-- Tipo -->
         <div class="form-group">
           <label for="eventType">Tipo de Evento:</label>
           <select id="eventType" name="eventType" required>
             <option value="">Seleccionar tipo</option>
-            <option value="1">Evaluación Socioeconómica</option>
-            <option value="2">Consulta de Valoración Psicológica</option>
-            <option value="3">Cita de Terapia</option>
+            <option value="1">Evaluación inicial integral</option>
+            <option value="2">Cita de Terapia</option>
           </select>
         </div>
 
-        <!-- paciente -->
+        <!-- Paciente -->
         <div class="form-group">
           <label for="eventPatient">Paciente:</label>
           <select id="eventPatient" name="eventPatient" required>
@@ -115,49 +115,40 @@
           </select>
         </div>
 
-        <!-- checkbox automático -->
-        <div class="form-group hidden" id="autoValWrapper">
-          <label>
-            <input type="checkbox" id="autoValChk">
-            Programar consulta de valoración inmediatamente después
-          </label>
-        </div>
-
-        <!-- terapeuta valoración automático -->
-        <div class="form-group hidden" id="autoTherGroup">
-          <label for="autoTherSel">Terapeuta para valoración:</label>
-          <select id="autoTherSel" name="autoTherSel" class="hidden">
-            <!-- se llena dinámicamente -->
-          </select>
-        </div>
-
-        <!-- fecha -->
-        <div class="form-group">
-          <label for="eventDate">Fecha:</label>
-          <input type="date" id="eventDate" name="eventDate" required>
-        </div>
-
-        <!-- hora -->
-        <div class="time-selection">
-          <div class="form-group">
-            <label for="eventStartTime">Hora Inicio:</label>
-            <input type="time" id="eventStartTime" name="eventStartTime" required>
-          </div>
-        </div>
-
-        <!-- duración -->
-        <div class="form-group duration-info">
-          <strong>Duración:</strong> <span id="eventDurationLabel">--</span>
-          <input type="hidden" id="eventDuration" name="eventDuration">
-        </div>
-
-        <!-- terapeuta (normal) -->
+        <!-- Terapeuta -->
         <div class="form-group" id="therapistGroup">
           <label for="eventTherapist">Terapeuta:</label>
           <select id="eventTherapist" name="eventTherapist"></select>
         </div>
 
-        <!-- sala -->
+        <!-- Folio (readonly) -->
+        <div class="form-group">
+          <label for="eventFolio">Folio:</label>
+          <input type="text" id="eventFolio" name="eventFolio" readonly />
+        </div>
+
+        <!-- Fecha -->
+        <div class="form-group">
+          <label for="eventDate">Fecha:</label>
+          <input type="date" id="eventDate" name="eventDate" required />
+        </div>
+
+        <!-- Hora -->
+        <div class="time-selection">
+          <div class="form-group">
+            <label for="eventStartTime">Hora Inicio:</label>
+            <input type="time" id="eventStartTime" name="eventStartTime" required />
+          </div>
+        </div>
+
+        <!-- Duración (informativa) -->
+        <div class="form-group duration-info">
+          <strong>Duración:</strong>
+          <span id="eventDurationLabel">--</span>
+          <input type="hidden" id="eventDuration" name="eventDuration" />
+        </div>
+
+        <!-- Sala -->
         <div class="form-group">
           <label for="eventRoom">Sala:</label>
           <select id="eventRoom" name="eventRoom" required>
@@ -166,12 +157,26 @@
           </select>
         </div>
 
+        <!-- Comprobante de Pago -->
+        <div class="form-group" id="payProofGroup">
+          <label for="payProof">Comprobante de pago (PDF, PNG, JPG – máx&nbsp;5&nbsp;MB):</label>
+          <input type="file" id="payProof" name="payProof" accept=".pdf,image/png,image/jpeg" />
+        </div>
+
+        <!-- Cuota (solo para Cita de terapia) -->
+        <div class="form-group hidden" id="feeGroup">
+          <label for="eventFee">Cuota a pagar (MXN):</label>
+          <input type="number" id="eventFee" name="eventFee" min="0" step="0.01" />
+        </div>
+
         <button type="submit" id="saveBtn">Guardar</button>
       </form>
     </div>
   </div>
 
+  <!-- ================= SCRIPTS ================= -->
   <script src="js/bandeja-entrada.js"></script>
   <script src="js/agenda.js"></script>
 </body>
 </html>
+
