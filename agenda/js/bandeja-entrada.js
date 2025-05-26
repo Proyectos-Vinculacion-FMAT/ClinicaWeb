@@ -1,86 +1,84 @@
 /* ============================================================
-   bandeja-entrada.js – demo solicitudes y reprogramaciones
-============================================================ */
+   bandeja-entrada.js – v2 (sincroniza reprogramaciones)
+   ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* --- Pestañas y contenedores dinámicos ------------------- */
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const solicitudes = [
-    { id: 1, tipoPet: 'requests',   tipoEv: 3, paciente: 'Sofía Paredes', fecha: '2025-05-25', hora: '12:00' },
-    { id: 2, tipoPet: 'reschedules', tipoEv: 2, paciente: 'Luis García',    fecha: '2025-05-22', hora: '11:00' }
+  const EVT_NAME = {
+    1:'Evaluación inicial integral',
+    2:'Cita de terapia'
+  };
+
+  const solicitudes=[
+    {id:'req-101',tipoPet:'requests',   tipoEv:1,paciente:'Ricardo Vargas',fecha:'2025-06-03',hora:'10:00'},
+    {id:'req-102',tipoPet:'requests',   tipoEv:2,paciente:'María Torres',  fecha:'2025-06-04',hora:'12:30'},
+    {id:'req-103',tipoPet:'requests',   tipoEv:2,paciente:'Pedro Rivas',   fecha:'2025-06-06',hora:'09:00'},
+    {id:'rep-201',tipoPet:'reschedules',tipoEv:2,paciente:'Luis García',  fecha:'2025-06-05',hora:'15:00'},
+    {id:'rep-202',tipoPet:'reschedules',tipoEv:1,paciente:'Ana Martínez', fecha:'2025-06-07',hora:'11:00'}
   ];
 
-  /**
-   * Construye la tarjeta de solicitud/reprogramación.
-   * @param {Object} s 
-   */
-  function buildCard(s) {
-    const isReq    = s.tipoPet === 'requests';
-    const title    = isReq ? 'Solicitud de Cita' : 'Solicitud de Reprogramación';
-    const dateLabel= isReq ? 'Fecha solicitada' : 'Nueva fecha propuesta';
-    const evNames  = [
-      '', 
-      'Evaluación Socioeconómica', 
-      'Consulta de Valoración Psicológica', 
-      'Cita de Terapia'
-    ];
+  const tabBtns=document.querySelectorAll('.tab-btn');
+  const counts={
+    requests   :document.getElementById('requests-count'),
+    reschedules:document.getElementById('reschedules-count')
+  };
+  let lastManagedId=null;                    // sólo dentro de este módulo
 
-    const card = document.createElement('div');
-    card.className = 'request-item';
-    card.innerHTML = `
-      <h3>${title}</h3>
-      <p><strong>Paciente:</strong> ${s.paciente}</p>
-      <p><strong>Tipo de Evento:</strong> ${evNames[s.tipoEv]}</p>
-      <p><strong>${dateLabel}:</strong> ${s.fecha} ${s.hora}</p>
-      <div class="request-actions">
-        <button class="approve-btn">Gestionar</button>
-      </div>`;
-
-    // Al hacer click, lanzamos el evento para abrir el modal de agenda
-    card.querySelector('.approve-btn').addEventListener('click', () => {
-      window.dispatchEvent(new CustomEvent('openRequest', { detail: s }));
-    });
-
+  /* ---------- Construye tarjeta -------------------------- */
+  const buildCard=s=>{
+    const isReq=s.tipoPet==='requests';
+    const title=isReq?'Solicitud de cita':'Solicitud de reprogramación';
+    const lbl=isReq?'Fecha solicitada':'Nueva fecha propuesta';
+    const card=document.createElement('div');
+    card.className='request-item';
+    card.innerHTML=`
+       <h3>${title}</h3>
+       <p><strong>Paciente:</strong> ${s.paciente}</p>
+       <p><strong>Tipo de evento:</strong> ${EVT_NAME[s.tipoEv]}</p>
+       <p><strong>${lbl}:</strong> ${s.fecha} ${s.hora}</p>
+       <div class="request-actions">
+         <button class="approve-btn">Gestionar</button>
+       </div>`;
+    card.querySelector('.approve-btn').onclick=()=>{
+      lastManagedId=s.id;
+      window.lastManagedId=s.id;             //  comparte con agenda.js
+      window.dispatchEvent(new CustomEvent('openRequest',{detail:s}));
+    };
     return card;
-  }
+  };
 
-  /**
-   * Renderiza ambas pestañas (requests / reschedules) según data-tab.
-   */
-  function renderInbox() {
-    tabBtns.forEach(btn => {
-      const tabKey   = btn.dataset.tab;                // 'requests' o 'reschedules'
-      const container= document.getElementById(`${tabKey}-tab`);
-      const countEl  = document.getElementById(`${tabKey}-count`);
-      // Limpia
-      container.innerHTML = '';
-      // Filtra y pinta
-      const items = solicitudes.filter(s => s.tipoPet === tabKey);
-      items.forEach(s => container.appendChild(buildCard(s)));
-      // Actualiza contador
-      countEl.textContent = `(${items.length})`;
+  /* ---------- Pinta bandeja ------------------------------ */
+  const renderInbox=()=>{
+    ['requests','reschedules'].forEach(key=>{
+      const cont=document.getElementById(`${key}-tab`);
+      cont.innerHTML='';
+      const items=solicitudes.filter(x=>x.tipoPet===key);
+      items.forEach(s=>cont.appendChild(buildCard(s)));
+      counts[key].textContent=`(${items.length})`;
     });
-  }
+  };
 
-  // Inicializa la bandeja
-  renderInbox();
-
-  /* --- Cambio de pestañas ---------------------------------- */
-  tabBtns.forEach(btn => btn.addEventListener('click', e => {
-    tabBtns.forEach(x => x.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(x => x.classList.remove('active'));
+  /* ---------- Cambiar pestañas --------------------------- */
+  tabBtns.forEach(btn=>btn.onclick=e=>{
+    tabBtns.forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+    const tab=e.currentTarget.dataset.tab;
     e.currentTarget.classList.add('active');
-    document.getElementById(`${e.currentTarget.dataset.tab}-tab`).classList.add('active');
-  }));
+    document.getElementById(`${tab}-tab`).classList.add('active');
+  });
 
-  /* --- Al crear un evento en la agenda eliminamos la solicitud correspondiente --- */
-  window.addEventListener('eventCreated', e => {
-    const createdId = e.detail.id;
-    const idx = solicitudes.findIndex(s => s.id === createdId);
-    if (idx >= 0) {
-      solicitudes.splice(idx, 1);
+  /* ---------- Escucha confirmación desde agenda ---------- */
+  window.addEventListener('eventCreated',e=>{
+    const managedId=e.detail && e.detail.requestId ? e.detail.requestId : (window.lastManagedId||lastManagedId);
+    if(!managedId) return;
+
+    const idx=solicitudes.findIndex(s=>s.id===managedId);
+    if(idx>=0){
+      solicitudes.splice(idx,1);
+      lastManagedId=null;
+      window.lastManagedId=null;
       renderInbox();
     }
   });
 
+  renderInbox();
 });
