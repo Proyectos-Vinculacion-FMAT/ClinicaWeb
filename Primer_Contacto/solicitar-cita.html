@@ -440,14 +440,22 @@
                     <small>10 dígitos sin espacios</small>
                 </label>
 
-                <div class="full-width" style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <md-outlined-select label="Motivo de la consulta">
+                <div class="full-width">
+                    <md-outlined-select label="Motivo de la consulta" name="motivo" required>
+                        <md-select-option value="" disabled selected>Selecciona una opción</md-select-option>
                         <md-select-option value="medica">Consulta médica</md-select-option>
                         <md-select-option value="psicologica">Consulta psicológica</md-select-option>
                         <md-select-option value="nutricional">Consulta nutricional</md-select-option>
                     </md-outlined-select>
-                    <md-outlined-text-field label="Descripción adicional (opcional)" supporting-text="Breve descripción de la consulta"></md-outlined-text-field>
+                    <md-outlined-text-field 
+                        label="Descripción adicional"
+                        name="descripcion"
+                        supporting-text="Opcional: puedes agregar una breve explicación"
+                        rows="2"
+                        textarea>
+                    </md-outlined-text-field>
                 </div>
+
             </div>
 
             <div class="button-group">
