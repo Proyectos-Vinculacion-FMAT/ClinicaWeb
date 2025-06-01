@@ -24,7 +24,6 @@ Crear un sistema funcional y modular que permita:
 | `/pacientes`           | Módulo para visualizar los pacientes de muestra, sus expediente y sus  horarios disponibles, entre otros datos. |
 | `/terapeuta`           | Horarios y disponibilidad del personal terapeuta. |
 | `/salas`               | Gestión de salas y sus horarios disponibles. |
-| `/coordinacion`        | Administración CRU de terapeutas, pacientes y salas. |
 | `/reportes`            | Visualización y exportación de reportes estadísticos. |
 | `/ver_cita`            | Submódulo de visualización detallada de citas agendadas. |
 | `/Primer_Contacto`     | Primeros pasos antes de ser paciente activo. |
@@ -52,15 +51,16 @@ Se ha separado la documentación en tres áreas para facilitar su consulta:
 
 ## 🔗 Recursos adicionales
 
-- 🎨 [Prototipo visual (Figma)](https://www.figma.com/design/kp0EV8D1mdzI2OQcKCoEz1/Expedientes_Cl%C3%ADnica?node-id=1051169-107&m=dev&t=eBp5dQeB45w8M59l-1)
+- 🎨 [Prototipo visual de la primera versión entregada (Figma)](https://www.figma.com/design/kp0EV8D1mdzI2OQcKCoEz1/Expedientes_Cl%C3%ADnica?node-id=1051169-107&m=dev&t=eBp5dQeB45w8M59l-1)
 - 💻 Despliegue con [GitHub Pages](https://carlosekraigoza.github.io/ClinicaWeb/)
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 Autores
 
-Carlos Ek Raigoza  
-Estudiante de Ingeniería en Software
+Carlos Ek Raigoza
+
+
 
 ---
 
