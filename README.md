@@ -65,6 +65,7 @@ Se ha separado la documentación en tres áreas para facilitar su consulta:
 - Fernando Ismael Canul Caballero
 - Victor Hugo Rosado Koyoc
 - Marco Santiago Canche May
+- Jaime Sebastian Laines Nabte
 
 ---
 
