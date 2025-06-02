@@ -1,6 +1,6 @@
-# 🧑‍💼 Clínica Web - Administracion
+# 🧑‍💼 Clínica Web - Administración
 
-En el area de administracion representamos los procesos que se realizan desde el punto de vista de los administradores de la clinica mediante un prototipado del posible producto de software.
+En el área de administración representamos los procesos que se realizan desde el punto de vista de los administradores de la clínica mediante un prototipado del posible producto de software.
 
 ---
 
@@ -16,30 +16,30 @@ Un sistema que permita a los administradores:
 
 ---
 
-## 📁 Estructura carpetas relacionadas con Administracion
+## 📁 Estructura carpetas relacionadas con Administración
 
 | Carpeta/Archivo                      | Descripción |
 |--------------------------------------|-------------|
-| `/Educcion de Requisitos`            | Documentaccion sobre el proceso para obtener los requrimientos. |
-| `/Investigacion de usuario`          | Investigacion conserniente al los uduarios considerados como administradores.|
-| `/Primera Version del Prototipado`   | Control de versiones de los prototipos para el manejo de administradores. |
-| `/agenda`                            | Las tareas consernientes a la agenda de la clinica, manejo de citas, horarios, etc |
-| `/notificaciones`                    | Manejo de las notiificaciones a los administradores como solicitudes de servicio, cambios de citas, etc...  |
-| `/pacientes`                         | Procesos consernientes al menojo de la informacion de los pacientes. |
+| `/Educcion de Requisitos`            | Documentación sobre el proceso para obtener los requerimientos. |
+| `/investigación de usuario`          | investigación concerniente a los usuarios considerados como administradores.|
+| `/Primera Versión del Prototipado`   | Control de versiones de los prototipos para el manejo de administradores. |
+| `/agenda`                            | Las tareas concernientes a la agenda de la clínica, manejo de citas, horarios, etc. |
+| `/notificaciones`                    | Manejo de las notificaciones a los administradores como solicitudes de servicio, cambios de citas, etc...  |
+| `/pacientes`                         | Procesos concernientes al manejo de la información de los pacientes. |
 | `/reportes`                          | Visualización y exportación de reportes estadísticos. |
-| `/salas`                             | Gestión de salas y sus horarios disponibles. |
+| `/salas                             | Gestión de salas y sus horarios disponibles. |
 | `/terapeuta`                         | Horarios y disponibilidad del personal terapeuta. |
 
 
 
 ---
 
-## 📚 Documentación de flujos en el apartado de Adinistracion
+## 📚 Documentación de flujos en el apartado de Administración
 
-Documentacion :
+Documentación:
 
 - 📄 [`docuemntacion Educcion de Requisitos/`](./Educción%de%requisitos)  
-  Documentación sobre la creacion de los reqerimientos.
+  Documentación sobre la creación de los requerimientos.
 
 - 📄 [`documentacion Inestigaion de Ususraio/`](./Investigación%de%usuarios)  
   Detalles sobre los Usuarios considerados como administradores.
@@ -57,13 +57,13 @@ Documentacion :
   Información relacionada sobre los flujos de los pacientes.
 
 - 📄 [`documentacion_reportes/`](./reportes)  
-  Información de los reportes estadisticos.
+  Información de los reportes estadísticos.
 
 - 📄 [`documentacion_salas/`](./salas)  
   Flujos relacionados al manejo de las salas para las terapias.
 
 - 📄 [`documentacion_terapeutas/`](./terapeutas)  
-  Flujos relacionados al manejo de la informacion de los terapeutas.
+  Flujos relacionados al manejo de la información de los terapeutas.
 ---
 
 ## 🔗 Recursos adicionales
@@ -80,7 +80,7 @@ Deco Acierno Hernandez
 Jose Antonio Diaz Fernandez
 David Ernesto Escalante Garcia
 Jaime Sebastián Laines Nabte
-Jose Alberto Murcia Cen
+Jose Alberto Murcia Cen
 
 
 
