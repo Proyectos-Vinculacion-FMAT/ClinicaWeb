@@ -74,7 +74,7 @@ Documentacion :
 Deco Acierno Hernandez
 Jose Antonio Diaz Fernandez
 David Ernesto Escalante Garcia
-Sebastián Laines Nabte
+Jaime Sebastián Laines Nabte
 Jose Alberto Murcio Cen
 
 
