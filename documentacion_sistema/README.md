@@ -18,15 +18,17 @@ Un sistema que permita a los administradores:
 
 ## 📁 Estructura carpetas relacionadas con Administracion
 
-| Carpeta/Archivo           | Descripción |
-|---------------------------|-------------|
-| `/Educcion de Requisitos` | Funcion principal para loas administradores incluyendo el manejo  |
-| `/agenda`                 | Las tareas consernientes a la agenda de la clinica, manejo de citas, horarios, etc |
-| `/notificaciones`         | Manejo de las notiificaciones a los administradores como solicitudes de servicio, cambios de citas, etc...  |
-| `/pacientes`              | Procesos consernientes al menojo de la informacion de los pacientes. |
-| `/reportes`               | Visualización y exportación de reportes estadísticos. |
-| `/salas`                  | Gestión de salas y sus horarios disponibles. |
-| `/terapeuta`              | Horarios y disponibilidad del personal terapeuta. |
+| Carpeta/Archivo                      | Descripción |
+|--------------------------------------|-------------|
+| `/Educcion de Requisitos`            | Documentaccion sobre el proceso para obtener los requrimientos. |
+| `/Investigacion de usuario`          | Investigacion conserniente al los uduarios considerados como administradores.|
+| `/Primera Version del Prototipado`   | Control de versiones de los prototipos para el manejo de administradores. |
+| `/agenda`                            | Las tareas consernientes a la agenda de la clinica, manejo de citas, horarios, etc |
+| `/notificaciones`                    | Manejo de las notiificaciones a los administradores como solicitudes de servicio, cambios de citas, etc...  |
+| `/pacientes`                         | Procesos consernientes al menojo de la informacion de los pacientes. |
+| `/reportes`                          | Visualización y exportación de reportes estadísticos. |
+| `/salas`                             | Gestión de salas y sus horarios disponibles. |
+| `/terapeuta`                         | Horarios y disponibilidad del personal terapeuta. |
 
 
 
@@ -36,13 +38,16 @@ Un sistema que permita a los administradores:
 
 Documentacion :
 
-- 📄 [`docuemntacion Educcion de Requisitos/`](./documentacion_sistema/Educción%de%requisitos)  
+- 📄 [`docuemntacion Educcion de Requisitos/`](./Educción%de%requisitos)  
   Documentación sobre la creacion de los reqerimientos.
 
-- 📄 [`documentacion Inestigaion de Ususraio/`](./documentacion_sistema/Investigación%de%usuarios)  
+- 📄 [`documentacion Inestigaion de Ususraio/`](./Investigación%de%usuarios)  
   Detalles sobre los Usuarios considerados como administradores.
 
-- 📄 [`documentacion_agenda/`](./documentacion_sistema/agenda)  
+  - 📄 [`documentacion Primera Version del Prototipado/`](./Primera%version%del%prototipado)  
+  Detalles sobre versiones anteriores de los prototipos.
+
+- 📄 [`documentacion_agenda/`](./agenda)  
   Información la agenda en el sistema.
   
 - 📄 [`documentacion_notificaciones/`](./notificaciones)  
@@ -75,7 +80,7 @@ Deco Acierno Hernandez
 Jose Antonio Diaz Fernandez
 David Ernesto Escalante Garcia
 Jaime Sebastián Laines Nabte
-Jose Alberto Murcio Cen
+Jose Alberto Murcia Cen
 
 
 
