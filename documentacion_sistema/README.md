@@ -48,13 +48,13 @@ Documentacion :
 - 📄 [`documentacion_notificaciones/`](./notificaciones)  
   Información sobre las notificaciones de la agenda en el sistema.
 
-  - 📄 [`documentacion_pacientes/`](./pacientes)  
+- 📄 [`documentacion_pacientes/`](./pacientes)  
   Información relacionada sobre los flujos de los pacientes.
 
 - 📄 [`documentacion_reportes/`](./reportes)  
   Información de los reportes estadisticos.
 
-  - 📄 [`documentacion_salas/`](./salas)  
+- 📄 [`documentacion_salas/`](./salas)  
   Flujos relacionados al manejo de las salas para las terapias.
 
 - 📄 [`documentacion_terapeutas/`](./terapeutas)  
