@@ -11,10 +11,10 @@ Aquí se encuentran los insumos, análisis y entregables relacionados con la **i
 | Carpeta / Archivo | Descripción |
 |-------------------|-------------|
 | [`01_Material_Entrevista/`](./01_Materiales_de_entrevista/) | Contiene los archivos de referencia obtenidos durante la entrevista con personal clínico. Incluye notas, formatos y preguntas. |
-| `02_Sintesis_Informacion/` | Documentos que resumen la información más relevante extraída de las entrevistas. |
-| `03_Audio/` | Grabaciones de las entrevistas realizadas. |
-| `04_Educcion_Requisitos/` | Resultado del proceso de análisis y transformación de la información obtenida en requisitos funcionales y no funcionales. |
-| `05_Prototipo/` | Contiene enlaces, descripciones y archivos relacionados con el prototipo visual del sistema. |
+| [`02_Sintesis_Informacion/`](./02_Sintesis_de_Entrevista/) | Documentos que resumen la información más relevante extraída de las entrevistas. |
+| [`03_Audio_Entrevista/`](./03_Audio_Entrevista/) | Grabaciones de las entrevistas realizadas. |
+| [`04_Educcion_Requisitos/`](./04_Educcion_de_requisitos/) | Resultado del proceso de análisis y transformación de la información obtenida en requisitos funcionales y no funcionales. |
+| [`05_Prototipo/`](./05_Prototipo_Primera_Verisón/) | Contiene enlaces, descripciones y archivos relacionados con el prototipo visual del sistema. |
 
 ---
 
