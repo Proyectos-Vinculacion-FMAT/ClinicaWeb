@@ -36,13 +36,13 @@ Un sistema que permita a los administradores:
 
 Documentacion :
 
-- 📄 [`docuemntacion Educcion de Requisitos/`](./Educción_de_requisitos)  
+- 📄 [`docuemntacion Educcion de Requisitos/`](./documentacion_sistema/Educción%de%requisitos)  
   Documentación sobre la creacion de los reqerimientos.
 
-- 📄 [`documentacion Inestigaion de Ususraio/`](./Investigación_de_usuarios)  
+- 📄 [`documentacion Inestigaion de Ususraio/`](./documentacion_sistema/Investigación%de%usuarios)  
   Detalles sobre los Usuarios considerados como administradores.
 
-- 📄 [`documentacion_agenda/`](./agenda)  
+- 📄 [`documentacion_agenda/`](./documentacion_sistema/agenda)  
   Información la agenda en el sistema.
   
 - 📄 [`documentacion_notificaciones/`](./notificaciones)  
