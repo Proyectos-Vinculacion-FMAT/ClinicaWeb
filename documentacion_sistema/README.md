@@ -44,7 +44,7 @@ Documentación:
 - 📄 [`documentacion Inestigaion de Ususraio/`](./Investigación%de%usuarios)  
   Detalles sobre los Usuarios considerados como administradores.
 
-  - 📄 [`documentacion Primera Version del Prototipado/`](./Primera%version%del%prototipado)  
+- 📄 [`documentacion Primera Version del Prototipado/`](./Primera%version%del%prototipado)  
   Detalles sobre versiones anteriores de los prototipos.
 
 - 📄 [`documentacion_agenda/`](./agenda)  
