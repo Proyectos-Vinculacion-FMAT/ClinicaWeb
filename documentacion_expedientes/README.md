@@ -10,7 +10,7 @@ Aquí se encuentran los insumos, análisis y entregables relacionados con la **i
 
 | Carpeta / Archivo | Descripción |
 |-------------------|-------------|
-| `01_Material_Entrevista/` | Contiene los archivos de referencia obtenidos durante la entrevista con personal clínico. Incluye notas, formatos y preguntas. |
+| [`01_Material_Entrevista/`](./01_Materiales_de_entrevista/) | Contiene los archivos de referencia obtenidos durante la entrevista con personal clínico. Incluye notas, formatos y preguntas. |
 | `02_Sintesis_Informacion/` | Documentos que resumen la información más relevante extraída de las entrevistas. |
 | `03_Audio/` | Grabaciones de las entrevistas realizadas. |
 | `04_Educcion_Requisitos/` | Resultado del proceso de análisis y transformación de la información obtenida en requisitos funcionales y no funcionales. |
