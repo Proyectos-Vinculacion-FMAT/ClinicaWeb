@@ -21,19 +21,19 @@ Este prototipo fue diseñado como una representación visual del módulo de **ge
 - Muestra el acceso a los módulos principales.
 - Incluye navegación con los menús: Pacientes, Terapeuta y Calendarios.
 
-### 2. [`**Sección de Vistas para la Secretaria**`](./Vista_Secretaria.pdf)
+### 2. [`Sección de Vistas para la Secretaria`](./Vista_Secretaria.pdf)
 - Consulta lista de pacientes con la oportunidad de filtrar por sus "estados" (activos, en espera, finalizados).
 - Datos generales del paciente, así como de contacto y disponibilidad de horarios.
 - Check list de los doumentos entregados.
 - Opción para completar los documentos mediante formularios o "carga" de documento digitalizado.
 
-### 3. [`**Sección de Vistas para los Terapeutas**`](./Vista_Terapeuta.pdf)
+### 3. [`Sección de Vistas para los Terapeutas`](./Vista_Terapeuta.pdf)
 - Consulta lista de pacientes que tiene a su cargo.
 - Datos generales del paciente, así como de contacto y disponibilidad de horarios.
 - Check list de los doumentos entregados.
 - Opción para completar los documentos mediante formularios o "carga" de documento digitalizado.
 
-### 4. [`**Sección de Vistas para la Administradores**`](./Vista_Administrador.pdf)
+### 4. [`Sección de Vistas para la Administradores`](./Vista_Administrador.pdf)
 - Consulta lista de pacientes con la oportunidad de filtrar por sus "estados" (activos, en espera, finalizados).
 - Opción de "crear" un nuevo paciente.
 ---
