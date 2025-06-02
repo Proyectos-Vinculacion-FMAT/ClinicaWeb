@@ -7,11 +7,11 @@
 
 ## 🧭 Propósito General
 
-Este prototipo fue diseñado como una representación visual del módulo de **gestión de expedientes clínicos**. Tiene como objetivo mostrar de forma clara y funcional cómo los usuarios podrán:
+Este prototipo fue diseñado como una representación visual del módulo de **gestión de expedientes clínicos** en Figma. Tiene como objetivo mostrar de forma clara y funcional cómo los usuarios podrán:
 
 - Realizar registros, consultas y actualizaciones en los expedientes.
 - Buscar de manera clara y eficaz a los pacientes mediante filtros de "estado".
-- Identidicar documentación faltante o completada del expediente
+- Identidicar documentación faltante o completada del expediente.
 
 ---
 
