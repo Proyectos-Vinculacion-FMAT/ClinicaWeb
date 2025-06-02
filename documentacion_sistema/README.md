@@ -1,4 +1,4 @@
-# 🏥 Clínica Web - Gestión de Expedientes y Coordinación Clínica
+# 🧑‍💼 Clínica Web - Administracion
 
 En el area de administracion representamos los procesos que se realizan desde el punto de vista de los administradores de la clinica mediante un prototipado del posible producto de software.
 
