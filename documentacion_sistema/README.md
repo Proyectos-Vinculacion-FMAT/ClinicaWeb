@@ -20,7 +20,7 @@ Un sistema que permita a los administradores:
 
 | Carpeta/Archivo       | Descripción |
 |------------------------|-------------|
-| `/agenda`              | Página principal para gestión de citas, notificaciones y solicitudes. |
+| `/agenda`              | Funcion principal para loas administradores incluyendo el manejo  |
 | `/pacientes`           | Módulo para visualizar los pacientes de muestra, sus expediente y sus  horarios disponibles, entre otros datos. |
 | `/terapeuta`           | Horarios y disponibilidad del personal terapeuta. |
 | `/salas`               | Gestión de salas y sus horarios disponibles. |
