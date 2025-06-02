@@ -59,9 +59,12 @@ Se ha separado la documentación en tres áreas para facilitar su consulta:
 
 ## 👨‍💻 Autores
 
-Carlos Ek Raigoza
-
-
+- Carlos Ek Raigoza
+- Gabriel Sánchez Peraza
+- José Luis Gutierrez Couoh
+- Fernando Ismael Canul Caballero
+- Victor Hugo Rosado Koyoc
+- Marco Santiago Canche May
 
 ---
 
