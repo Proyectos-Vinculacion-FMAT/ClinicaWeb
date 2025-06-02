@@ -1,4 +1,4 @@
-# 🏥 Clínica Web - Gestión de Expedientes y Coordinación Clínica
+# 🧑‍💼 Clínica Web - Administracion
 
 En el area de administracion representamos los procesos que se realizan desde el punto de vista de los administradores de la clinica mediante un prototipado del posible producto de software.
 
@@ -18,29 +18,47 @@ Un sistema que permita a los administradores:
 
 ## 📁 Estructura carpetas relacionadas con Administracion
 
-| Carpeta/Archivo       | Descripción |
-|------------------------|-------------|
-| `/agenda`              | Funcion principal para loas administradores incluyendo el manejo  |
-| `/pacientes`           | Módulo para visualizar los pacientes de muestra, sus expediente y sus  horarios disponibles, entre otros datos. |
-| `/terapeuta`           | Horarios y disponibilidad del personal terapeuta. |
-| `/salas`               | Gestión de salas y sus horarios disponibles. |
-| `/reportes`            | Visualización y exportación de reportes estadísticos. |
+| Carpeta/Archivo           | Descripción |
+|---------------------------|-------------|
+| `/Educcion de Requisitos` | Funcion principal para loas administradores incluyendo el manejo  |
+| `/agenda`                 | Las tareas consernientes a la agenda de la clinica, manejo de citas, horarios, etc |
+| `/notificaciones`         | Manejo de las notiificaciones a los administradores como solicitudes de servicio, cambios de citas, etc...  |
+| `/pacientes`              | Procesos consernientes al menojo de la informacion de los pacientes. |
+| `/reportes`               | Visualización y exportación de reportes estadísticos. |
+| `/salas`                  | Gestión de salas y sus horarios disponibles. |
+| `/terapeuta`              | Horarios y disponibilidad del personal terapeuta. |
+
+
 
 ---
 
-## 📚 Documentación del Apartado Administracion
+## 📚 Documentación de flujos en el apartado de Adinistracion
 
-Se ha separado la documentación en tres áreas para facilitar su consulta:
+Documentacion :
 
-- 📄 [`documentacion_expedientes/`](./documentacion_expedientes)  
-  Documentación sobre el tratamiento, flujo y control de los **expedientes clínicos**.
+- 📄 [`docuemntacion Educcion de Requisitos/`](./documentacion_sistema/Educción%de%requisitos)  
+  Documentación sobre la creacion de los reqerimientos.
 
-- 📄 [`documentacion_sistema/`](./documentacion_sistema)  
-  Detalles técnicos y funcionales del **sistema web**, sus módulos y navegación.
+- 📄 [`documentacion Inestigaion de Ususraio/`](./documentacion_sistema/Investigación%de%usuarios)  
+  Detalles sobre los Usuarios considerados como administradores.
 
-- 📄 [`documentacion_contacto/`](./documentacion_contacto)  
-  Información sobre el flujo de **primer contacto** de un usuario/paciente con el sistema.
+- 📄 [`documentacion_agenda/`](./documentacion_sistema/agenda)  
+  Información la agenda en el sistema.
+  
+- 📄 [`documentacion_notificaciones/`](./notificaciones)  
+  Información sobre las notificaciones de la agenda en el sistema.
 
+- 📄 [`documentacion_pacientes/`](./pacientes)  
+  Información relacionada sobre los flujos de los pacientes.
+
+- 📄 [`documentacion_reportes/`](./reportes)  
+  Información de los reportes estadisticos.
+
+- 📄 [`documentacion_salas/`](./salas)  
+  Flujos relacionados al manejo de las salas para las terapias.
+
+- 📄 [`documentacion_terapeutas/`](./terapeutas)  
+  Flujos relacionados al manejo de la informacion de los terapeutas.
 ---
 
 ## 🔗 Recursos adicionales
@@ -53,7 +71,11 @@ Se ha separado la documentación en tres áreas para facilitar su consulta:
 
 ## 👨‍💻 Autores
 
-Carlos Ek Raigoza
+Deco Acierno Hernandez
+Jose Antonio Diaz Fernandez
+David Ernesto Escalante Garcia
+Sebastián Laines Nabte
+Jose Alberto Murcio Cen
 
 
 
