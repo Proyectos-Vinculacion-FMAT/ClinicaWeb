@@ -53,7 +53,7 @@ Se ha separado la documentación en tres áreas para facilitar su consulta:
 
 - 🎨 [Prototipo visual de la primera versión entregada (Figma)](https://www.figma.com/design/kp0EV8D1mdzI2OQcKCoEz1/Expedientes_Cl%C3%ADnica?node-id=1051169-107&m=dev&t=eBp5dQeB45w8M59l-1)
 
-- 💻 Despliegue con [GitHub Pages](https://carlosekraigoza.github.io/ClinicaWeb/)
+- 💻 Despliegue con [GitHub Pages](https://proyectos-vinculacion-fmat.github.io/ClinicaWeb/)
 
 ---
 
